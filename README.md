@@ -1,5 +1,8 @@
 # Blyp
+![Test](https://github.com/sKhan16/Blyp/workflows/Test/badge.svg)
+
 Informatics capstone project from Team Sonar
+
 
 ## Getting Started
 
@@ -32,10 +35,10 @@ Please read [CONTRIBUTING.md]() for details on our code of conduct, and the proc
 
 ## Authors
 
-* **Kassandra Franco**
-* **Hayden Hong** - *iOS Development* - [Personal Webpage](https://haydenhong.com/)
-* **Shakeel Khan**
-* **Vanely Ruiz**
+* **Kassandra Franco** - *UI/UX Designer*
+* **Hayden Hong** - *iOS Development*
+* **Shakeel Khan** - *Full-Stack Development*
+* **Vanely Ruiz** - *iOS Development*
 
 ## License
 
