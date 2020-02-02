@@ -31,7 +31,7 @@ Deployment for this application for a single device can be done through Xcode by
 
 ## Contributing
 
-Please read [CONTRIBUTING.md]() for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
@@ -42,5 +42,5 @@ Please read [CONTRIBUTING.md]() for details on our code of conduct, and the proc
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md]() for details
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) for details
 
