@@ -35,10 +35,10 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of cond
 
 ## Authors
 
-* **Kassandra Franco** - *UI/UX Designer*
-* **Hayden Hong** - *iOS Development*
-* **Shakeel Khan** - *Full-Stack Development*
-* **Vanely Ruiz** - *iOS Development*
+* **Kassandra Franco** — *UI/UX Designer* – kfranco@uw.edu
+* **Hayden Hong** – *iOS Development* – hahong@uw.edu
+* **Shakeel Khan** – *Full-Stack Development* – khansk97@uw.edu
+* **Vanely Ruiz** – *iOS Development* – vanely@uw.edu
 
 ## License
 
