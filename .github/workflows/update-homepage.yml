@@ -3,6 +3,7 @@ on:
   push:
     branches:    
       - master
+      - landing_page
 jobs:
   deploy:
     runs-on: ubuntu-latest
