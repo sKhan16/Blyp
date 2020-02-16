@@ -7,7 +7,7 @@ import gravatar from "../img/gravatar.png";
 export default class Team extends React.Component {
   render() {
     return (
-      <Jumbotron className="bg-white text-left pt-0">
+      <Jumbotron className="bg-white text-left pt-0 pb-0">
         <h2 className="display-4 font-weight-bold">Our Team</h2>
         <Container>
           <Row>

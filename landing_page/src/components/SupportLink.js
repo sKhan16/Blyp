@@ -7,7 +7,7 @@ export default class SupportLink extends React.Component {
     return (
       <Container fluid className="mt-5">
         <Row>
-          <Col sm={2}>
+          <Col sm={2} className="pl-0 pr-0">
             <Circle text={this.props.number} radius={40}></Circle>
           </Col>
           <Col sm={7}>

@@ -17,22 +17,22 @@ export default class PersonCard extends React.Component {
               />
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-0 mb-0">
             <Col>
-              <h4 width="100%">{this.props.name}</h4>
+              <h5 width="100%">{this.props.name}</h5>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-0 mb-0">
             <Col>
               <p width="100%">{this.props.role}</p>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-0 mb-0">
             <Col>
               <p width="100%">{this.props.email}</p>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-0 mb-0">
             <Col>
               <p width="100%">{this.props.quip}</p>
             </Col>

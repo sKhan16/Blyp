@@ -5,7 +5,7 @@ import SupportLink from "./SupportLink";
 export default class Support extends React.Component {
   render() {
     return (
-      <Jumbotron className="bg-white text-left pt-0">
+      <Jumbotron className="bg-white text-left pt-0 pb-0">
         <h2 className="display-4 font-weight-bold">How you can support</h2>
         <SupportLink
           number={1}
