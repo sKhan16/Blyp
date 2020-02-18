@@ -7,7 +7,7 @@ import { Navbar, Nav } from "react-bootstrap";
 export default class BlypNavBar extends React.Component {
   render() {
     return (
-      <Navbar expand="lg" className="bg-light">
+      <Navbar expand="sm" sticky="top" className="bg-white" style={{borderBottomColor: "#FACFAD", borderBottomWidth: "6px", borderBottomStyle:"solid"}}>
         <Navbar.Brand href="#home">Blyp</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">

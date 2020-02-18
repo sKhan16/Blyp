@@ -13,16 +13,17 @@ export default class SupportLink extends React.Component {
           <Col sm={7}>
             <Container>
               <Row>
-                  <h3>{this.props.title}</h3>
+                <h3>{this.props.title}</h3>
               </Row>
               <Row>
-                
                 <p>{this.props.details}</p>
               </Row>
             </Container>
           </Col>
           <Col sm={3}>
-            <Button block variant="secondary">{this.props.buttonName}</Button>
+            <Button block variant="secondary" className="support-link-button" style={{ backgroundColor: "#FACFAD", border: "none", color: "black" }}>
+              {this.props.buttonName}
+            </Button>
           </Col>
         </Row>
       </Container>

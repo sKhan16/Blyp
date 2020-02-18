@@ -2,6 +2,7 @@ import React from "react";
 import BlypNavBar from "./components/BlypNavBar";
 import Headline from "./components/Headline";
 import Support from "./components/Support";
+import Screenshots from "./components/Screenshots"
 import "./App.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Team from "./components/Team";
@@ -15,6 +16,11 @@ function App() {
         <Row className="justify-content-center">
           <Col xs={12} sm={12} md={10} lg={8} xl={8} style={{maxWidth: maxWidth}}>
             <Headline />
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={12} md={10} lg={8} xl={8} style={{maxWidth: maxWidth}}>
+            <Screenshots images={["", "", "", ""]}/>
           </Col>
         </Row>
         <Row className="justify-content-center">

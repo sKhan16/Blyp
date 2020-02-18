@@ -5,7 +5,7 @@ export default class Headline extends React.Component {
   render() {
     return (
       <Jumbotron className="bg-white text-left pb-0">
-        <h1 className="display-3 font-weight-bold">A new way for mapping memories</h1>
+        <h1 className="display-3 font-weight-bold headline">A new way for mapping memories</h1>
         <p>
           Hello, we’re a team of four students building a mobile application that allows people to leave memories
           (blyps) on a map. Friends and family alike can then go and “look for” these memories--think geocaching, but
