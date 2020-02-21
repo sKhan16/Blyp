@@ -3,6 +3,8 @@ import { Jumbotron, Row, Container } from "react-bootstrap";
 import PersonCard from "./PersonCard";
 
 import gravatar from "../img/gravatar.png";
+import kassy from "../img/k.jpg"
+import hayden from "../img/h.jpg"
 
 export default class Team extends React.Component {
   render() {
@@ -12,7 +14,7 @@ export default class Team extends React.Component {
         <Container>
           <Row>
             <PersonCard
-              imgSrc={gravatar}
+              imgSrc={hayden}
               name="Hayden Hong"
               role="iOS Developer"
               email="hello@haydenhong.com"
@@ -33,7 +35,7 @@ export default class Team extends React.Component {
               quip="Hello world!"
             ></PersonCard>
             <PersonCard
-              imgSrc={gravatar}
+              imgSrc={kassy}
               name="Kassandra Franco"
               role="PM & Designer"
               email="kfranco@uw.edu"
