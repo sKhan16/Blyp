@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E5AA012A96C852620B0F748 /* Pods_blypTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1863A760904D9218919584F /* Pods_blypTests.framework */; };
-		77E631EE1CEC84682FA11BFA /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238DCD6971E3574DE7B014D6 /* Pods_blyp.framework */; };
+		2C16E7682C85C9369C903590 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C370876C77CF357C5C60A52C /* Pods_blyp.framework */; };
+		A3DCEF6C470EE3742D3A4E68 /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41230C33B63CCD6F48AD468 /* Pods_blyp_blypUITests.framework */; };
 		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E7A2400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
@@ -35,7 +35,7 @@
 		C0FE9D8C23E4F213004C4621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */; };
 		C0FE9D9723E4F213004C4621 /* blypTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D9623E4F213004C4621 /* blypTests.swift */; };
 		C0FE9DA223E4F213004C4621 /* blypUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9DA123E4F213004C4621 /* blypUITests.swift */; };
-		F64E61C1C1DFF566160D722E /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F18617D87CEC1811397F61B /* Pods_blyp_blypUITests.framework */; };
+		C3448368F4A1B16F7A5319A7 /* Pods_blypTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1AC3866A4C591EA129B7E0 /* Pods_blypTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,19 +56,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		238DCD6971E3574DE7B014D6 /* Pods_blyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		259718B82DE3E801A06B4D32 /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
-		358BE7AFC0856ADB8EECEE04 /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
-		707D136121FA52BF52D4A3FB /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7F18617D87CEC1811397F61B /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7089904E155A2ECD3EE91F0 /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
+		10FD1CD1C0CFAF9EB2F40B06 /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
+		2075117933ECDF03E5CEEE1E /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4A06EDD1D3171908202C1F5F /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E1AC3866A4C591EA129B7E0 /* Pods_blypTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blypTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6594297CD654DE929D10E0A3 /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
+		AEEA79E61E3E615398E53259 /* Pods-blyp-blypUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.debug.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07A2EAC2400AE29004BB749 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		C07A2EC62400B2A2004BB749 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWebCredential.swift; sourceTree = "<group>"; };
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
-		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInWithAppleToFirebase.swift; path = "../../../../Desktop/fuck/Login-with-Apple-Firebase-SwiftUI/LoginWithAppleFirebaseSwiftUI/SignInWithAppleToFirebase/SignInWithAppleToFirebase.swift"; sourceTree = "<group>"; };
+		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,9 +83,9 @@
 		C0FE9D9D23E4F213004C4621 /* blypUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blypUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9DA123E4F213004C4621 /* blypUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blypUITests.swift; sourceTree = "<group>"; };
 		C0FE9DA323E4F213004C4621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF64281ED1F7DAAC705602D2 /* Pods-blyp-blypUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.debug.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E1863A760904D9218919584F /* Pods_blypTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blypTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFF1D7F8C00D974D16862F6D /* Pods-blypTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.release.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.release.xcconfig"; sourceTree = "<group>"; };
+		C370876C77CF357C5C60A52C /* Pods_blyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C41230C33B63CCD6F48AD468 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F41B594E8EBA3DA043DBEA53 /* Pods-blypTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.release.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77E631EE1CEC84682FA11BFA /* Pods_blyp.framework in Frameworks */,
+				2C16E7682C85C9369C903590 /* Pods_blyp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E5AA012A96C852620B0F748 /* Pods_blypTests.framework in Frameworks */,
+				C3448368F4A1B16F7A5319A7 /* Pods_blypTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64E61C1C1DFF566160D722E /* Pods_blyp_blypUITests.framework in Frameworks */,
+				A3DCEF6C470EE3742D3A4E68 /* Pods_blyp_blypUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,12 +119,12 @@
 		0E45610ECF8BBDA2BD62D3D3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				259718B82DE3E801A06B4D32 /* Pods-blyp.debug.xcconfig */,
-				A7089904E155A2ECD3EE91F0 /* Pods-blyp.release.xcconfig */,
-				DF64281ED1F7DAAC705602D2 /* Pods-blyp-blypUITests.debug.xcconfig */,
-				358BE7AFC0856ADB8EECEE04 /* Pods-blyp-blypUITests.release.xcconfig */,
-				707D136121FA52BF52D4A3FB /* Pods-blypTests.debug.xcconfig */,
-				FFF1D7F8C00D974D16862F6D /* Pods-blypTests.release.xcconfig */,
+				10FD1CD1C0CFAF9EB2F40B06 /* Pods-blyp.debug.xcconfig */,
+				6594297CD654DE929D10E0A3 /* Pods-blyp.release.xcconfig */,
+				AEEA79E61E3E615398E53259 /* Pods-blyp-blypUITests.debug.xcconfig */,
+				2075117933ECDF03E5CEEE1E /* Pods-blyp-blypUITests.release.xcconfig */,
+				4A06EDD1D3171908202C1F5F /* Pods-blypTests.debug.xcconfig */,
+				F41B594E8EBA3DA043DBEA53 /* Pods-blypTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -149,7 +149,7 @@
 				C0FE9DA023E4F213004C4621 /* blypUITests */,
 				C0FE9D7D23E4F20E004C4621 /* Products */,
 				0E45610ECF8BBDA2BD62D3D3 /* Pods */,
-				DAA9EC6F0638538D0CDF5505 /* Frameworks */,
+				F8D6CAB1C3F782099F799B6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,12 +206,12 @@
 			path = blypUITests;
 			sourceTree = "<group>";
 		};
-		DAA9EC6F0638538D0CDF5505 /* Frameworks */ = {
+		F8D6CAB1C3F782099F799B6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				238DCD6971E3574DE7B014D6 /* Pods_blyp.framework */,
-				7F18617D87CEC1811397F61B /* Pods_blyp_blypUITests.framework */,
-				E1863A760904D9218919584F /* Pods_blypTests.framework */,
+				C370876C77CF357C5C60A52C /* Pods_blyp.framework */,
+				C41230C33B63CCD6F48AD468 /* Pods_blyp_blypUITests.framework */,
+				4E1AC3866A4C591EA129B7E0 /* Pods_blypTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,11 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DA623E4F213004C4621 /* Build configuration list for PBXNativeTarget "blyp" */;
 			buildPhases = (
-				91A92F8B050B57640C22C658 /* [CP] Check Pods Manifest.lock */,
+				FE51DB155EB20FC2C2DD55D5 /* [CP] Check Pods Manifest.lock */,
 				C0FE9D7823E4F20E004C4621 /* Sources */,
 				C0FE9D7923E4F20E004C4621 /* Frameworks */,
 				C0FE9D7A23E4F20E004C4621 /* Resources */,
-				CB8E6EF00E8F2294994446DF /* [CP] Embed Pods Frameworks */,
+				3B70F3CAAA2296B27A70D82F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -242,7 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DA923E4F213004C4621 /* Build configuration list for PBXNativeTarget "blypTests" */;
 			buildPhases = (
-				B547816AA850051A0401C3C3 /* [CP] Check Pods Manifest.lock */,
+				A610E51F966E88178B6D49BE /* [CP] Check Pods Manifest.lock */,
 				C0FE9D8E23E4F213004C4621 /* Sources */,
 				C0FE9D8F23E4F213004C4621 /* Frameworks */,
 				C0FE9D9023E4F213004C4621 /* Resources */,
@@ -261,11 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DAC23E4F213004C4621 /* Build configuration list for PBXNativeTarget "blypUITests" */;
 			buildPhases = (
-				62F4AA50BD72D6B64DF4ED6C /* [CP] Check Pods Manifest.lock */,
+				FAC7AC3D199D55A6100111D6 /* [CP] Check Pods Manifest.lock */,
 				C0FE9D9923E4F213004C4621 /* Sources */,
 				C0FE9D9A23E4F213004C4621 /* Frameworks */,
 				C0FE9D9B23E4F213004C4621 /* Resources */,
-				8E6D4B13310919CD6E243BD0 /* [CP] Embed Pods Frameworks */,
+				87E28454D28B3D3961690758 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,29 +351,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62F4AA50BD72D6B64DF4ED6C /* [CP] Check Pods Manifest.lock */ = {
+		3B70F3CAAA2296B27A70D82F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-blyp-blypUITests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E6D4B13310919CD6E243BD0 /* [CP] Embed Pods Frameworks */ = {
+		87E28454D28B3D3961690758 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,29 +385,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		91A92F8B050B57640C22C658 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-blyp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B547816AA850051A0401C3C3 /* [CP] Check Pods Manifest.lock */ = {
+		A610E51F966E88178B6D49BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,21 +407,48 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB8E6EF00E8F2294994446DF /* [CP] Embed Pods Frameworks */ = {
+		FAC7AC3D199D55A6100111D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blyp-blypUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE51DB155EB20FC2C2DD55D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blyp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -638,7 +638,7 @@
 		};
 		C0FE9DA723E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 259718B82DE3E801A06B4D32 /* Pods-blyp.debug.xcconfig */;
+			baseConfigurationReference = 10FD1CD1C0CFAF9EB2F40B06 /* Pods-blyp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
@@ -660,7 +660,7 @@
 		};
 		C0FE9DA823E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7089904E155A2ECD3EE91F0 /* Pods-blyp.release.xcconfig */;
+			baseConfigurationReference = 6594297CD654DE929D10E0A3 /* Pods-blyp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
@@ -682,7 +682,7 @@
 		};
 		C0FE9DAA23E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 707D136121FA52BF52D4A3FB /* Pods-blypTests.debug.xcconfig */;
+			baseConfigurationReference = 4A06EDD1D3171908202C1F5F /* Pods-blypTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -705,7 +705,7 @@
 		};
 		C0FE9DAB23E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFF1D7F8C00D974D16862F6D /* Pods-blypTests.release.xcconfig */;
+			baseConfigurationReference = F41B594E8EBA3DA043DBEA53 /* Pods-blypTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -728,7 +728,7 @@
 		};
 		C0FE9DAD23E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF64281ED1F7DAAC705602D2 /* Pods-blyp-blypUITests.debug.xcconfig */;
+			baseConfigurationReference = AEEA79E61E3E615398E53259 /* Pods-blyp-blypUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -749,7 +749,7 @@
 		};
 		C0FE9DAE23E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 358BE7AFC0856ADB8EECEE04 /* Pods-blyp-blypUITests.release.xcconfig */;
+			baseConfigurationReference = 2075117933ECDF03E5CEEE1E /* Pods-blyp-blypUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
