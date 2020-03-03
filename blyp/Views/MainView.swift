@@ -12,18 +12,28 @@ import FirebaseAuth
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
     var body: some View {
-        VStack {
-            Text(user.displayName)
-            
-            Button(action: {self.user.logout()}) {
-                Text("Logout")
+        NavigationView {
+            List(0 ..< 20) { item in
+                NavigationLink(destination: BlypView(blyp: Blyp(name: "Item #\(item + 1)", description: "This is just a test element"))) {
+                    Text("This will be Blyp #\(item + 1)")
+                }
             }
+            .navigationBarTitle("\(user.displayName)'s Blyps")
+            .navigationBarItems(trailing: LogoutButton())
         }
     }
 }
 
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(UserObservable())
+    }
+}
+
+struct LogoutButton: View {
+    @EnvironmentObject var user: UserObservable
+    var body: some View {
+        Button("Logout", action: {self.user.logout()})
     }
 }

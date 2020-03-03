@@ -19,11 +19,12 @@ public class UserObservable: ObservableObject {
     /// - Parameter displayName: display name (username) to set it to
     func changeDisplayName(displayName: String) {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = displayName
+        let trimmedName = displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+        changeRequest?.displayName = trimmedName
         changeRequest?.commitChanges { (error) in
             if error == nil {
                 withAnimation {
-                    self.displayName = displayName
+                    self.displayName = trimmedName
                     self.loginState = .loggedIn
                 }
             } else {

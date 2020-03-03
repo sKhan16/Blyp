@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         
         let firebaseUser = Auth.auth().currentUser
-        let contentView: ContentView = ContentView()
         withAnimation {
             if firebaseUser == nil {
                 user.loginState = .loggedOut
@@ -38,9 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(user))
-            
+            window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(user))
             self.window = window
             window.makeKeyAndVisible()
         }
