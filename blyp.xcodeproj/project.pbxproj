@@ -30,6 +30,7 @@
 		C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
+		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
 		C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */; };
 		C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */; };
 		C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8323E4F20F004C4621 /* LoginView.swift */; };
@@ -75,6 +76,7 @@
 		C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWebCredential.swift; sourceTree = "<group>"; };
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
+		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				C01AA3B02409DD8C00BB1C84 /* Views */,
 				C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */,
 				C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */,
+				C0836757240EF16700BE31DD /* UserObservable.swift */,
 				C0FE9D8523E4F213004C4621 /* Assets.xcassets */,
 				C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */,
 				C0FE9D8D23E4F213004C4621 /* Info.plist */,
@@ -494,6 +497,7 @@
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
+				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

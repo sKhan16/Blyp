@@ -7,12 +7,21 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SignUpView: View {
-    @EnvironmentObject var login: LoginStatus
+    @EnvironmentObject var user: UserObservable
+    @State var userName: String = "" // Initialized with empty string, this is intended
 
     var body: some View {
-        Text("Create an account:")
+        VStack {
+            Text("Create an account:")
+            TextField("Username", text: $userName).textFieldStyle(RoundedBorderTextFieldStyle())
+            Button(action: {self.user.changeDisplayName(displayName: self.userName)}) {
+                Text("Create")
+            }
+            
+        }
     }
 }
 

@@ -10,36 +10,20 @@ import SwiftUI
 import FirebaseAuth
 
 struct MainView: View {
-    @EnvironmentObject var login: LoginStatus
-
-    @State var displayName: String
-    @State var loggedOut = false
+    @EnvironmentObject var user: UserObservable
     var body: some View {
-        NavigationView {
-            VStack {
-                Text(displayName)
-                Button("Logout", action: logout).sheet(isPresented: $loggedOut) {
-                    LoginView()
-                }
+        VStack {
+            Text(user.displayName)
+            
+            Button(action: {self.user.logout()}) {
+                Text("Logout")
             }
-        }
-    }
-    
-    func logout() {
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            loggedOut = true
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
         }
     }
 }
 
-
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(displayName: "test-username")
+        MainView()
     }
 }

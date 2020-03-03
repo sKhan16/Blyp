@@ -13,7 +13,7 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var login = LoginStatus()
+    var user: UserObservable = UserObservable()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,24 +22,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Create the SwiftUI view that provides the window contents.
         
-        let user = Auth.auth().currentUser
-        let contentView: ContentView
-        if user == nil {
-            login.status = .loggedOut
-            contentView = ContentView()
-        } else if user?.displayName == nil {
-            login.status = .signingUp
-            contentView = ContentView()
-        } else {
-            login.status = .loggedIn
-            contentView = ContentView(displayName: user?.displayName)
+        let firebaseUser = Auth.auth().currentUser
+        let contentView: ContentView = ContentView()
+        withAnimation {
+            if firebaseUser == nil {
+                user.loginState = .loggedOut
+            } else if firebaseUser?.displayName == nil {
+                user.loginState = .signingUp
+            } else {
+                user.displayName = firebaseUser?.displayName ?? "Username Missing"
+                user.loginState = .loggedIn
+            }
         }
-        
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(login))
+            
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(user))
+            
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -74,14 +75,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     
-}
-
-class LoginStatus: ObservableObject {
-    @Published var status: LoginState = LoginState.loggedOut
-}
-
-enum LoginState {
-    case loggedIn
-    case signingUp
-    case loggedOut
 }

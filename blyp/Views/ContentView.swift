@@ -10,17 +10,16 @@ import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
-    @EnvironmentObject var login: LoginStatus
-
+    @EnvironmentObject var user: UserObservable
     @State var displayName: String?
     
     var body: some View {
         VStack {
-            if login.status == .loggedIn {
-                MainView(displayName: displayName ?? "Display Name")
-            } else if login.status == .signingUp {
+            if user.loginState == .loggedIn {
+                MainView()
+            } else if user.loginState == .signingUp {
                 SignUpView()
-            } else if login.status == .loggedOut {
+            } else if user.loginState == .loggedOut {
                 LoginView()
             } else {
                 LoginView()

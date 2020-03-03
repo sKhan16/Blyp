@@ -17,26 +17,21 @@ import AuthenticationServices
 import FirebaseAuth
 
 struct LoginView: View {
-    @EnvironmentObject var login: LoginStatus
-
-    @State private var completedLoginHasDisplayName = false
-    @State private var completedLoginNoDisplayName = false
-    @State private var displayName = ""
+    @EnvironmentObject var user: UserObservable
     
     var body: some View {
         NavigationView {
             VStack {
                 Text("Welcome to Blyp")
-                
                 SignInWithAppleToFirebase({ response in
                     if response == .success {
                         Auth.auth().addStateDidChangeListener { (auth: Auth, user: User?) in
                             if let user = user {
                                 if let displayName = user.displayName {
-                                    self.displayName = displayName
-                                    self.completedLoginHasDisplayName = true
+                                    self.user.displayName = displayName
+                                    self.user.loginState = .loggedIn
                                 } else {
-                                    self.completedLoginNoDisplayName = true
+                                    self.user.loginState = .signingUp
                                 }
                             }
                         }
