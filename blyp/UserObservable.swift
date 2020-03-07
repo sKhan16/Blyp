@@ -46,6 +46,24 @@ public class UserObservable: ObservableObject {
         }
     }
     
+    func developerLogin() {
+        #if DEBUG
+        if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
+            if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                    print(authResult)
+                }
+            } else {
+                print("Make sure you have BLYP_PASSWORD in your .bash_profile or .zshrc")
+            }
+        } else {
+            print("Make sure you have BLYP_EMAIL in your .bash_profile or .zshrc")
+        }
+        #else
+        throw "What the FUCK do you think you're doing? You CANNOT use developer login in a release environment"
+        #endif
+    }
+    
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut

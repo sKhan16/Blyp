@@ -23,6 +23,15 @@ struct LoginView: View {
         NavigationView {
             VStack {
                 Text("Welcome to Blyp")
+                #if DEBUG
+                Button("DEVELOPER LOGIN", action: {
+                    self.user.developerLogin()
+                })
+                    .frame(height: 50, alignment: .center)
+                    .padding(25)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .accentColor(.red)
+                #else
                 SignInWithAppleToFirebase({ response in
                     if response == .success {
                         Auth.auth().addStateDidChangeListener { (auth: Auth, user: User?) in
@@ -41,6 +50,7 @@ struct LoginView: View {
                 })
                     .frame(height: 50, alignment: .center)
                     .padding(25)
+                #endif
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

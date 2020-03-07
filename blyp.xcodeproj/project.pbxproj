@@ -80,6 +80,7 @@
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		C0BE1FCE2413196B000E4A06 /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		C0FE9D7E23E4F20E004C4621 /* blyp */ = {
 			isa = PBXGroup;
 			children = (
+				C0BE1FCE2413196B000E4A06 /* blypRelease.entitlements */,
 				C07A2EAC2400AE29004BB749 /* blyp.entitlements */,
 				C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */,
 				C01AA3B02409DD8C00BB1C84 /* Views */,
@@ -682,6 +684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
@@ -693,6 +696,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.blyp.blyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -703,7 +707,8 @@
 			baseConfigurationReference = 1D07B7B83A2D72E051ED9F62 /* Pods-blyp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
@@ -715,6 +720,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.blyp.blyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
