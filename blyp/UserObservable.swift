@@ -51,13 +51,18 @@ public class UserObservable: ObservableObject {
         if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
             if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                    print(authResult)
+                    if let authDisplayName = authResult?.user.displayName {
+                        self!.displayName = authDisplayName
+                        self!.loginState = .loggedIn
+                    } else {
+                        self?.changeDisplayName(displayName: "BlypUser")
+                    }
                 }
             } else {
-                print("Make sure you have BLYP_PASSWORD in your .bash_profile or .zshrc")
+                print("Make sure you have BLYP_PASSWORD in your Xcode environment")
             }
         } else {
-            print("Make sure you have BLYP_EMAIL in your .bash_profile or .zshrc")
+            print("Make sure you have BLYP_EMAIL in your Xcode environment")
         }
         #else
         throw "What the FUCK do you think you're doing? You CANNOT use developer login in a release environment"
