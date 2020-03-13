@@ -12,19 +12,16 @@ import FirebaseAuth
 
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
-    @State private var blyps: [Blyp] = []
     var body: some View {
         VStack {
             NavigationView {
-                List(0 ..< 20) { item in
-                    NavigationLink(destination: BlypView(blyp: Blyp(name: "Item #\(item + 1)", description: "This is just a test element"))) {
-                        Text("This will be Blyp #\(item + 1)")
+                List(user.blyps) { blyp in
+                    NavigationLink(destination: BlypView(blyp: blyp)) {
+                        Text(blyp.name)
                     }
                 }
                 .navigationBarTitle("\(user.displayName)'s Blyps")
-                
-                
-                .navigationBarItems(leading:        AddBlypButton(blyps: $blyps),
+                .navigationBarItems(leading: AddBlypButton(),
                     trailing: LogoutButton())
             }
         }
@@ -45,14 +42,9 @@ struct LogoutButton: View {
 }
 
 struct AddBlypButton: View {
-    @EnvironmentObject var user:
-        UserObservable
-    @Binding var blyps: [Blyp]
     var body: some View {
-        NavigationLink(destination: AddBlypView(blyps: $blyps)) {
+        NavigationLink(destination: AddBlypView()) {
             Text("Add blyp")
         }.navigationBarTitle("Add blyp")
     }
 }
-
-

@@ -12,6 +12,7 @@
 		841BD40B4021E7D29A8F2663 /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B1D4C4B0D20962AE0006FE /* Pods_blyp_blypUITests.framework */; };
 		8A861B076652B1388B53F74B /* Pods_blypTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76784A407D4156B07DB7B43 /* Pods_blypTests.framework */; };
 		C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00BC324240F1F690051CBA1 /* Blyp.swift */; };
+		C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011C22C241B4C7900114AE9 /* UserProfile.swift */; };
 		C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AC2409D90500BB1C84 /* SignUpView.swift */; };
 		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
 		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
@@ -71,6 +72,7 @@
 		919F03ED0AB89AC39B52697C /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7B1D4C4B0D20962AE0006FE /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00BC324240F1F690051CBA1 /* Blyp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blyp.swift; sourceTree = "<group>"; };
+		C011C22C241B4C7900114AE9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		C01AA3AC2409D90500BB1C84 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,11 +159,11 @@
 		C01AA3B02409DD8C00BB1C84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0363F41241AE9E4006EE664 /* Blyps */,
+				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
-				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
-				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +175,22 @@
 				C01AA3AC2409D90500BB1C84 /* SignUpView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C0363F40241AE9CE006EE664 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C0363F41241AE9E4006EE664 /* Blyps */ = {
+			isa = PBXGroup;
+			children = (
+				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
+				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
+			);
+			path = Blyps;
 			sourceTree = "<group>";
 		};
 		C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */ = {
@@ -220,6 +238,7 @@
 				C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */,
 				C0836757240EF16700BE31DD /* UserObservable.swift */,
 				C00BC324240F1F690051CBA1 /* Blyp.swift */,
+				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
 				C0FE9D8523E4F213004C4621 /* Assets.xcassets */,
 				C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */,
 				C0FE9D8D23E4F213004C4621 /* Info.plist */,
@@ -509,6 +528,7 @@
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
+				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,

@@ -27,9 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if firebaseUser == nil {
                 user.loginState = .loggedOut
             } else if firebaseUser?.displayName == nil {
+                user.completeLogin(user: firebaseUser!)
                 user.loginState = .signingUp
             } else {
-                user.displayName = firebaseUser?.displayName ?? "Username Missing"
+                user.completeLogin(user: firebaseUser!)
                 user.loginState = .loggedIn
             }
         }

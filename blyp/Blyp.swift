@@ -7,10 +7,9 @@
 //
 
 import Foundation
-struct Blyp {
+struct Blyp: Identifiable, Codable {
+    var id: UUID = UUID()
     var name: String
     var image: String?
     var description: String
 }
-
-

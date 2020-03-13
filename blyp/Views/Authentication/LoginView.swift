@@ -36,12 +36,7 @@ struct LoginView: View {
                     if response == .success {
                         Auth.auth().addStateDidChangeListener { (auth: Auth, user: User?) in
                             if let user = user {
-                                if let displayName = user.displayName {
-                                    self.user.displayName = displayName
-                                    self.user.loginState = .loggedIn
-                                } else {
-                                    self.user.loginState = .signingUp
-                                }
+                                self.user.completeLogin(user)
                             }
                         }
                     } else if response == .error {

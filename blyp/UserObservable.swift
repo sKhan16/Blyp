@@ -9,28 +9,31 @@
 import SwiftUI
 import Foundation
 import Combine
+import Firebase
 import FirebaseAuth
+import FirebaseFunctions
+import FirebaseFirestoreSwift
 
 public class UserObservable: ObservableObject {
     @Published var displayName: String = "DisplayName"
+    @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
+    @Published var blyps: [Blyp] = []
     
-    /// Update the user's display name
-    /// - Parameter displayName: display name (username) to set it to
-    func changeDisplayName(displayName: String) {
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        let trimmedName = displayName.trimmingCharacters(in: .whitespacesAndNewlines)
-        changeRequest?.displayName = trimmedName
-        changeRequest?.commitChanges { (error) in
-            if error == nil {
-                withAnimation {
-                    self.displayName = trimmedName
-                    self.loginState = .loggedIn
-                }
-            } else {
-                // FIXME: Add error state
-            }
+    private lazy var functions = Functions.functions()
+    
+    // MARK: Authentication and Login/Logout functions
+    
+    /// Set our Observable's values to the incoming User's values
+    func completeLogin(user: User) {
+        if let displayName = user.displayName {
+            self.displayName = displayName
+            self.loginState = .loggedIn
+        } else {
+            self.loginState = .signingUp
         }
+        self.uid = user.uid
+        self.subscribeToFirestore()
     }
     
     /// Logout from Firebase
@@ -45,6 +48,7 @@ public class UserObservable: ObservableObject {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
     
     func developerLogin() {
         #if DEBUG
@@ -69,9 +73,82 @@ public class UserObservable: ObservableObject {
         #endif
     }
     
+    // MARK: Functions that edit user's data
+    
+    /// Update the user's display name
+    /// - Parameter displayName: display name (username) to set it to
+    func changeDisplayName(displayName: String) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        let trimmedName = displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+        changeRequest?.displayName = trimmedName
+        changeRequest?.commitChanges { (error) in
+            if error == nil {
+                self.displayName = trimmedName
+                self.loginState = .loggedIn
+                
+            } else {
+                // FIXME: Add error state
+            }
+        }
+    }
+    
+    // MARK: Utility functions
+    
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
+    }
+    
+    /// Start the subscription to Blyps on Firestore
+    private func subscribeToFirestore() {
+        let db = Firestore.firestore()
+        db.collection("blypDatabase/").document((self.uid))
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document from Firestore: \(error!)")
+                    return
+                }
+                let result = Result {
+                    try documentSnapshot.flatMap {
+                        try $0.data(as: UserProfile.self)
+                    }
+                }
+                switch result {
+                case .success(let profile):
+                    if let profile = profile {
+                        var tempBlyps: [Blyp] = []
+                        for (id, blyp) in profile.blyps {
+                            tempBlyps.append(blyp)
+                        }
+                        tempBlyps.sort { (a, b) -> Bool in
+                            a.name < b.name
+                        }
+                        self.blyps = tempBlyps
+                        print("Blyps have been updated LIVE!")
+                    }
+                    
+                case .failure(let err): print(err)
+                    // FIXME: ADD ERROR HANDLING
+                    
+                }
+        }
+    }
+    
+    /// Add to the database using the "addBlyp" function
+    func addblyp() {
+        functions.httpsCallable(Funcs.addBlyp.rawValue).call() { (result, error) in
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    // TODO: Add better error handling
+                    let code = FunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                }
+            }
+            if let text = (result?.data as? String) {
+                self.displayName = text
+            }
+        }
     }
 }
 
@@ -79,4 +156,10 @@ enum LoginState {
     case loggedIn
     case signingUp
     case loggedOut
+}
+
+/// Names of Firebase Functions
+enum Funcs: String{
+    case addBlyp
+    case removeBlyp
 }

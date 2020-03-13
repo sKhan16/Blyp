@@ -5,8 +5,10 @@ target 'blyp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Firebase/Analytics'
-  # Pods for LoginWithAppleFirebaseSwiftUI
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Functions'
 
   # Pods for blyp
 

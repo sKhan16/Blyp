@@ -22,6 +22,6 @@ struct BlypView: View {
 
 struct NewBlypView_Previews: PreviewProvider {
     static var previews: some View {
-        BlypView(blyp:  Blyp(name: "Test Blyp", description: "Ohhh this is gonna be good"))
+        BlypView(blyp: Blyp(name: "Test Blyp", description: "Ohhh this is gonna be good"))
     }
 }
