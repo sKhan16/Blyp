@@ -16,14 +16,22 @@ struct AddBlypView: View {
     @State private var image: String = ""
     var body: some View {
         VStack {
+            HStack(alignment: .bottom) {
+                Button(action: {}) {
+                    Text("Close")
+                }
+                Spacer()
+                Text("Add new Blyp")
+                Spacer()
+                Button(action: {self.user.addBlyp(Blyp(name: self.name, description: self.desc, image: self.image)); self.presentationMode.wrappedValue.dismiss()}) {
+                    Text("Done")
+                }
+                
+            }.padding([.top, .leading, .trailing]).frame(minHeight: 32)
             Form {
                 TextField("Blyp name", text: $name)
                 TextField("Description", text: $desc)
                 TextField("Image (optional)", text: $image)
-            }
-            Button(action: {self.user.addBlyp(Blyp(name: self.name, description: self.desc, image: self.image)); self.presentationMode.wrappedValue.dismiss()}) {
-                Text("Done")
-                    .font(.largeTitle)
             }
         }
     }

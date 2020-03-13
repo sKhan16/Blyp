@@ -35,6 +35,7 @@
 		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
+		C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* AddFriend.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
 		C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */; };
 		C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */; };
@@ -84,6 +85,7 @@
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
+		C0CE42E8241BF59D00A2E24F /* AddFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriend.swift; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		C0363F40241AE9CE006EE664 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C0CE42E8241BF59D00A2E24F /* AddFriend.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
+				C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,30 +22,53 @@ struct MainView: View {
                     }
                 }
                 .navigationBarTitle("\(user.displayName)'s Blyps")
-                .navigationBarItems(leading: AddBlypButton().environmentObject(user),
-                    trailing: LogoutButton())
+                .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
+                                    trailing: MainViewActionSheet().environmentObject(user))
             }
         }
     }
 }
 
-struct LogoutButton: View {
-    @EnvironmentObject var user: UserObservable
-    var body: some View {
-        Button("Logout", action: {self.user.logout()})
-    }
-}
-
-struct AddBlypButton: View {
+struct AddBlypViewButton: View {
     @EnvironmentObject var user: UserObservable
     @State var editingBlyp = false
     var body: some View {
         Button(action: {
             self.editingBlyp.toggle()
         }) {
-            Text("Add Blyp")
-        }.sheet(isPresented: $editingBlyp) {
+            Image(systemName: "plus").font(.title)
+        }
+        .sheet(isPresented: $editingBlyp) {
             AddBlypView().environmentObject(self.user)
+        }
+    }
+}
+
+struct MainViewActionSheet: View {
+    @EnvironmentObject var user: UserObservable
+    @State var addingFriend = false
+    @State private var showingSheet = false
+    
+    var body: some View {
+        Button(action: {
+            self.showingSheet = true
+        }) {
+            Image(systemName: "ellipsis.circle.fill").font(.title)
+        }
+        .actionSheet(isPresented: $showingSheet) {
+            ActionSheet(title: Text("What do you want to do?"), buttons: [
+                .default(Text("Add Friends"), action: {
+                    self.addingFriend.toggle()
+                }),
+                
+                .destructive(Text("Logout"), action: {
+                    self.user.logout()
+                }),
+                
+                .cancel()])
+        }
+        .sheet(isPresented: $addingFriend) {
+            AddFriend().environmentObject(self.user)
         }
     }
 }
