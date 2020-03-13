@@ -12,6 +12,7 @@ import Combine
 import Firebase
 import FirebaseAuth
 import FirebaseFunctions
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 public class UserObservable: ObservableObject {
@@ -104,10 +105,6 @@ public class UserObservable: ObservableObject {
         let db = Firestore.firestore()
         db.collection("blypDatabase/").document((self.uid))
             .addSnapshotListener { documentSnapshot, error in
-                guard let document = documentSnapshot else {
-                    print("Error fetching document from Firestore: \(error!)")
-                    return
-                }
                 let result = Result {
                     try documentSnapshot.flatMap {
                         try $0.data(as: UserProfile.self)
@@ -117,7 +114,7 @@ public class UserObservable: ObservableObject {
                 case .success(let profile):
                     if let profile = profile {
                         var tempBlyps: [Blyp] = []
-                        for (id, blyp) in profile.blyps {
+                        for (_, blyp) in profile.blyps {
                             tempBlyps.append(blyp)
                         }
                         tempBlyps.sort { (a, b) -> Bool in
