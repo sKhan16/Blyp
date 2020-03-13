@@ -12,6 +12,7 @@ struct BlypView: View {
     @State var blyp: Blyp
     var body: some View {
         VStack {
+            Text(blyp.description)
             NavigationLink(destination: Text("TODO")) {
                 Text("Go visit it!")
             }

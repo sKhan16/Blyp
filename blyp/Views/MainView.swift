@@ -12,6 +12,7 @@ import FirebaseAuth
 
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
+    @State var addingBlyp: Bool = false
     var body: some View {
         VStack {
             NavigationView {
@@ -21,16 +22,10 @@ struct MainView: View {
                     }
                 }
                 .navigationBarTitle("\(user.displayName)'s Blyps")
-                .navigationBarItems(leading: AddBlypButton(),
+                .navigationBarItems(leading: AddBlypButton().environmentObject(user),
                     trailing: LogoutButton())
             }
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView().environmentObject(UserObservable())
     }
 }
 
@@ -42,9 +37,21 @@ struct LogoutButton: View {
 }
 
 struct AddBlypButton: View {
+    @EnvironmentObject var user: UserObservable
+    @State var editingBlyp = false
     var body: some View {
-        NavigationLink(destination: AddBlypView()) {
-            Text("Add blyp")
-        }.navigationBarTitle("Add blyp")
+        Button(action: {
+            self.editingBlyp.toggle()
+        }) {
+            Text("Add Blyp")
+        }.sheet(isPresented: $editingBlyp) {
+            AddBlypView().environmentObject(self.user)
+        }
+    }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView().environmentObject(UserObservable())
     }
 }

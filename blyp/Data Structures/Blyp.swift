@@ -10,6 +10,6 @@ import Foundation
 struct Blyp: Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
-    var image: String?
     var description: String
+    var image: String?
 }

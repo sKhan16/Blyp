@@ -23,6 +23,9 @@ public class UserObservable: ObservableObject {
     
     private lazy var functions = Functions.functions()
     
+    
+    private let databaseName: String = "blypDatabase"
+    
     // MARK: Authentication and Login/Logout functions
     
     /// Set our Observable's values to the incoming User's values
@@ -70,7 +73,7 @@ public class UserObservable: ObservableObject {
             print("Make sure you have BLYP_EMAIL in your Xcode environment")
         }
         #else
-        throw "What the FUCK do you think you're doing? You CANNOT use developer login in a release environment"
+//        throw Error("What the FUCK do you think you're doing? You CANNOT use developer login in a release environment")
         #endif
     }
     
@@ -103,7 +106,7 @@ public class UserObservable: ObservableObject {
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         let db = Firestore.firestore()
-        db.collection("blypDatabase/").document((self.uid))
+        db.collection(databaseName).document(self.uid)
             .addSnapshotListener { documentSnapshot, error in
                 let result = Result {
                     try documentSnapshot.flatMap {
@@ -132,18 +135,21 @@ public class UserObservable: ObservableObject {
     }
     
     /// Add to the database using the "addBlyp" function
-    func addblyp() {
-        functions.httpsCallable(Funcs.addBlyp.rawValue).call() { (result, error) in
-            if let error = error as NSError? {
-                if error.domain == FunctionsErrorDomain {
-                    // TODO: Add better error handling
-                    let code = FunctionsErrorCode(rawValue: error.code)
-                    let message = error.localizedDescription
-                    let details = error.userInfo[FunctionsErrorDetailsKey]
-                }
-            }
-            if let text = (result?.data as? String) {
-                self.displayName = text
+    func addBlyp(_ blyp: Blyp) {
+        let db = Firestore.firestore()
+        // FIXME: This is bad, we should be doing different collections entirely
+        db.collection(databaseName).document(self.uid).updateData([
+            "blyps.\(blyp.id)": [
+                "id": blyp.id.uuidString,
+                "name": blyp.name,
+                "description": blyp.description,
+                "image": blyp.image
+            ]
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
         }
     }

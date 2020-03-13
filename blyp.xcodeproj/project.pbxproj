@@ -77,14 +77,13 @@
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C07A2EAC2400AE29004BB749 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		C07A2EC62400B2A2004BB749 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWebCredential.swift; sourceTree = "<group>"; };
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
-		C0BE1FCE2413196B000E4A06 /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
+		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +153,16 @@
 				C76784A407D4156B07DB7B43 /* Pods_blypTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C011C22E241B5ABB00114AE9 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				C0836757240EF16700BE31DD /* UserObservable.swift */,
+				C00BC324240F1F690051CBA1 /* Blyp.swift */,
+				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
+			);
+			path = "Data Structures";
 			sourceTree = "<group>";
 		};
 		C01AA3B02409DD8C00BB1C84 /* Views */ = {
@@ -230,15 +239,12 @@
 		C0FE9D7E23E4F20E004C4621 /* blyp */ = {
 			isa = PBXGroup;
 			children = (
-				C0BE1FCE2413196B000E4A06 /* blypRelease.entitlements */,
-				C07A2EAC2400AE29004BB749 /* blyp.entitlements */,
+				C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */,
 				C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */,
 				C01AA3B02409DD8C00BB1C84 /* Views */,
+				C011C22E241B5ABB00114AE9 /* Data Structures */,
 				C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */,
 				C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */,
-				C0836757240EF16700BE31DD /* UserObservable.swift */,
-				C00BC324240F1F690051CBA1 /* Blyp.swift */,
-				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
 				C0FE9D8523E4F213004C4621 /* Assets.xcassets */,
 				C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */,
 				C0FE9D8D23E4F213004C4621 /* Info.plist */,
@@ -707,7 +713,7 @@
 			baseConfigurationReference = C53BBD2E94E13CCAFFF9BC79 /* Pods-blyp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
