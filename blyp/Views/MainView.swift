@@ -6,9 +6,8 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import FirebaseAuth
-
+import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
@@ -48,7 +47,7 @@ struct MainViewActionSheet: View {
     @EnvironmentObject var user: UserObservable
     @State var addingFriend = false
     @State private var showingSheet = false
-    
+
     var body: some View {
         Button(action: {
             self.showingSheet = true
@@ -60,12 +59,13 @@ struct MainViewActionSheet: View {
                 .default(Text("Add Friends"), action: {
                     self.addingFriend.toggle()
                 }),
-                
+
                 .destructive(Text("Logout"), action: {
                     self.user.logout()
                 }),
-                
-                .cancel()])
+
+                .cancel(),
+            ])
         }
         .sheet(isPresented: $addingFriend) {
             AddFriend().environmentObject(self.user)

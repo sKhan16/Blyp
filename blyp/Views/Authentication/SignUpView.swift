@@ -6,8 +6,8 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import FirebaseAuth
+import SwiftUI
 
 struct SignUpView: View {
     @EnvironmentObject var user: UserObservable
@@ -17,10 +17,9 @@ struct SignUpView: View {
         VStack {
             Text("Create an account:")
             TextField("Username", text: $userName).textFieldStyle(RoundedBorderTextFieldStyle())
-            Button(action: {self.user.changeDisplayName(displayName: self.userName)}) {
+            Button(action: { self.user.changeDisplayName(displayName: self.userName) }) {
                 Text("Create")
             }
-            
         }
     }
 }

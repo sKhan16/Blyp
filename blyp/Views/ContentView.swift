@@ -6,13 +6,13 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import FirebaseAuth
+import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var user: UserObservable
     @State var displayName: String?
-    
+
     var body: some View {
         VStack {
             if user.loginState == .loggedIn {
