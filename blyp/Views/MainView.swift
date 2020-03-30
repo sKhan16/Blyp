@@ -35,7 +35,7 @@ struct AddBlypViewButton: View {
         Button(action: {
             self.editingBlyp.toggle()
         }) {
-            Image(systemName: "plus").font(.title)
+            Image(systemName: "plus").font(.title).accessibility(label: Text("Add Blyp"))
         }
         .sheet(isPresented: $editingBlyp) {
             AddBlypView().environmentObject(self.user)
@@ -47,23 +47,27 @@ struct MainViewActionSheet: View {
     @EnvironmentObject var user: UserObservable
     @State var addingFriend = false
     @State private var showingSheet = false
-
+    
     var body: some View {
         Button(action: {
             self.showingSheet = true
         }) {
-            Image(systemName: "ellipsis.circle.fill").font(.title)
+            Image(systemName: "ellipsis.circle.fill").font(.title).accessibility(label: Text("More"))
         }
         .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("What do you want to do?"), buttons: [
                 .default(Text("Add Friends"), action: {
                     self.addingFriend.toggle()
                 }),
-
+                
+                .default(Text("Update Username"), action: {
+                    self.user.loginState = .signingUp
+                }),
+                
                 .destructive(Text("Logout"), action: {
                     self.user.logout()
                 }),
-
+                
                 .cancel(),
             ])
         }
