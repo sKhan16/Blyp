@@ -9,7 +9,8 @@ target 'blyp' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Functions'
-
+  
+pod 'Introspect'
   # Pods for blyp
 
   target 'blypTests' do
