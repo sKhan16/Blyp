@@ -83,7 +83,6 @@ public class UserObservable: ObservableObject {
             if error == nil {
                 self.displayName = trimmedName
                 self.loginState = .loggedIn
-
                 Firestore.firestore().collection("userDisplayNames").document(self.uid).setData(["displayName": trimmedName])
             } else {
                 // FIXME: Add error state

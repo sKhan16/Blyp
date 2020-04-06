@@ -10,15 +10,18 @@ import SwiftUI
 import Introspect
 
 struct AddFriend: View {
-    let usernames: [String] = []
+    @EnvironmentObject var user: UserObservable
     @State private var searchText = ""
+    
+    private var userSearcher = UserSearcher()
+        
     var body: some View {
         VStack {
             AddFriendHeader()
             SearchBar(searchText: $searchText).introspectTextField { textField in
                 textField.becomeFirstResponder()
             }
-            MatchedUsernameList(usernames: [])
+            MatchedUsernameList(searchQuery: $searchText)
         }
     }
 }

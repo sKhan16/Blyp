@@ -9,15 +9,12 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var searchText: String
     var placeholder: String = "Search"
+    
     var body: some View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
-                    // ?
-                }, onCommit: {
-                    // ?
-                    }).foregroundColor(.primary)
+                TextField(placeholder, text: $searchText).foregroundColor(.primary)
                 Button(action: {
                     self.searchText = ""
                 }) {
@@ -33,9 +30,12 @@ struct SearchBar: View {
     }
 }
 
-struct SearchBar_Previews: PreviewProvider {
-    @State static var text: String = ""
-    static var previews: some View {
-        SearchBar(searchText: $text, placeholder: "Search here, you nerd")
-    }
-}
+
+
+// FIXME
+//struct SearchBar_Previews: PreviewProvider {
+//    @State static var text: String = ""
+//    static var previews: some View {
+//        SearchBar(placeholder: "Search here, you nerd")
+//    }
+//}

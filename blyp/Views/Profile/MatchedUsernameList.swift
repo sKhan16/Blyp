@@ -9,18 +9,20 @@
 import SwiftUI
 
 struct MatchedUsernameList: View {
-    var usernames: [String]
+    @Binding var searchQuery: String
+    var userSearcher = UserSearcher()
     var body: some View {
         List {
-            ForEach(usernames, id:\.self) {
+            ForEach(userSearcher.search(query: searchQuery).userNames, id:\.self) {
                 searchText in Text(searchText)
             }
         }
     }
 }
 
-struct MatchedUsernameList_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchedUsernameList(usernames: ["Bob", "Sabby"])
-    }
-}
+/// FIXME
+//struct MatchedUsernameList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchedUsernameList(usernames: ["Bob", "Sabby"])
+//    }
+//}
