@@ -18,10 +18,19 @@ const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
 admin.initializeApp(functions.config().firebase);
 
 exports.createUserProfileDocumentOnAccountCreation = functions.auth.user().onCreate((user) => {
+  let hasDisplayName = user.displayName !== undefined
+
   return admin.firestore().collection(userProfiles).doc(user.uid).create({
     friends: [],
     blyps: [],
     legacyContact: {},
+  }).then((result: FirebaseFirestore.WriteResult) => {
+    if (hasDisplayName) {
+      return admin.firestore().collection(userDisplayNames).doc(user.uid).create({
+        displayName: user.displayName
+      })
+    }
+    return;
   });
 });
 

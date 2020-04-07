@@ -13,8 +13,8 @@ struct MatchedUsernameList: View {
     var userSearcher = UserSearcher()
     var body: some View {
         List {
-            ForEach(userSearcher.search(query: searchQuery).userNames, id:\.self) {
-                searchText in Text(searchText)
+            ForEach(userSearcher.search(query: searchQuery).displayNameAlgolia.hits, id:\.self) {
+                hits in Text(hits.displayName)
             }
         }
     }

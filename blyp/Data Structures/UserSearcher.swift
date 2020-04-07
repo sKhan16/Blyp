@@ -10,35 +10,60 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
+import InstantSearchClient
+import ObjectMapper
 
 class UserSearcher: ObservableObject {
     @EnvironmentObject var user: UserObservable
     
-    @Published var userNames: [String] = []
-    
+    @Published var displayNameAlgolia: DisplayNameAlgoliaContent = DisplayNameAlgoliaContent(hits: [])
     private let databaseName: String = "userDisplayNames"
     
     init () {
     }
 
     func search(query: String) -> Self {
-        let db = Firestore.firestore()
-        let splitQuery = query.lowercased().split(separator: " ")
-        let dbQueryBuildable = db.collection(databaseName)
-        splitQuery.forEach { section in
-            dbQueryBuildable.whereField("searchable", arrayContainsAny: [String(section)])
+        if query.count == 0 {
+            displayNameAlgolia.hits = []
+            return self
         }
-
-        dbQueryBuildable.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let displayName = document.data()["displayName"] as! String
-                    self.userNames.append(displayName)
-                }
+        
+        // FIXME: Remove these values
+        let client = Client(appID: "B9RHB89CNZ", apiKey: "df4f662660088b9929455429c535fd98")
+        let index = client.index(withName: "prod_DISPLAY_NAMES")
+        index.search(Query(query: query), completionHandler: { (content, error) -> Void in
+            if error == nil {
+                let result = DisplayNameAlgoliaContent.init(JSON: content!)
+                self.displayNameAlgolia = result ?? DisplayNameAlgoliaContent(hits: [])
             }
-        }
+        })
         return self
     }
+}
+
+struct DisplayNameAlgoliaContent : Mappable, Hashable {
+    init?(map: Map) {
+    }
+    
+    init(hits: [DisplayNameAlgoliaResult]) {
+        self.hits = hits
+    }
+    
+    mutating func mapping(map: Map) {
+        hits <- map["hits"]
+    }
+    
+    var hits: [DisplayNameAlgoliaResult]!
+}
+struct DisplayNameAlgoliaResult : Mappable, Hashable {
+    init?(map: Map) {
+    }
+    
+    mutating func mapping(map: Map) {
+        displayName <- map["displayName"]
+        objectID    <- map["objectID"]
+    }
+    
+    var displayName: String!
+    var objectID: String!
 }

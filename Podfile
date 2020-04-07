@@ -9,7 +9,8 @@ target 'blyp' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Functions'
-  
+  pod 'InstantSearchClient', '~> 6.0'
+  pod 'ObjectMapper', '~> 3.5.2'
 pod 'Introspect'
   # Pods for blyp
 
