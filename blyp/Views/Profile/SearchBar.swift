@@ -9,7 +9,7 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var searchText: String
     var placeholder: String = "Search"
-    
+
     var body: some View {
         HStack {
             HStack {
@@ -30,12 +30,9 @@ struct SearchBar: View {
     }
 }
 
-
-
-// FIXME
-//struct SearchBar_Previews: PreviewProvider {
-//    @State static var text: String = ""
-//    static var previews: some View {
-//        SearchBar(placeholder: "Search here, you nerd")
-//    }
-//}
+struct SearchBar_Previews: PreviewProvider {
+    @State static var text: String = ""
+    static var previews: some View {
+        SearchBar(searchText: $text, placeholder: "Search here, you nerd")
+    }
+}

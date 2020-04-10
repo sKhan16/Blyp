@@ -10,19 +10,25 @@ import SwiftUI
 
 struct MatchedUsernameList: View {
     @Binding var searchQuery: String
+    @State private var friendCanBeAdded = true // just enforce that all be active
     var userSearcher = UserSearcher()
     var body: some View {
-        List {
-            ForEach(userSearcher.search(query: searchQuery).displayNameAlgolia.hits, id:\.self) {
-                hits in Text(hits.displayName)
+        NavigationView {
+            List(userSearcher.search(query: searchQuery).displayNameAlgolia.hits) { hit in
+                NavigationLink(destination: FriendProfileView(name: hit.displayName)) {
+                    Text(hit.displayName)
+                }
             }
+            .navigationBarHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+            .navigationBarTitle("")
+            .edgesIgnoringSafeArea([.top, .bottom])
         }
     }
 }
 
-/// FIXME
-//struct MatchedUsernameList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MatchedUsernameList(usernames: ["Bob", "Sabby"])
-//    }
-//}
+struct MatchedUsernameList_Previews: PreviewProvider {
+    @State static var strBind: String = ""
+    static var previews: some View {
+        MatchedUsernameList(searchQuery: $strBind)
+    }
+}

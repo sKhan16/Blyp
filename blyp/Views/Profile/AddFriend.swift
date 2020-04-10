@@ -6,22 +6,24 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import Introspect
+import SwiftUI
 
 struct AddFriend: View {
     @EnvironmentObject var user: UserObservable
     @State private var searchText = ""
-    
+
     private var userSearcher = UserSearcher()
-        
+
     var body: some View {
-        VStack {
-            AddFriendHeader()
-            SearchBar(searchText: $searchText).introspectTextField { textField in
-                textField.becomeFirstResponder()
+        NavigationView {
+            VStack {
+                AddFriendHeader()
+                SearchBar(searchText: $searchText)
+                MatchedUsernameList(searchQuery: $searchText)
             }
-            MatchedUsernameList(searchQuery: $searchText)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
@@ -41,7 +43,7 @@ struct AddFriendHeader: View {
                 Text("Close")
             }
             Spacer()
-            
+
             Text("Add Friend")
             Spacer()
             Button(action: {
@@ -55,17 +57,18 @@ struct AddFriendHeader: View {
 
 extension UIApplication {
     func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
+        windows
+            .filter { $0.isKeyWindow }
             .first?
             .endEditing(force)
     }
 }
 
 struct ResignKeyboardOnDragGesture: ViewModifier {
-    var gesture = DragGesture().onChanged{_ in
+    var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
+
     func body(content: Content) -> some View {
         content.gesture(gesture)
     }
@@ -76,4 +79,3 @@ extension View {
         return modifier(ResignKeyboardOnDragGesture())
     }
 }
-
