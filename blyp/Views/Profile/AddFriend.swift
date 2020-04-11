@@ -8,19 +8,20 @@
 
 import Introspect
 import SwiftUI
+import Combine
 
 struct AddFriend: View {
     @EnvironmentObject var user: UserObservable
     @State private var searchText = ""
 
     private var userSearcher = UserSearcher()
-
+    
     var body: some View {
         NavigationView {
             VStack {
                 AddFriendHeader()
-                SearchBar(searchText: $searchText)
-                MatchedUsernameList(searchQuery: $searchText)
+                SearchBar(userSearcher: userSearcher)
+                MatchedUsernameList(userSearcher: userSearcher)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)

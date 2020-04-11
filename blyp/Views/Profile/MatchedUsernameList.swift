@@ -9,12 +9,10 @@
 import SwiftUI
 
 struct MatchedUsernameList: View {
-    @Binding var searchQuery: String
-    @State private var friendCanBeAdded = true // just enforce that all be active
-    var userSearcher = UserSearcher()
+    @ObservedObject var userSearcher: UserSearcher
     var body: some View {
         NavigationView {
-            List(userSearcher.search(query: searchQuery).displayNameAlgolia.hits) { hit in
+            List(userSearcher.displayNameAlgolia.hits) { hit in
                 NavigationLink(destination: FriendProfileView(name: hit.displayName)) {
                     Text(hit.displayName)
                 }
@@ -26,9 +24,10 @@ struct MatchedUsernameList: View {
     }
 }
 
-struct MatchedUsernameList_Previews: PreviewProvider {
-    @State static var strBind: String = ""
-    static var previews: some View {
-        MatchedUsernameList(searchQuery: $strBind)
-    }
-}
+//FIXME: TODO
+//struct MatchedUsernameList_Previews: PreviewProvider {
+//    @State static var strBind: UserSearcher = UserSearcher()
+//    static var previews: some View {
+//        MatchedUsernameList(userSearcher: $strBind)
+//    }
+//}
