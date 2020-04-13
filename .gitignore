@@ -2,4 +2,5 @@
 **/GoogleService-Info.plist
 **/Podfile.lock
 **/.DS_Store
+**/Debug.xcscheme
 /blyp.xcworkspace/

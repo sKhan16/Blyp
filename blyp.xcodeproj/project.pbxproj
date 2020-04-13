@@ -48,7 +48,6 @@
 		C0FE9D8923E4F213004C4621 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8823E4F213004C4621 /* Preview Assets.xcassets */; };
 		C0FE9D8C23E4F213004C4621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */; };
 		C0FE9D9723E4F213004C4621 /* blypTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D9623E4F213004C4621 /* blypTests.swift */; };
-		C0FE9DA223E4F213004C4621 /* blypUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9DA123E4F213004C4621 /* blypUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +108,6 @@
 		C0FE9D9623E4F213004C4621 /* blypTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blypTests.swift; sourceTree = "<group>"; };
 		C0FE9D9823E4F213004C4621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FE9D9D23E4F213004C4621 /* blypUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blypUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0FE9DA123E4F213004C4621 /* blypUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blypUITests.swift; sourceTree = "<group>"; };
-		C0FE9DA323E4F213004C4621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEEB5EDB47E44238A70600DF /* Pods-blypTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.release.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,7 +231,6 @@
 			children = (
 				C0FE9D7E23E4F20E004C4621 /* blyp */,
 				C0FE9D9523E4F213004C4621 /* blypTests */,
-				C0FE9DA023E4F213004C4621 /* blypUITests */,
 				C0FE9D7D23E4F20E004C4621 /* Products */,
 				0E45610ECF8BBDA2BD62D3D3 /* Pods */,
 				B7C17C84FE9F0E665421CF40 /* Frameworks */,
@@ -284,15 +280,6 @@
 				C0FE9D9823E4F213004C4621 /* Info.plist */,
 			);
 			path = blypTests;
-			sourceTree = "<group>";
-		};
-		C0FE9DA023E4F213004C4621 /* blypUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C0FE9DA123E4F213004C4621 /* blypUITests.swift */,
-				C0FE9DA323E4F213004C4621 /* Info.plist */,
-			);
-			path = blypUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,7 +565,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0FE9DA223E4F213004C4621 /* blypUITests.swift in Sources */,
 				C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
 				C07A2ECE2400B2AC004BB749 /* UserData.swift in Sources */,
 				C07A2ECB2400B2AC004BB749 /* Keychain.swift in Sources */,
@@ -787,7 +773,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				INFOPLIST_FILE = blypTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -810,7 +796,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				INFOPLIST_FILE = blypTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
