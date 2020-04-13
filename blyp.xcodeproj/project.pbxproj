@@ -3,18 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8D8B2419DE9500809139 /* AddBlypView.swift */; };
+		4124D2D8D4016746EF42A508 /* Pods_blypTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF3019C892E9AB3A04A8BA1E /* Pods_blypTests.framework */; };
+		8947046B9E106D9213F6AC67 /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F88B57C039E1C569B34BE92 /* Pods_blyp_blypUITests.framework */; };
+		C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00BC324240F1F690051CBA1 /* Blyp.swift */; };
+		C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011C22C241B4C7900114AE9 /* UserProfile.swift */; };
+		C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AC2409D90500BB1C84 /* SignUpView.swift */; };
+		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
+		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
+		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
+		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
+		C07A2E7A2400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
+		C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC52400B29D004BB749 /* Keychain.swift */; };
+		C07A2ECA2400B2AC004BB749 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC52400B29D004BB749 /* Keychain.swift */; };
+		C07A2ECB2400B2AC004BB749 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC52400B29D004BB749 /* Keychain.swift */; };
+		C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC62400B2A2004BB749 /* UserData.swift */; };
+		C07A2ECD2400B2AC004BB749 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC62400B2A2004BB749 /* UserData.swift */; };
+		C07A2ECE2400B2AC004BB749 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC62400B2A2004BB749 /* UserData.swift */; };
+		C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */; };
+		C07A2ED02400B2AC004BB749 /* SharedWebCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */; };
+		C07A2ED12400B2AC004BB749 /* SharedWebCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */; };
+		C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */; };
+		C07A2ED32400B2AC004BB749 /* UserDataKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */; };
+		C07A2ED42400B2AC004BB749 /* UserDataKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */; };
+		C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
+		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
+		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
+		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
+		C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476B2432B57700E13BC9 /* SearchBar.swift */; };
+		C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */; };
+		C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* AddFriend.swift */; };
+		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
 		C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */; };
 		C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */; };
-		C0FE9D8423E4F20F004C4621 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8323E4F20F004C4621 /* ContentView.swift */; };
+		C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8323E4F20F004C4621 /* LoginView.swift */; };
 		C0FE9D8623E4F213004C4621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8523E4F213004C4621 /* Assets.xcassets */; };
 		C0FE9D8923E4F213004C4621 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8823E4F213004C4621 /* Preview Assets.xcassets */; };
 		C0FE9D8C23E4F213004C4621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */; };
 		C0FE9D9723E4F213004C4621 /* blypTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D9623E4F213004C4621 /* blypTests.swift */; };
 		C0FE9DA223E4F213004C4621 /* blypUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9DA123E4F213004C4621 /* blypUITests.swift */; };
+		CD914084DA873070036B8088 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE865AFA9124D848E1E0497 /* Pods_blyp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +67,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F88B57C039E1C569B34BE92 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		185D66E39E60644F933CBEA1 /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1AE865AFA9124D848E1E0497 /* Pods_blyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E5B8D8B2419DE9500809139 /* AddBlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlypView.swift; sourceTree = "<group>"; };
+		2072764DE919DB59F819C3EF /* Pods-blyp-blypUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.debug.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4053567A020E056A9427253A /* Pods-blypTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.release.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.release.xcconfig"; sourceTree = "<group>"; };
+		42117FBF9992B5154A0AA3A4 /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7FC9EB5CE06AA7C257A3FDF4 /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
+		C00BC324240F1F690051CBA1 /* Blyp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blyp.swift; sourceTree = "<group>"; };
+		C011C22C241B4C7900114AE9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		C01AA3AC2409D90500BB1C84 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		C07A2EC62400B2A2004BB749 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedWebCredential.swift; sourceTree = "<group>"; };
+		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
+		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
+		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		C090476B2432B57700E13BC9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsernameList.swift; sourceTree = "<group>"; };
+		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
+		C0CE42E8241BF59D00A2E24F /* AddFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriend.swift; sourceTree = "<group>"; };
+		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C0FE9D8323E4F20F004C4621 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C0FE9D8323E4F20F004C4621 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C0FE9D8523E4F213004C4621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0FE9D8823E4F213004C4621 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C0FE9D8B23E4F213004C4621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +106,8 @@
 		C0FE9D9D23E4F213004C4621 /* blypUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blypUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9DA123E4F213004C4621 /* blypUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blypUITests.swift; sourceTree = "<group>"; };
 		C0FE9DA323E4F213004C4621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF3019C892E9AB3A04A8BA1E /* Pods_blypTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blypTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7CA5DF5CE1CA60977857BAB /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD914084DA873070036B8088 /* Pods_blyp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4124D2D8D4016746EF42A508 /* Pods_blypTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +131,98 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8947046B9E106D9213F6AC67 /* Pods_blyp_blypUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E45610ECF8BBDA2BD62D3D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7CA5DF5CE1CA60977857BAB /* Pods-blyp.debug.xcconfig */,
+				7FC9EB5CE06AA7C257A3FDF4 /* Pods-blyp.release.xcconfig */,
+				2072764DE919DB59F819C3EF /* Pods-blyp-blypUITests.debug.xcconfig */,
+				185D66E39E60644F933CBEA1 /* Pods-blyp-blypUITests.release.xcconfig */,
+				42117FBF9992B5154A0AA3A4 /* Pods-blypTests.debug.xcconfig */,
+				4053567A020E056A9427253A /* Pods-blypTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		49A57155E239DEB0051A75F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1AE865AFA9124D848E1E0497 /* Pods_blyp.framework */,
+				0F88B57C039E1C569B34BE92 /* Pods_blyp_blypUITests.framework */,
+				EF3019C892E9AB3A04A8BA1E /* Pods_blypTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C011C22E241B5ABB00114AE9 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				C0836757240EF16700BE31DD /* UserObservable.swift */,
+				C00BC324240F1F690051CBA1 /* Blyp.swift */,
+				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		C01AA3B02409DD8C00BB1C84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0363F41241AE9E4006EE664 /* Blyps */,
+				C0363F40241AE9CE006EE664 /* Profile */,
+				C01AA3B12409DDB400BB1C84 /* Authentication */,
+				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
+				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C01AA3B12409DDB400BB1C84 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C0FE9D8323E4F20F004C4621 /* LoginView.swift */,
+				C01AA3AC2409D90500BB1C84 /* SignUpView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C0363F40241AE9CE006EE664 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C0CE42E8241BF59D00A2E24F /* AddFriend.swift */,
+				C090476B2432B57700E13BC9 /* SearchBar.swift */,
+				C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C0363F41241AE9E4006EE664 /* Blyps */ = {
+			isa = PBXGroup;
+			children = (
+				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
+				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
+			);
+			path = Blyps;
+			sourceTree = "<group>";
+		};
+		C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */ = {
+			isa = PBXGroup;
+			children = (
+				C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */,
+				C07A2EC52400B29D004BB749 /* Keychain.swift */,
+				C07A2EC72400B2A7004BB749 /* SharedWebCredential.swift */,
+				C07A2EC62400B2A2004BB749 /* UserData.swift */,
+				C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */,
+			);
+			path = SignInWithAppleFirebase;
+			sourceTree = "<group>";
+		};
 		C0FE9D7323E4F20E004C4621 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +230,8 @@
 				C0FE9D9523E4F213004C4621 /* blypTests */,
 				C0FE9DA023E4F213004C4621 /* blypUITests */,
 				C0FE9D7D23E4F20E004C4621 /* Products */,
+				0E45610ECF8BBDA2BD62D3D3 /* Pods */,
+				49A57155E239DEB0051A75F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +248,16 @@
 		C0FE9D7E23E4F20E004C4621 /* blyp */ = {
 			isa = PBXGroup;
 			children = (
+				C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */,
+				C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */,
+				C01AA3B02409DD8C00BB1C84 /* Views */,
+				C011C22E241B5ABB00114AE9 /* Data Structures */,
 				C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */,
 				C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */,
-				C0FE9D8323E4F20F004C4621 /* ContentView.swift */,
 				C0FE9D8523E4F213004C4621 /* Assets.xcassets */,
 				C0FE9D8A23E4F213004C4621 /* LaunchScreen.storyboard */,
 				C0FE9D8D23E4F213004C4621 /* Info.plist */,
+				C07A2E772400AC85004BB749 /* GoogleService-Info.plist */,
 				C0FE9D8723E4F213004C4621 /* Preview Content */,
 			);
 			path = blyp;
@@ -143,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DA623E4F213004C4621 /* Build configuration list for PBXNativeTarget "blyp" */;
 			buildPhases = (
+				333AD0849EE6EDBAEF948FBC /* [CP] Check Pods Manifest.lock */,
 				C0FE9D7823E4F20E004C4621 /* Sources */,
 				C0FE9D7923E4F20E004C4621 /* Frameworks */,
 				C0FE9D7A23E4F20E004C4621 /* Resources */,
+				C65A4B69D23F01BE101A4262 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +315,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DA923E4F213004C4621 /* Build configuration list for PBXNativeTarget "blypTests" */;
 			buildPhases = (
+				D3F42516FDEBA82CAA3E4B82 /* [CP] Check Pods Manifest.lock */,
 				C0FE9D8E23E4F213004C4621 /* Sources */,
 				C0FE9D8F23E4F213004C4621 /* Frameworks */,
 				C0FE9D9023E4F213004C4621 /* Resources */,
@@ -178,9 +334,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FE9DAC23E4F213004C4621 /* Build configuration list for PBXNativeTarget "blypUITests" */;
 			buildPhases = (
+				BF560786C7BEBBB5DF6C82A0 /* [CP] Check Pods Manifest.lock */,
 				C0FE9D9923E4F213004C4621 /* Sources */,
 				C0FE9D9A23E4F213004C4621 /* Frameworks */,
 				C0FE9D9B23E4F213004C4621 /* Resources */,
+				34AC1F6A14D751E7B75BCD8A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FE9D8C23E4F213004C4621 /* LaunchScreen.storyboard in Resources */,
+				C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */,
 				C0FE9D8923E4F213004C4621 /* Preview Assets.xcassets in Resources */,
 				C0FE9D8623E4F213004C4621 /* Assets.xcassets in Resources */,
 			);
@@ -250,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,19 +417,139 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07A2E7A2400AC85004BB749 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		333AD0849EE6EDBAEF948FBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blyp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34AC1F6A14D751E7B75BCD8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF560786C7BEBBB5DF6C82A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blyp-blypUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C65A4B69D23F01BE101A4262 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-blyp/Pods-blyp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3F42516FDEBA82CAA3E4B82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-blypTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0FE9D7823E4F20E004C4621 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
+				C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */,
+				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
+				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */,
+				C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */,
+				C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */,
+				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
+				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
-				C0FE9D8423E4F20F004C4621 /* ContentView.swift in Sources */,
+				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
+				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
+				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
+				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
+				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
+				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
+				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
+				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
+				C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +558,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FE9D9723E4F213004C4621 /* blypTests.swift in Sources */,
+				C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
+				C07A2ECD2400B2AC004BB749 /* UserData.swift in Sources */,
+				C07A2ECA2400B2AC004BB749 /* Keychain.swift in Sources */,
+				C07A2ED32400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
+				C07A2ED02400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +571,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FE9DA223E4F213004C4621 /* blypUITests.swift in Sources */,
+				C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
+				C07A2ECE2400B2AC004BB749 /* UserData.swift in Sources */,
+				C07A2ECB2400B2AC004BB749 /* Keychain.swift in Sources */,
+				C07A2ED42400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
+				C07A2ED12400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,19 +722,24 @@
 		};
 		C0FE9DA723E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7CA5DF5CE1CA60977857BAB /* Pods-blyp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = blyp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.blyp.blyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,19 +747,24 @@
 		};
 		C0FE9DA823E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FC9EB5CE06AA7C257A3FDF4 /* Pods-blyp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = blyp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = info.blyp.blyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,6 +772,7 @@
 		};
 		C0FE9DAA23E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42117FBF9992B5154A0AA3A4 /* Pods-blypTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -494,6 +795,7 @@
 		};
 		C0FE9DAB23E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4053567A020E056A9427253A /* Pods-blypTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +818,7 @@
 		};
 		C0FE9DAD23E4F213004C4621 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2072764DE919DB59F819C3EF /* Pods-blyp-blypUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -536,6 +839,7 @@
 		};
 		C0FE9DAE23E4F213004C4621 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 185D66E39E60644F933CBEA1 /* Pods-blyp-blypUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
