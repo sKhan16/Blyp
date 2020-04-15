@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: List Devices
+        run:  xcrun simctl list
       - name: Pod Install
         run: pod install
       - name: Build and Test
