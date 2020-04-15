@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: List Devices
-        run:  xcrun simctl list
+      - name: Force Latest Xcode
+        run:  sudo xcode-select -s /Applications/Xcode_11.4.app/Contents/Developer
       - name: Pod Install
         run: pod install
       - name: Build and Test
