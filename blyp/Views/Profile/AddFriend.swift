@@ -12,14 +12,15 @@ import Combine
 
 struct AddFriend: View {
     @EnvironmentObject var user: UserObservable
+    @Binding var isPresented: Bool
+    
     @State private var searchText = ""
-
-    private var userSearcher = UserSearcher()
+    @State private var userSearcher = UserSearcher()
     
     var body: some View {
         NavigationView {
             VStack {
-                AddFriendHeader()
+                AddFriendHeader(isPresented: $isPresented)
                 SearchBar(userSearcher: userSearcher)
                 MatchedUsernameList(userSearcher: userSearcher)
             }
@@ -30,21 +31,22 @@ struct AddFriend: View {
 }
 
 struct AddFriend_Previews: PreviewProvider {
+    @State private static var isPresented = true
     static var previews: some View {
-        AddFriend()
+        AddFriend(isPresented: $isPresented)
     }
 }
 
 struct AddFriendHeader: View {
+    @Binding var isPresented: Bool
     var body: some View {
         HStack(alignment: .bottom) {
             Button(action: {
-                // TODO: Force close view
+                self.isPresented = false
             }) {
                 Text("Close")
             }
             Spacer()
-
             Text("Add Friend")
             Spacer()
             Button(action: {

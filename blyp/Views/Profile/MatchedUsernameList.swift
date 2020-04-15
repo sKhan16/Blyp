@@ -24,10 +24,9 @@ struct MatchedUsernameList: View {
     }
 }
 
-//FIXME: TODO
-//struct MatchedUsernameList_Previews: PreviewProvider {
-//    @State static var strBind: UserSearcher = UserSearcher()
-//    static var previews: some View {
-//        MatchedUsernameList(userSearcher: $strBind)
-//    }
-//}
+struct MatchedUsernameList_Previews: PreviewProvider {
+    @State static var userSearcher: UserSearcher = UserSearcher()
+    static var previews: some View {
+        MatchedUsernameList(userSearcher: userSearcher)
+    }
+}

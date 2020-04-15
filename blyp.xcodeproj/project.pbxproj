@@ -165,10 +165,9 @@
 		C011C22E241B5ABB00114AE9 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
-				C0836757240EF16700BE31DD /* UserObservable.swift */,
-				C00BC324240F1F690051CBA1 /* Blyp.swift */,
-				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
-				C05AFE98243A9C19005DE42C /* UserSearcher.swift */,
+				C02266EC2447A9EA00045A86 /* Blyps */,
+				C02266EB2447A9DF00045A86 /* Users */,
+				C0A004442446DA1200872FF6 /* Searchers */,
 			);
 			path = "Data Structures";
 			sourceTree = "<group>";
@@ -192,6 +191,23 @@
 				C01AA3AC2409D90500BB1C84 /* SignUpView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C02266EB2447A9DF00045A86 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				C0836757240EF16700BE31DD /* UserObservable.swift */,
+				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		C02266EC2447A9EA00045A86 /* Blyps */ = {
+			isa = PBXGroup;
+			children = (
+				C00BC324240F1F690051CBA1 /* Blyp.swift */,
+			);
+			path = Blyps;
 			sourceTree = "<group>";
 		};
 		C0363F40241AE9CE006EE664 /* Profile */ = {
@@ -224,6 +240,14 @@
 				C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */,
 			);
 			path = SignInWithAppleFirebase;
+			sourceTree = "<group>";
+		};
+		C0A004442446DA1200872FF6 /* Searchers */ = {
+			isa = PBXGroup;
+			children = (
+				C05AFE98243A9C19005DE42C /* UserSearcher.swift */,
+			);
+			path = Searchers;
 			sourceTree = "<group>";
 		};
 		C0FE9D7323E4F20E004C4621 = {

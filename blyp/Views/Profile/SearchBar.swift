@@ -30,10 +30,9 @@ struct SearchBar: View {
     }
 }
 
-// TODO: FIXME
-//struct SearchBar_Previews: PreviewProvider {
-//    @State static var text: String = ""
-//    static var previews: some View {
-//        SearchBar(searchText: $text, placeholder: "Search here, you nerd")
-//    }
-//}
+struct SearchBar_Previews: PreviewProvider {
+    @State static var userSearcher: UserSearcher = UserSearcher()
+    static var previews: some View {
+        SearchBar(userSearcher: userSearcher, placeholder: "Search here, you nerd")
+    }
+}

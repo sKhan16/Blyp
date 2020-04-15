@@ -72,7 +72,7 @@ struct MainViewActionSheet: View {
             ])
         }
         .sheet(isPresented: $addingFriend) {
-            AddFriend().environmentObject(self.user)
+            AddFriend(isPresented: self.$addingFriend).environmentObject(self.user)
         }
     }
 }
