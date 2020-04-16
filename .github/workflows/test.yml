@@ -12,6 +12,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Force Latest Xcode
         run:  sudo xcode-select -s /Applications/Xcode_11.4.app/Contents/Developer
+      - name: Write GoogleService-Info.plist
+        run:  echo "$GOOGLE_PLIST" > GoogleService-Info.plist
+        env: 
+          GOOGLE_PLIST: ${{ secrets.GOOGLE_PLIST }}
       - name: Pod Install
         run: pod install
       - name: Build and Test
