@@ -10,9 +10,8 @@ import Foundation
 
 struct UserProfile: Codable {
     var blyps: [String: Blyp]
-    var friends: [Friend]
+    var friends: [String]
     var legacyContact: Friend
 }
 
-// TODO: Create a friend protocol SOMEWHERE ELSE
 struct Friend: Codable {}

@@ -13,7 +13,7 @@ struct MatchedUsernameList: View {
     var body: some View {
         NavigationView {
             List(userSearcher.displayNameAlgolia.hits) { hit in
-                NavigationLink(destination: FriendProfileView(name: hit.displayName)) {
+                NavigationLink(destination: FriendProfileView(friendProfile: FriendProfile(displayName: hit.displayName, uid: hit.objectID))) {
                     Text(hit.displayName)
                 }
             }

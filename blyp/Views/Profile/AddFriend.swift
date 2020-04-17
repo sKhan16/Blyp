@@ -6,17 +6,17 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
+import Combine
 import Introspect
 import SwiftUI
-import Combine
 
 struct AddFriend: View {
     @EnvironmentObject var user: UserObservable
     @Binding var isPresented: Bool
-    
+
     @State private var searchText = ""
     @State private var userSearcher = UserSearcher()
-    
+
     var body: some View {
         NavigationView {
             VStack {

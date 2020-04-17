@@ -9,31 +9,34 @@
 import SwiftUI
 
 struct FriendProfileView: View {
-    var name: String
+    @EnvironmentObject var user: UserObservable
+    var friendProfile: FriendProfile
     var body: some View {
         NavigationView {
             VStack {
-                Text("Here's some information about \(name):")
+                Text("Here's some information about \(friendProfile.displayName ?? "")")
                 Spacer()
-                Button(action: {
-                    print("TODO: ADD FRIEND")
-                }) {
-                    Text("Add friend")
-                        .foregroundColor(Color.white)
+                if !user.friends.contains(friendProfile) {
+                    Button(action: {
+                        self.user.addFriend(self.friendProfile)
+                    }) {
+                        Text("Add friend")
+                            .foregroundColor(Color.white)
+                    }
+                    .frame(width: 100.0, height: 50.0)
+                    .background(Color.blue)
+                    .cornerRadius(50.0)
+                    .shadow(radius: 1)
                 }
-                .frame(width: 100.0, height: 50.0)
-                .background(Color.blue)
-                .cornerRadius(50.0)
-                .shadow(radius: 1)
             }
-            .navigationBarTitle(Text(name))
+            .navigationBarTitle(Text(friendProfile.displayName ?? ""))
         }
     }
 }
 
 struct FriendProfileView_Previews: PreviewProvider {
-    private static var friendName: String = "John Doe"
+    private static var friendProfile: FriendProfile = FriendProfile(displayName: "Bill", uid: "")
     static var previews: some View {
-        FriendProfileView(name: friendName)
+        FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
     }
 }

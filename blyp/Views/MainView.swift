@@ -21,7 +21,6 @@ struct MainView: View {
             .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
                                 trailing: MainViewActionSheet().environmentObject(user))
         }
-        
     }
 }
 
@@ -44,7 +43,7 @@ struct MainViewActionSheet: View {
     @EnvironmentObject var user: UserObservable
     @State var addingFriend = false
     @State private var showingSheet = false
-    
+
     var body: some View {
         Button(action: {
             self.showingSheet = true
@@ -56,15 +55,15 @@ struct MainViewActionSheet: View {
                 .default(Text("Add Friends"), action: {
                     self.addingFriend.toggle()
                 }),
-                
+
                 .default(Text("Update Username"), action: {
                     self.user.loginState = .signingUp
                 }),
-                
+
                 .destructive(Text("Logout"), action: {
                     self.user.logout()
                 }),
-                
+
                 .cancel(),
             ])
         }
