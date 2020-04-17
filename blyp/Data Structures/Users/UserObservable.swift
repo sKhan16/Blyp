@@ -23,7 +23,7 @@ public class UserObservable: ObservableObject {
     
     private lazy var functions = Functions.functions()
     
-    private let databaseName: String = "blyps"
+    private let databaseName: String = "userProfiles"
     private var blypFirestoreListenerSubscription: ListenerRegistration? = nil
     
     // MARK: Authentication and Login/Logout functions

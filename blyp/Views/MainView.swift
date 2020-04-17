@@ -6,25 +6,22 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import FirebaseAuth
 import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
-    @State var addingBlyp: Bool = false
     var body: some View {
-        VStack {
-            NavigationView {
-                List(user.blyps) { blyp in
-                    NavigationLink(destination: BlypView(blyp: blyp)) {
-                        Text(blyp.name)
-                    }
+        NavigationView {
+            List(user.blyps) { blyp in
+                NavigationLink(destination: BlypView(blyp: blyp)) {
+                    Text(blyp.name)
                 }
-                .navigationBarTitle("\(user.displayName)'s Blyps")
-                .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
-                                    trailing: MainViewActionSheet().environmentObject(user))
             }
+            .navigationBarTitle("\(user.displayName)'s Blyps")
+            .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
+                                trailing: MainViewActionSheet().environmentObject(user))
         }
+        
     }
 }
 
@@ -47,7 +44,7 @@ struct MainViewActionSheet: View {
     @EnvironmentObject var user: UserObservable
     @State var addingFriend = false
     @State private var showingSheet = false
-
+    
     var body: some View {
         Button(action: {
             self.showingSheet = true
@@ -59,15 +56,15 @@ struct MainViewActionSheet: View {
                 .default(Text("Add Friends"), action: {
                     self.addingFriend.toggle()
                 }),
-
+                
                 .default(Text("Update Username"), action: {
                     self.user.loginState = .signingUp
                 }),
-
+                
                 .destructive(Text("Logout"), action: {
                     self.user.logout()
                 }),
-
+                
                 .cancel(),
             ])
         }
