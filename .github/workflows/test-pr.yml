@@ -6,12 +6,16 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        destination: ['platform=iOS Simulator,OS=13.4,name=iPhone 11']
+        destination: ['platform=iOS Simulator,name=iPhone 11']
     steps:
-      - name: Check out merge commit of pull request
+      - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
+      - name: Force Latest Xcode
+        run:  sudo xcode-select -s /Applications/Xcode_11.4.app/Contents/Developer
+      - name: Write GoogleService-Info.plist
+        run:  echo "$GOOGLE_PLIST" > GoogleService-Info.plist
+        env: 
+          GOOGLE_PLIST: ${{ secrets.GOOGLE_PLIST }}
       - name: Pod Install
         run: pod install
       - name: Build and Test
