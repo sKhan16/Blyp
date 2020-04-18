@@ -1,6 +1,10 @@
+**/Build
 **/Pods/
 **/GoogleService-Info.plist
 **/Podfile.lock
 **/.DS_Store
 **/Debug.xcscheme
+**/.vscode
+**/.idea
+**/node_modules
 /blyp.xcworkspace/
