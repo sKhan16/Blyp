@@ -3,3 +3,4 @@
 **/Podfile.lock
 **/.DS_Store
 /blyp.xcworkspace/
+**/*.xcscheme

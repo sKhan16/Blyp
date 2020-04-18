@@ -1,8 +1,8 @@
-on: [push]
-name: Test Commit
+on: [pull_request]
+name: Test PR
 jobs:
   test:
-    name: Test Commit
+    name: Test PR
     runs-on: macos-latest
     strategy:
       matrix:
