@@ -9,18 +9,24 @@
 import SwiftUI
 
 struct MatchedUsernameList: View {
-    var usernames: [String]
+    @ObservedObject var userSearcher: UserSearcher
     var body: some View {
-        List {
-            ForEach(usernames, id:\.self) {
-                searchText in Text(searchText)
+        NavigationView {
+            List(userSearcher.displayNameAlgolia.hits) { hit in
+                NavigationLink(destination: FriendProfileView(friendProfile: FriendProfile(displayName: hit.displayName, uid: hit.objectID))) {
+                    Text(hit.displayName)
+                }
             }
+            .navigationBarHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+            .navigationBarTitle("")
+            .edgesIgnoringSafeArea([.top, .bottom])
         }
     }
 }
 
 struct MatchedUsernameList_Previews: PreviewProvider {
+    @State static var userSearcher: UserSearcher = UserSearcher()
     static var previews: some View {
-        MatchedUsernameList(usernames: ["Bob", "Sabby"])
+        MatchedUsernameList(userSearcher: userSearcher)
     }
 }

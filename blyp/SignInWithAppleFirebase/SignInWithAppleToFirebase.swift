@@ -142,7 +142,7 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
         Auth.auth().signIn(with: credential) { _, error in
             if error != nil {
                 // Error. If error.code == .MissingOrInvalidNonce, make sureM
-                
+
                 // you're sending the SHA256-hashed nonce as a hex string with
                 // your request to Apple.
                 print(error?.localizedDescription ?? "")

@@ -6,39 +6,47 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
+import Combine
 import Introspect
+import SwiftUI
 
 struct AddFriend: View {
-    let usernames: [String] = []
+    @EnvironmentObject var user: UserObservable
+    @Binding var isPresented: Bool
+
     @State private var searchText = ""
+    @State private var userSearcher = UserSearcher()
+
     var body: some View {
-        VStack {
-            AddFriendHeader()
-            SearchBar(searchText: $searchText).introspectTextField { textField in
-                textField.becomeFirstResponder()
+        NavigationView {
+            VStack {
+                AddFriendHeader(isPresented: $isPresented)
+                SearchBar(userSearcher: userSearcher)
+                MatchedUsernameList(userSearcher: userSearcher)
             }
-            MatchedUsernameList(usernames: [])
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
 
 struct AddFriend_Previews: PreviewProvider {
+    @State private static var isPresented = true
     static var previews: some View {
-        AddFriend()
+        AddFriend(isPresented: $isPresented)
     }
 }
 
 struct AddFriendHeader: View {
+    @Binding var isPresented: Bool
     var body: some View {
         HStack(alignment: .bottom) {
             Button(action: {
-                // TODO: Force close view
+                self.isPresented = false
             }) {
                 Text("Close")
             }
             Spacer()
-            
             Text("Add Friend")
             Spacer()
             Button(action: {
@@ -52,17 +60,18 @@ struct AddFriendHeader: View {
 
 extension UIApplication {
     func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
+        windows
+            .filter { $0.isKeyWindow }
             .first?
             .endEditing(force)
     }
 }
 
 struct ResignKeyboardOnDragGesture: ViewModifier {
-    var gesture = DragGesture().onChanged{_ in
+    var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
+
     func body(content: Content) -> some View {
         content.gesture(gesture)
     }
@@ -73,4 +82,3 @@ extension View {
         return modifier(ResignKeyboardOnDragGesture())
     }
 }
-

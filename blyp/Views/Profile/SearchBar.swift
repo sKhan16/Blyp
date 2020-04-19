@@ -7,21 +7,18 @@
 import SwiftUI
 
 struct SearchBar: View {
-    @Binding var searchText: String
+    @ObservedObject var userSearcher: UserSearcher
     var placeholder: String = "Search"
+
     var body: some View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField(placeholder, text: $searchText, onEditingChanged: { isEditing in
-                    // ?
-                }, onCommit: {
-                    // ?
-                    }).foregroundColor(.primary)
+                TextField(placeholder, text: $userSearcher.searchQuery).foregroundColor(.primary)
                 Button(action: {
-                    self.searchText = ""
+                    self.userSearcher.searchQuery = ""
                 }) {
-                    Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                    Image(systemName: "xmark.circle.fill").opacity(userSearcher.searchQuery == "" ? 0 : 1)
                 }
             }
             .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
@@ -34,8 +31,8 @@ struct SearchBar: View {
 }
 
 struct SearchBar_Previews: PreviewProvider {
-    @State static var text: String = ""
+    @State static var userSearcher: UserSearcher = UserSearcher()
     static var previews: some View {
-        SearchBar(searchText: $text, placeholder: "Search here, you nerd")
+        SearchBar(userSearcher: userSearcher, placeholder: "Search here, you nerd")
     }
 }

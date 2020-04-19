@@ -20,10 +20,12 @@ public class UserObservable: ObservableObject {
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
     @Published var blyps: [Blyp] = []
+    @Published var friends: [FriendProfile] = []
 
     private lazy var functions = Functions.functions()
 
-    private let databaseName: String = "blyps"
+    private let databaseName: String = "userProfiles"
+    private var blypFirestoreListenerSubscription: ListenerRegistration?
 
     // MARK: Authentication and Login/Logout functions
 
@@ -45,6 +47,9 @@ public class UserObservable: ObservableObject {
         do {
             try firebaseAuth.signOut()
             resetUserInfo()
+            // Remove the subscription to the Blyp database
+            blypFirestoreListenerSubscription?.remove()
+            blypFirestoreListenerSubscription = nil
         } catch let signOutError as NSError {
             // No idea wtf happened but we can make sure users don't see information anymore
             resetUserInfo()
@@ -83,7 +88,6 @@ public class UserObservable: ObservableObject {
             if error == nil {
                 self.displayName = trimmedName
                 self.loginState = .loggedIn
-
                 Firestore.firestore().collection("userDisplayNames").document(self.uid).setData(["displayName": trimmedName])
             } else {
                 // FIXME: Add error state
@@ -101,7 +105,7 @@ public class UserObservable: ObservableObject {
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         let db = Firestore.firestore()
-        db.collection(databaseName).document(uid)
+        blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
             .addSnapshotListener { documentSnapshot, _ in
                 let result = Result {
                     try documentSnapshot.flatMap {
@@ -119,6 +123,7 @@ public class UserObservable: ObservableObject {
                             a.name < b.name
                         }
                         self.blyps = tempBlyps
+                        self.friends = profile.friends.map { FriendProfile(uid: $0) }
                         print("Blyps have been updated LIVE!")
                     }
 
@@ -146,6 +151,13 @@ public class UserObservable: ObservableObject {
                 print("Document successfully updated")
             }
         }
+    }
+
+    func addFriend(_ friendProfile: FriendProfile) {
+        let db = Firestore.firestore()
+        db.collection(databaseName).document(uid).updateData([
+            "friends": FieldValue.arrayUnion([friendProfile.uid]),
+        ])
     }
 }
 
