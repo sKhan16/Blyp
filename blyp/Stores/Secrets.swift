@@ -10,6 +10,6 @@ import Foundation
 
 /// DO NOT commit secrets in here
 struct Secrets {
-    static var ALGOLIA_APP_ID = "B9RHB89CNZ"
-    static var ALGOLIA_API_KEY = "81b7c0c4c2a192fd32b0601c8a235675"
+    static var ALGOLIA_APP_ID = ""
+    static var ALGOLIA_API_KEY = ""
 }
