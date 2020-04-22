@@ -21,7 +21,7 @@ struct AddBlypView: View {
     @State var imageView: Image?
     var body: some View {
         VStack {
-            NewBlypHeader(saveBlyp: saveBlyp)
+            NewBlypHeader(saveBlyp: saveBlyp, presentationMode: presentationMode)
             NavigationView {
                 Form {
                     Section {
@@ -49,7 +49,7 @@ struct AddBlypView: View {
     /// Loads image data from the selected image (or not)
     func loadImage() {
         guard let imageData = imageData else { return }
-        imageView = Image(uiImage: imageData)
+        imageView = Image(uiImage: imageData.fixedOrientation()!)
     }
     
     /// Saves blyp and dismiss view
@@ -66,7 +66,8 @@ struct AddBlypView_Previews: PreviewProvider {
         Group {
             AddBlypView().environmentObject(UserObservable()).previewDisplayName("Standard")
             AddBlypView(imageView: Image("PreviewSelectedImageLandscape")).environmentObject(UserObservable()).previewDisplayName("With landscape image")
-                        AddBlypView(imageView: Image("PreviewSelectedImagePortrait")).environmentObject(UserObservable()).previewDisplayName("With portrait image")
+            AddBlypView(imageView: Image("PreviewSelectedImagePortrait")).environmentObject(UserObservable()).previewDisplayName("With portrait image")
+
             AddBlypView().environmentObject(UserObservable()).colorScheme(.dark).previewDisplayName("Dark Mode")
         }
     }
@@ -74,9 +75,10 @@ struct AddBlypView_Previews: PreviewProvider {
 
 struct NewBlypHeader: View {
     var saveBlyp: () -> Void
+    @Binding var presentationMode: PresentationMode
     var body: some View {
         HStack(alignment: .bottom) {
-            Button(action: {}) {
+            Button(action: {self.presentationMode.dismiss()}) {
                 Text("Close")
             }
             .foregroundColor(.black)
@@ -104,9 +106,77 @@ struct NewBlypHeader: View {
 struct SelectedImageView: View {
     let image: Image
     var body: some View {
-        image
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity, maxHeight: 300, alignment: .center)
+            image
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: ContentMode.fit)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 400, alignment: .center)
+    }
+}
+
+/// For some reason this is required for some HEIC images. Beats me. https://gist.github.com/schickling/b5d86cb070130f80bb40
+extension UIImage {
+    /// Fix image orientaton to protrait up
+    func fixedOrientation() -> UIImage? {
+        guard imageOrientation != UIImage.Orientation.up else {
+            // This is default orientation, don't need to do anything
+            return self.copy() as? UIImage
+        }
+
+        guard let cgImage = self.cgImage else {
+            // CGImage is not available
+            return nil
+        }
+
+        guard let colorSpace = cgImage.colorSpace, let ctx = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 0, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+            return nil // Not able to create CGContext
+        }
+
+        var transform: CGAffineTransform = CGAffineTransform.identity
+
+        switch imageOrientation {
+        case .down, .downMirrored:
+            transform = transform.translatedBy(x: size.width, y: size.height)
+            transform = transform.rotated(by: CGFloat.pi)
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: size.width, y: 0)
+            transform = transform.rotated(by: CGFloat.pi / 2.0)
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: size.height)
+            transform = transform.rotated(by: CGFloat.pi / -2.0)
+        case .up, .upMirrored:
+            break
+        @unknown default:
+            fatalError("Missing...")
+            break
+        }
+
+        // Flip image one more time if needed to, this is to prevent flipped image
+        switch imageOrientation {
+        case .upMirrored, .downMirrored:
+            transform = transform.translatedBy(x: size.width, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        case .leftMirrored, .rightMirrored:
+            transform = transform.translatedBy(x: size.height, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        case .up, .down, .left, .right:
+            break
+        @unknown default:
+            fatalError("Missing...")
+            break
+        }
+
+        ctx.concatenate(transform)
+
+        switch imageOrientation {
+        case .left, .leftMirrored, .right, .rightMirrored:
+            ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
+        default:
+            ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            break
+        }
+
+        guard let newCGImage = ctx.makeImage() else { return nil }
+        return UIImage.init(cgImage: newCGImage, scale: 1, orientation: .up)
     }
 }
