@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+/// Adds colors to the Color struct
 extension Color {
     static let blypGreen = Color("BlypGreen")
 }

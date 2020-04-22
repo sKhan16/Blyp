@@ -10,11 +10,10 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
-    init() {
-    }
+
     var body: some View {
         NavigationView {
-            List(user.blyps) { blyp in
+            List(user.blyps?.list ?? []) { blyp in
                 NavigationLink(destination: BlypView(blyp: blyp)) {
                     Text(blyp.name)
                 }

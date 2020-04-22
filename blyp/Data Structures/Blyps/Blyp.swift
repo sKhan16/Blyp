@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
 struct Blyp: Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
     var description: String
-    var image: String?
+    var imageData: Data?
+    var imageUrl: String?
 }
