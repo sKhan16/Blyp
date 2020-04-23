@@ -16,6 +16,10 @@
 		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
 		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
+		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
+		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
+		C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934C2452394900B846E0 /* ResizeImageExtension.swift */; };
+		C05C934F2452396D00B846E0 /* BlypCreationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */; };
 		C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063B5CA244E8D9B0095F291 /* ImagePicker.swift */; };
 		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
@@ -89,6 +93,10 @@
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
+		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
+		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
+		C05C934C2452394900B846E0 /* ResizeImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageExtension.swift; sourceTree = "<group>"; };
+		C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCreationRequest.swift; sourceTree = "<group>"; };
 		C063B5CA244E8D9B0095F291 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 			children = (
 				C00BC324240F1F690051CBA1 /* Blyp.swift */,
 				C0904974244F9F5A0065000F /* BlypsObservable.swift */,
+				C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -246,6 +255,24 @@
 				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
 			);
 			path = Blyps;
+			sourceTree = "<group>";
+		};
+		C05C934624522B7E00B846E0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C05C934724522B8D00B846E0 /* BlurHash */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C05C934724522B8D00B846E0 /* BlurHash */ = {
+			isa = PBXGroup;
+			children = (
+				C05C934824522BA700B846E0 /* BlurHashEncode.swift */,
+				C05C934A24522BB900B846E0 /* BlurHashDecode.swift */,
+				C05C934C2452394900B846E0 /* ResizeImageExtension.swift */,
+			);
+			path = BlurHash;
 			sourceTree = "<group>";
 		};
 		C07A2E7F2400AD39004BB749 /* SignInWithAppleFirebase */ = {
@@ -317,6 +344,7 @@
 				C01AA3B02409DD8C00BB1C84 /* Views */,
 				C011C22E241B5ABB00114AE9 /* Data Structures */,
 				C0ED0FF2244A399500BCCD88 /* Stores */,
+				C05C934624522B7E00B846E0 /* Utilities */,
 				C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */,
 				C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */,
 				C0FE9D8523E4F213004C4621 /* Assets.xcassets */,
@@ -595,6 +623,7 @@
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */,
+				C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */,
 				C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */,
 				C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */,
 				C0ED0FF1244973B700BCCD88 /* FriendProfile.swift in Sources */,
@@ -602,12 +631,15 @@
 				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
+				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
+				C05C934F2452396D00B846E0 /* BlypCreationRequest.swift in Sources */,
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
+				C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */,
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
