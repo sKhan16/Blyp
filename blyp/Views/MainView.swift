@@ -17,16 +17,8 @@ struct MainView: View {
                 NavigationLink(destination: BlypView(blyp: blyp)) {
                     VStack {
                         Text(blyp.name)
-                        if blyp.imageBlurHash != nil {
-                            Image(uiImage: UIImage(blurHash: blyp.imageBlurHash!, size: CGSize(width: 32.0, height: 32.0))!)
-                                .resizable()
-                                .scaledToFit()
-                                .aspectRatio(contentMode: ContentMode.fit)
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 400, alignment: .center)
-                        }
-                        
-                        if blyp.imageUrl != nil {
-                            Text("URL: \(blyp.imageUrl ?? "")")
+                        if blyp.imageAvailable {
+                            BlypImage(blyp: blyp)
                         }
                     }
                 }

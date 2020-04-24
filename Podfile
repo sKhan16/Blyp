@@ -12,7 +12,7 @@ target 'blyp' do
   pod 'Firebase/Storage'
   pod 'InstantSearchClient', '~> 6.0'
   pod 'ObjectMapper', '~> 3.5.2'
-
+  pod 'SDWebImageSwiftUI'
 pod 'Introspect'
   # Pods for blyp
 

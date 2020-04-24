@@ -15,11 +15,11 @@
 		C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AC2409D90500BB1C84 /* SignUpView.swift */; };
 		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
 		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
+		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
 		C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934C2452394900B846E0 /* ResizeImageExtension.swift */; };
-		C05C934F2452396D00B846E0 /* BlypCreationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */; };
 		C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063B5CA244E8D9B0095F291 /* ImagePicker.swift */; };
 		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
@@ -46,6 +46,7 @@
 		C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C093083E243C4C730002BF0C /* FriendProfileView.swift */; };
 		C09825B0244A3A240086D4CB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09825AF244A3A240086D4CB /* Secrets.swift */; };
 		C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* AddFriend.swift */; };
+		C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA06A124526058003DFEF4 /* BlypImage.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
 		C0EB8B65244CFA950068CC0B /* agenda-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */; };
 		C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB8B66244CFAF40068CC0B /* BlypFonts.swift */; };
@@ -92,11 +93,11 @@
 		C01AA3AC2409D90500BB1C84 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
 		C05C934C2452394900B846E0 /* ResizeImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageExtension.swift; sourceTree = "<group>"; };
-		C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCreationRequest.swift; sourceTree = "<group>"; };
 		C063B5CA244E8D9B0095F291 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
 		C0CE42E8241BF59D00A2E24F /* AddFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriend.swift; sourceTree = "<group>"; };
 		C0D1B2AF2449063800782FB3 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
+		C0DA06A124526058003DFEF4 /* BlypImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypImage.swift; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
 		C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "agenda-medium.ttf"; sourceTree = "<group>"; };
 		C0EB8B66244CFAF40068CC0B /* BlypFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypFonts.swift; sourceTree = "<group>"; };
@@ -231,7 +233,6 @@
 			children = (
 				C00BC324240F1F690051CBA1 /* Blyp.swift */,
 				C0904974244F9F5A0065000F /* BlypsObservable.swift */,
-				C05C934E2452396D00B846E0 /* BlypCreationRequest.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -253,6 +254,7 @@
 				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
 				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
 				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
+				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -271,6 +273,7 @@
 				C05C934824522BA700B846E0 /* BlurHashEncode.swift */,
 				C05C934A24522BB900B846E0 /* BlurHashDecode.swift */,
 				C05C934C2452394900B846E0 /* ResizeImageExtension.swift */,
+				C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */,
 			);
 			path = BlurHash;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */,
 				C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */,
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
+				C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */,
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */,
@@ -627,6 +631,7 @@
 				C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */,
 				C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */,
 				C0ED0FF1244973B700BCCD88 /* FriendProfile.swift in Sources */,
+				C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */,
 				C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */,
 				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
@@ -634,7 +639,6 @@
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
-				C05C934F2452396D00B846E0 /* BlypCreationRequest.swift in Sources */,
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,

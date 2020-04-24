@@ -54,7 +54,7 @@ struct AddBlypView: View {
     
     /// Saves blyp and dismiss view
     func saveBlyp() {
-        let blyp = BlypCreationRequest(name: self.name, description: self.desc, image: self.imageData)
+        let blyp = Blyp(name: self.name, description: self.desc, image: self.imageData)
         user.blyps?.addBlyp(blyp)
         presentationMode.wrappedValue.dismiss()
     }

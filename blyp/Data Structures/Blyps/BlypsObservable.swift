@@ -26,7 +26,7 @@ class BlypsObservable: ObservableObject {
     
     /// Saves the Blyp to the user's account
     /// - Parameter blyp: Blyp to save
-    func addBlyp(_ blyp: BlypCreationRequest) {
+    func addBlyp(_ blyp: Blyp) {
         guard let user = self.user else {
             print("user not assigned in BlypsObservable")
             return
@@ -53,9 +53,17 @@ class BlypsObservable: ObservableObject {
                     } else {
                         blypWithImageUrl.imageBlurHash = blyp.image!.blurHash(numberOfComponents: (4,4))
                     }
-                    blypWithImageUrl.imageUrl = imageChild
-                    // Save the version of the blyp with an imageUrl
-                    self.saveBlypToFirebase(blypWithImageUrl)
+                    
+                    
+                    imageRef.downloadURL {(url, error) in
+                        if (error != nil) {print(error)}
+                        blypWithImageUrl.imageUrl = url?.absoluteString
+                        let newScale = blyp.image?.size.scale(to: 32)
+                        blypWithImageUrl.imageBlurHashHeight = newScale?.height
+                        blypWithImageUrl.imageBlurHashWidth = newScale?.width
+                        self.saveBlypToFirebase(blypWithImageUrl)
+                    }
+                    
                 }
             }
         } else {
@@ -63,10 +71,9 @@ class BlypsObservable: ObservableObject {
         }
     }
     
-    
     /// Helper function that manages saving the Blyp to the Firestore database
     /// - Parameter blyp: Blyp to save in the firestore database
-    private func saveBlypToFirebase(_ blyp: BlypCreationRequest) {
+    private func saveBlypToFirebase(_ blyp: Blyp) {
         let db = Firestore.firestore()
         // Save the blyp to the Firestore database
         db.collection(databaseName).document(user!.uid).updateData([
@@ -76,7 +83,9 @@ class BlypsObservable: ObservableObject {
                 "name": blyp.name,
                 "description": blyp.description,
                 "imageUrl": blyp.imageUrl,
-                "imageBlurHash": blyp.imageBlurHash
+                "imageBlurHash": blyp.imageBlurHash,
+                "imageBlurHashHeight": blyp.imageBlurHashHeight,
+                "imageBlurHashWidth": blyp.imageBlurHashWidth
             ],
         ]) { err in
             if let err = err {
