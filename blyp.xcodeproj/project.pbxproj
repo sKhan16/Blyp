@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8D8B2419DE9500809139 /* AddBlypView.swift */; };
+		1EB3A0D1245304C60063956E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3A0D0245304C60063956E /* PageViewController.swift */; };
+		1EB3A0D3245307870063956E /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3A0D2245307870063956E /* PageView.swift */; };
 		34AB4E8F3D896A16161354F7 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BB31B503C937C9B62D99CF /* Pods_blyp.framework */; };
 		82158E0A2D8722DA36BE4EEC /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80189C1E59A6EA5569528A23 /* Pods_blyp_blypUITests.framework */; };
 		89B177B86469F234D3A1DAD3 /* Pods_blypTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225FE58BA252220A2B3D4 /* Pods_blypTests.framework */; };
@@ -72,6 +74,8 @@
 /* Begin PBXFileReference section */
 		1C20639421C07A113210BB1D /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E5B8D8B2419DE9500809139 /* AddBlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlypView.swift; sourceTree = "<group>"; };
+		1EB3A0D0245304C60063956E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		1EB3A0D2245307870063956E /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		37BB31B503C937C9B62D99CF /* Pods_blyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80189C1E59A6EA5569528A23 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80191F9DACEFC2D649170F9E /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
+				1EB3A0D0245304C60063956E /* PageViewController.swift */,
+				1EB3A0D2245307870063956E /* PageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,10 +585,12 @@
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
+				1EB3A0D1245304C60063956E /* PageViewController.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
+				1EB3A0D3245307870063956E /* PageView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
