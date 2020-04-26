@@ -1,8 +1,7 @@
 # Blyp
-![Test](https://github.com/sKhan16/Blyp/workflows/Test/badge.svg)
+![Test Commit](https://github.com/sKhan16/Blyp/workflows/Test%20Commit/badge.svg)
 
 Informatics capstone project from Team Sonar
-
 
 ## Getting Started
 
