@@ -11,7 +11,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import FirebaseFunctions
 import Foundation
 import SwiftUI
 
@@ -19,14 +18,16 @@ public class UserObservable: ObservableObject {
     @Published var displayName: String = "DisplayName"
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
-    @Published var blyps: [Blyp] = []
+    @Published var blyps: BlypsObservable?
     @Published var friends: [FriendProfile] = []
-
-    private lazy var functions = Functions.functions()
 
     private let databaseName: String = "userProfiles"
     private var blypFirestoreListenerSubscription: ListenerRegistration?
-
+    
+    init() {
+        self.blyps = BlypsObservable(user: self)
+    }
+    
     // MARK: Authentication and Login/Logout functions
 
     /// Set our Observable's values to the incoming User's values
@@ -115,42 +116,17 @@ public class UserObservable: ObservableObject {
                 switch result {
                 case let .success(profile):
                     if let profile = profile {
-                        var tempBlyps: [Blyp] = []
-                        for (_, blyp) in profile.blyps {
-                            tempBlyps.append(blyp)
-                        }
-                        tempBlyps.sort { (a, b) -> Bool in
-                            a.name < b.name
-                        }
-                        self.blyps = tempBlyps
                         self.friends = profile.friends.map { FriendProfile(uid: $0) }
-                        print("Blyps have been updated LIVE!")
+                        guard let blyps = self.blyps else {
+                            print("blyps were not configured in UserObservable")
+                            return
+                        }
+                        blyps.parse(from: profile)
                     }
-
                 case let .failure(err): print(err)
                     // FIXME: ADD ERROR HANDLING
                 }
             }
-    }
-
-    /// Add to the database using the "addBlyp" function
-    func addBlyp(_ blyp: Blyp) {
-        let db = Firestore.firestore()
-        // FIXME: This is bad, we should be doing different collections entirely
-        db.collection(databaseName).document(uid).updateData([
-            "blyps.\(blyp.id)": [
-                "id": blyp.id.uuidString,
-                "name": blyp.name,
-                "description": blyp.description,
-                "image": blyp.image,
-            ],
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
     }
 
     func addFriend(_ friendProfile: FriendProfile) {
