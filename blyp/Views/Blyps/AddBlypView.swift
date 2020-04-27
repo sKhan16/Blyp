@@ -31,7 +31,6 @@ struct AddBlypView: View {
                     
                     Section {
                         Button(imageView == nil ? "Add an image" : "Select a different image", action: {self.isShowingImagePicker = true})
-                        
                         if (imageView != nil) {
                             SelectedImageView(image: imageView!)
                         }

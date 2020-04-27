@@ -13,7 +13,7 @@ target 'blyp' do
   pod 'InstantSearchClient', '~> 6.0'
   pod 'ObjectMapper', '~> 3.5.2'
   pod 'SDWebImageSwiftUI'
-pod 'Introspect'
+  pod 'Introspect'
   # Pods for blyp
 
   target 'blypTests' do

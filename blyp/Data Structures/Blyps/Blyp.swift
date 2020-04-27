@@ -33,7 +33,7 @@ struct Blyp: Identifiable, Codable {
     
     // MARK: Properties used for saving and using Blyps
     var image: UIImage?
-    var imageAvailable: Bool {
+    var hasImage: Bool {
         get {
             return self.imageUrl != nil && self.imageBlurHash != nil && self.imageBlurHashWidth != nil && self.imageBlurHashHeight != nil
         }

@@ -16,6 +16,7 @@
 		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
 		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
 		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
+		C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0365C6224562BDE00C55F15 /* BlypCard.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
@@ -94,6 +95,7 @@
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
+		C0365C6224562BDE00C55F15 /* BlypCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCard.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
 				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
 				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
+				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
+				C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */,
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
@@ -828,7 +832,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -855,7 +859,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;

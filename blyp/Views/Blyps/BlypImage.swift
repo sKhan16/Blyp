@@ -23,7 +23,8 @@ struct BlypImage: View {
         .animation(.easeInOut(duration: 0.5))
         .transition(.fade)
         .scaledToFit()
-        .frame(width: 300, height: 300, alignment: .center)
+        .aspectRatio(contentMode: .fill)
+        .frame(width: UIScreen.main.bounds.width - 20, height: 250, alignment: .center)
     }
 }
 

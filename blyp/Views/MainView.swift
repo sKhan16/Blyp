@@ -13,15 +13,13 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            List(user.blyps?.list ?? []) { blyp in
-                NavigationLink(destination: BlypView(blyp: blyp)) {
-                    VStack {
-                        Text(blyp.name)
-                        if blyp.imageAvailable {
-                            BlypImage(blyp: blyp)
-                        }
-                    }
+            ScrollView {
+                ForEach(user.blyps?.list ?? []) { blyp in
+                    //                NavigationLink(destination: BlypView(blyp: blyp)) {
+                    BlypCard(blyp: blyp)
+                        .padding(.top, 10)
                 }
+                .frame(width: UIScreen.main.bounds.width)
             }
             .navigationBarTitle("Blyp", displayMode: .inline)
             .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
