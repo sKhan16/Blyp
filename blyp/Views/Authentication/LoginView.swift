@@ -7,9 +7,9 @@
 //
 
 /**
-
+ 
  This file is an absolute crime against coding best practices, please never look at it
-
+ 
  */
 
 import AuthenticationServices
@@ -18,38 +18,38 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var user: UserObservable
-
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Welcome to Blyp")
-                #if DEBUG
-                    Button("DEVELOPER LOGIN", action: {
-                        self.user.developerLogin()
-                })
-                        .frame(height: 50, alignment: .center)
-                        .padding(25)
-                        .font(/*@START_MENU_TOKEN@*/ .title/*@END_MENU_TOKEN@*/)
-                        .accentColor(.red)
-                #else
-                    SignInWithAppleToFirebase { response in
-                        if response == .success {
-                            Auth.auth().addStateDidChangeListener { (_: Auth, user: User?) in
-                                if let user = user {
-                                    self.user.completeLogin(user: user)
-                                }
-                            }
-                        } else if response == .error {
-                            // FIXME: ADD BETTER ERROR HANDLING
+        VStack {
+            Text("Welcome to Blyp")
+            #if DEBUG
+            Button("DEVELOPER LOGIN", action: {
+                self.user.developerLogin()
+            })
+                .frame(height: 50, alignment: .center)
+                .padding(25)
+                .font(.title)
+                .accentColor(.red)
+                .background(Color.black)
+            #else
+            SignInWithAppleToFirebase { response in
+                if response == .success {
+                    Auth.auth().addStateDidChangeListener { (_: Auth, user: User?) in
+                        if let user = user {
+                            self.user.completeLogin(user: user)
                         }
                     }
-                    .frame(height: 50, alignment: .center)
-                    .padding(25)
-                #endif
+                } else if response == .error {
+                    // FIXME: ADD BETTER ERROR HANDLING
+                }
             }
+            .frame(height: 50, alignment: .center)
+            .padding(25)
+            #endif
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .padding(0)
+        .edgesIgnoringSafeArea(.all)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(PastelViewRepresentable(colors: [UIColor(named: "BlypOrange")!,UIColor(named: "BlypYellow")!, UIColor(named: "BlypGreen")!], startPastelPoint: .top, endPastelPoint: .bottom).edgesIgnoringSafeArea(.all))
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Cards
 
 struct BlypCard: View {
     var backgroundColor: Color? = nil
@@ -38,7 +37,7 @@ struct BlypCard: View {
                             Text(self.blyp.description).font(.subheadline).foregroundColor(Color.white).padding(.leading, 20).padding(.bottom, 10)
                             Spacer()
                         }.frame(width: geom.size.width)
-                    }.background(Blur(style: .systemUltraThinMaterial))
+                    }.background(Blur(style: .systemMaterialDark))
                 }
             }
         }
