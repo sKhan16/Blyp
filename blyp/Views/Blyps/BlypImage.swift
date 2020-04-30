@@ -12,7 +12,9 @@ import SDWebImageSwiftUI
 
 /// A VERY unsafe view for BlypImage. ONLY use this if you're sure everything required isn't null.
 struct BlypImage: View {
-    let blyp: Blyp
+    var blyp: Blyp
+    var width: CGFloat?
+    var height: CGFloat?
     var body: some View {
         WebImage(url: URL(string: blyp.imageUrl!))
             .onSuccess { image, cacheType in
@@ -24,7 +26,7 @@ struct BlypImage: View {
         .transition(.fade)
         .scaledToFit()
         .aspectRatio(contentMode: .fill)
-        .frame(width: UIScreen.main.bounds.width - 20, height: 250, alignment: .center)
+        .frame(width: width == nil ? UIScreen.main.bounds.width - 20 : width, height: height == nil ? 250: height, alignment: .center)
     }
 }
 

@@ -11,13 +11,18 @@ import SwiftUI
 struct BlypView: View {
     @State var blyp: Blyp
     var body: some View {
-        NavigationView {
-            Text(blyp.description)
-            NavigationLink(destination: Text("TODO")) {
-                Text("Go visit it!")
+        
+        VStack(alignment: .leading) {
+            if (blyp.hasImage) {
+                BlypImage(blyp: blyp, width: UIScreen.main.bounds.width, height: 400)
+                Spacer()
             }
-            .navigationBarTitle(self.blyp.name)
+            Text(blyp.name).font(.largeTitle)
+            Text(blyp.description)
+            Spacer()
         }
+        .edgesIgnoringSafeArea(.top)
+        .frame(maxHeight: .infinity)
     }
 }
 

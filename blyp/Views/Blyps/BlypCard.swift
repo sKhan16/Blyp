@@ -19,9 +19,10 @@ struct BlypCard: View {
         if blyp.hasImage {
             self.backgroundImage = BlypImage(blyp: blyp)
         } else {
-            backgroundColor = .blypGreen
+            self.backgroundColor = .blypGreen
         }
     }
+    
     
     var body: some View {
         VStack {
@@ -41,11 +42,10 @@ struct BlypCard: View {
                 }
             }
         }
-        .frame(width: UIScreen.main.bounds.width - 20, height: 250)
+        .frame(height: 250)
         .background(backgroundColor)
         .background(backgroundImage)
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        
     }
 }
 

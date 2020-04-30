@@ -30,7 +30,7 @@ struct LoginView: View {
                 .padding(25)
                 .font(.title)
                 .accentColor(.red)
-                .background(Color.black)
+                .background(Blur(style: .systemMaterialDark))
             #else
             SignInWithAppleToFirebase { response in
                 if response == .success {
@@ -44,6 +44,8 @@ struct LoginView: View {
                 }
             }
             .frame(height: 50, alignment: .center)
+            .cornerRadius(6.0) // This crops off the weird white corners that are visible on the gradient background
+                .opacity(0.9)
             .padding(25)
             #endif
         }
