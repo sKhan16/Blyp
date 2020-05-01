@@ -30,7 +30,7 @@ struct MainView: View {
                         // TODO: Also add shrinky animation?
                         self.selectedBlyp = blyp
                         self.isBlypPresented.toggle()
-                }.shadow(color: .gray, radius: 9.0, x: 0, y: 5)
+                }.shadow(radius: 9.0, x: 0, y: 5)
             }
             .sheet(isPresented: $isBlypPresented) {
                 BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
