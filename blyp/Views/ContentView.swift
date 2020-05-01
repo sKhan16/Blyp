@@ -18,6 +18,7 @@ struct ContentView: View {
             if user.loginState == .loggedIn {
                 MainView()
             } else if user.loginState == .signingUp {
+                OnboardingView()
                 SignUpView()
             } else if user.loginState == .loggedOut {
                 LoginView()
@@ -28,8 +29,5 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environmentObject(UserObservable())
-    }
-}
+
+
