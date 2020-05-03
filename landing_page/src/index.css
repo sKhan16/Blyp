@@ -1,20 +1,147 @@
-.headline {
-  background-image: url(./img/map-seattle.png);
-  background-size: cover;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+.app-container, .main {
+    width: inherit;
 }
 
-.support-link-button {
-  background-color: #FACFAD;
+.blyp-button a {
+    color: white;
+}
+
+.blyp-button:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+.blyp-logo, .name {
+    font-style: italic;
+    font-family: agenda, sans-serif;
+    font-weight: 700;
+}
+
+.blyp-logo, .header, h2, h3, .headline, .temp-button {
+    color: white;
+
+}
+
+.download-btn {
+    background-image: url("./img/badge-download-on-the-app-store-white.svg");
+    display: block;
+    height: 40px;
+    width: 120px;
+}
+
+.download-btn, .temp-button {
+    margin-top: 7em;
+}
+
+.blyp-button, .download-btn, .temp-button {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.email {
+    font-style: italic;
+}
+
+.link, .link:hover {
+    color: #EA7F36;
+}
+
+.link:hover {
+    font-style: italic;
+    text-decoration: none;
+}
+
+.header {
+    font-size: 6rem;
+    line-height: 85%;
+}
+
+.header, .nav-link, .subheader, .temp-button, h2, h3 {
+    font-family: agenda, sans-serif;
+}
+
+.header, .nav-link {
+    font-weight: 700;
+}
+
+.headline-container {
+    padding-bottom: 10em;
+    padding-top: 10em;
+}
+
+.main {
+    background: linear-gradient(-200deg, #97C9AF, #97C9AF, #E8C11A, rgb(232, 150, 26), #EA7F36, #EA7F36);
+    background-size: 200% 200%;
+    position: relative;
+    top: -60px;
+    -webkit-animation: gradient 7s ease infinite;
+	        animation: gradient 7s ease infinite;
+    width: inherit;
+}
+
+.section {
+    padding-bottom: 4em;
+    padding-top: 4em;
+}
+
+.subheader {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 97%;
+    padding-top: .2em;
+}
+
+.support- {
+    background-color: #E8C11A;
+    width: 100%;
+}
+
+.support-link-button, .btn-primary {
+  background-color: #FF7F29;
   border: none;
   box-shadow:  0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
   transition: 0.2s ease;
-  color: black;
 }
 
 .support-link-button:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: 0.2s ease;
+}
+
+.temp-button, .blyp-button {
+    border: solid 2px white;
+    border-radius: 15px;
+    font-weight: 500;
+    padding-bottom: .3em;
+    padding-left: .6em;
+    padding-right: .6em;
+    padding-top: .3em;
+    width: fit-content;
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.blyp-logo:hover {
+    color: white;
 }

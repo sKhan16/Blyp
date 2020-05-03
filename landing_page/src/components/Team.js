@@ -5,12 +5,14 @@ import PersonCard from "./PersonCard";
 import gravatar from "../img/gravatar.png";
 import kassy from "../img/k.jpg"
 import hayden from "../img/h.jpg"
+import shakeel from "../img/s.jpg"
+import vanely from '../img/v.jpg'
 
 export default class Team extends React.Component {
   render() {
     return (
-      <Jumbotron className="bg-white text-left pt-0 pb-0">
-        <h2 className="display-4 font-weight-bold">Our Team</h2>
+      <div className="text-left pt-0 pb-0">
+        <h2 className="header display-4 font-weight-bold">our team</h2>
         <Container>
           <Row>
             <PersonCard
@@ -21,14 +23,14 @@ export default class Team extends React.Component {
               quip="Hello world!"
             ></PersonCard>
             <PersonCard
-              imgSrc={gravatar}
+              imgSrc={vanely}
               name="Vanely Ruiz"
               role="Designer & Developer"
               email="vanely@uw.edu"
               quip="Hello world!"
             ></PersonCard>
             <PersonCard
-              imgSrc={gravatar}
+              imgSrc={shakeel}
               name="Shakeel Khan"
               role="Full Stack Developer"
               email="khansk97@uw.edu"
@@ -43,7 +45,7 @@ export default class Team extends React.Component {
             ></PersonCard>
           </Row>
         </Container>
-      </Jumbotron>
+      </div>
     );
   }
 }

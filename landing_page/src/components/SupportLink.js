@@ -7,10 +7,6 @@ export default class SupportLink extends React.Component {
     return (
       <Container fluid className="mt-5">
         <Row>
-          <Col sm={2} className="pl-0 pr-0">
-            <Circle text={this.props.number} radius={40}></Circle>
-          </Col>
-          <Col sm={7}>
             <Container>
               <Row>
                 <h3>{this.props.title}</h3>
@@ -19,12 +15,10 @@ export default class SupportLink extends React.Component {
                 <p>{this.props.details}</p>
               </Row>
             </Container>
-          </Col>
-          <Col sm={3}>
-            <Button block variant="secondary" className="support-link-button" style={{ backgroundColor: "#FACFAD", border: "none", color: "black" }}>
-              {this.props.buttonName}
-            </Button>
-          </Col>
+          
+            <div className="blyp-button">
+              <a href={this.props.buttonHref}>{this.props.buttonName}</a>
+            </div>
         </Row>
       </Container>
     );
