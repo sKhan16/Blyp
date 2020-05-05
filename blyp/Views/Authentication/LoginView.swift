@@ -21,7 +21,13 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text("Welcome to Blyp")
+            VStack {
+                Image("logo-4")
+                Image("logo-3").padding(.top, -5)
+                Image("logo-2").padding(.top, -8)
+                Image("logo-1").padding(.top, -10)
+            }
+            Text("Blyp").font(.title).multilineTextAlignment(.center).padding(.vertical)
             #if DEBUG
             Button("DEVELOPER LOGIN", action: {
                 self.user.developerLogin()

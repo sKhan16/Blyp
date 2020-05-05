@@ -11,11 +11,9 @@ import SwiftUI
 struct BlypView: View {
     @State var blyp: Blyp
     var body: some View {
-        
         VStack(alignment: .leading) {
             if (blyp.hasImage) {
-                BlypImage(blyp: blyp, width: UIScreen.main.bounds.width, height: 400)
-                Spacer()
+                BlypImage(blyp: blyp, width: UIScreen.main.bounds.width, contentMode: .fit)
             }
             Text(blyp.name).font(.largeTitle)
             Text(blyp.description)

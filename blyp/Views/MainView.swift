@@ -13,31 +13,16 @@ struct MainView: View {
     
     var blyps: [Blyp]
     
-    @State private var isBlypPresented: Bool = false
-    @State private var selectedBlyp: Blyp? = nil
-    
     init(blyps: [Blyp]) {
         // This is required to not show the ugly lines between the cards
         UITableView.appearance().separatorColor = .clear
+        
         self.blyps = blyps
     }
     
     var body: some View {
         NavigationView {
-            List(blyps) { blyp in
-                BlypCard(blyp: blyp)
-                    .padding(.vertical, 4).onTapGesture {
-                        // TODO: Also add shrinky animation?
-                        self.selectedBlyp = blyp
-                        self.isBlypPresented.toggle()
-                }.shadow(radius: 9.0, x: 0, y: 5)
-            }
-            .sheet(isPresented: $isBlypPresented) {
-                BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
-            }
-            .navigationBarTitle("Blyp", displayMode: .inline)
-            .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
-                                trailing: MainViewActionSheet().environmentObject(user))
+            BlypList(for: blyps)
         }
     }
 }
@@ -88,6 +73,34 @@ struct MainViewActionSheet: View {
         .sheet(isPresented: $addingFriend) {
             AddFriend(isPresented: self.$addingFriend).environmentObject(self.user)
         }
+    }
+}
+
+struct BlypList: View {
+    var blyps: [Blyp]
+    
+    @State private var isBlypPresented: Bool = false
+    @State private var selectedBlyp: Blyp? = nil
+    
+    init (for blyps: [Blyp]) {
+        self.blyps = blyps
+    }
+    
+    var body: some View {
+        List(blyps) { blyp in
+            BlypCard(blyp: blyp)
+                .padding(.vertical, 4).onTapGesture {
+                    // TODO: Also add shrinky animation?
+                    self.selectedBlyp = blyp
+                    self.isBlypPresented.toggle()
+            }.shadow(radius: 9.0, x: 0, y: 5)
+        }
+        .sheet(isPresented: $isBlypPresented) {
+            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
+        }
+        .navigationBarTitle("Blyp", displayMode: .inline)
+        .navigationBarItems(leading: AddBlypViewButton(),
+                            trailing: MainViewActionSheet())
     }
 }
 
