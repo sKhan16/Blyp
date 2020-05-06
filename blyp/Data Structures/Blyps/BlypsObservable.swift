@@ -101,6 +101,12 @@ class BlypsObservable: ObservableObject {
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile) {
         var tempBlyps: [Blyp] = []
+//        let db = Firestore.firestore()
+//        db.collection(databaseName).whereField("uid", in: userProfile.friends).addSnapshotListener { documentSnapshot, _ in
+//            // get... all blyps?
+//
+//        }
+//
         for (_, blyp) in userProfile.blyps {
             tempBlyps.append(blyp)
         }

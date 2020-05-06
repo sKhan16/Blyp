@@ -70,7 +70,7 @@ struct MainViewActionSheet: View {
                 .cancel(),
             ])
         }
-        .sheet(isPresented: $addingFriend) {
+    .sheet(isPresented: $addingFriend) {
             AddFriend(isPresented: self.$addingFriend).environmentObject(self.user)
         }
     }
@@ -96,7 +96,7 @@ struct BlypList: View {
             }.shadow(radius: 9.0, x: 0, y: 5)
         }
         .sheet(isPresented: $isBlypPresented) {
-            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong", createdOn: Date.init()))
+            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
         }
         .navigationBarTitle("Blyp", displayMode: .inline)
         .navigationBarItems(leading: AddBlypViewButton(),

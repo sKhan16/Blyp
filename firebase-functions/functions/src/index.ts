@@ -24,6 +24,7 @@ exports.createUserProfileDocumentOnAccountCreation = functions.auth.user().onCre
     friends: [],
     blyps: [],
     legacyContact: {},
+    uid: user.uid
   }).then((result: FirebaseFirestore.WriteResult) => {
     if (hasDisplayName) {
       return admin.firestore().collection(userDisplayNames).doc(user.uid).create({
