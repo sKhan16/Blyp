@@ -96,7 +96,7 @@ struct BlypList: View {
             }.shadow(radius: 9.0, x: 0, y: 5)
         }
         .sheet(isPresented: $isBlypPresented) {
-            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
+            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong", createdOn: Date.init()))
         }
         .navigationBarTitle("Blyp", displayMode: .inline)
         .navigationBarItems(leading: AddBlypViewButton(),

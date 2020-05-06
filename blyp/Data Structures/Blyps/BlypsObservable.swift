@@ -82,6 +82,7 @@ class BlypsObservable: ObservableObject {
                 "id": blyp.id.uuidString,
                 "name": blyp.name,
                 "description": blyp.description,
+                "createdOn": blyp.createdOn,
                 "imageUrl": blyp.imageUrl,
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
@@ -104,7 +105,7 @@ class BlypsObservable: ObservableObject {
             tempBlyps.append(blyp)
         }
         tempBlyps.sort { (a, b) -> Bool in
-            a.name < b.name
+            a.createdOn > b.createdOn
         }
         self.list = tempBlyps
         print("Blyps have been updated LIVE!")

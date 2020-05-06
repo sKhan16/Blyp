@@ -14,6 +14,7 @@ struct Blyp: Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
     var description: String
+    var createdOn: Date = Date()// Default to now
     
     var imageUrl: String?
     var imageBlurHash: String?
@@ -25,6 +26,7 @@ struct Blyp: Identifiable, Codable {
         case id
         case name
         case description
+        case createdOn
         case imageUrl
         case imageBlurHash
         case imageBlurHashWidth
