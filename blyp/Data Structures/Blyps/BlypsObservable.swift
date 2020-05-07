@@ -101,12 +101,33 @@ class BlypsObservable: ObservableObject {
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile) {
         var tempBlyps: [Blyp] = []
-//        let db = Firestore.firestore()
-//        db.collection(databaseName).whereField("uid", in: userProfile.friends).addSnapshotListener { documentSnapshot, _ in
-//            // get... all blyps?
-//
+        let db = Firestore.firestore()
+        
+//        db.collection("userProfiles").document("HtXEsbEJbabtoFdk9GxrsavhsjE3").getDocument { documentSnapshot, error in
+//            let result = Result {
+//                try documentSnapshot.flatMap {
+//                    try $0.data(as: UserProfile.self)
+//                }
+//            }
+//            switch result {
+//            case let .success(profile):
+//                if let profile = profile {
+//                    print(profile)
+//                }
+//            case let .failure(err): print(err)
+//                // FIXME: ADD ERROR HANDLING
+//            }
 //        }
-//
+        
+        db.collection("userProfiles").whereField("uid", in: userProfile.friends).getDocuments { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+              print("Error fetching Friends' blyps: \(error!)")
+              return
+            }
+
+            print("Current data: \(document.documents)")
+        }
+
         for (_, blyp) in userProfile.blyps {
             tempBlyps.append(blyp)
         }
