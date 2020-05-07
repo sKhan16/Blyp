@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FriendProfileView: View {
     @EnvironmentObject var user: UserObservable
-    var friendProfile: FriendProfile
+    var friendProfile: FriendProfileSearchable
     var body: some View {
         NavigationView {
             VStack {
@@ -35,7 +35,7 @@ struct FriendProfileView: View {
 }
 
 struct FriendProfileView_Previews: PreviewProvider {
-    private static var friendProfile: FriendProfile = FriendProfile(displayName: "Bill", uid: "")
+    private static var friendProfile: FriendProfileSearchable = FriendProfileSearchable(displayName: "Bill", uid: "")
     static var previews: some View {
         FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
     }

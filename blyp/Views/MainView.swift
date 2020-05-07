@@ -16,7 +16,6 @@ struct MainView: View {
     init(blyps: [Blyp]) {
         // This is required to not show the ugly lines between the cards
         UITableView.appearance().separatorColor = .clear
-        
         self.blyps = blyps
     }
     

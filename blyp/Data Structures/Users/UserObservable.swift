@@ -19,13 +19,17 @@ public class UserObservable: ObservableObject {
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
     @Published var blyps: BlypsObservable?
-    @Published var friends: [FriendProfile] = []
+    @Published var friends: [FriendProfileSearchable] = []
 
     private let databaseName: String = "userProfiles"
     private var blypFirestoreListenerSubscription: ListenerRegistration?
     
     init() {
         self.blyps = BlypsObservable(user: self)
+    }
+    
+    deinit {
+        blypFirestoreListenerSubscription?.remove()
     }
     
     // MARK: Authentication and Login/Logout functions
@@ -116,7 +120,7 @@ public class UserObservable: ObservableObject {
                 switch result {
                 case let .success(profile):
                     if let profile = profile {
-                        self.friends = profile.friends.map { FriendProfile(uid: $0) }
+                        self.friends = profile.friends.map { FriendProfileSearchable(uid: $0) }
                         guard let blyps = self.blyps else {
                             print("blyps were not configured in UserObservable")
                             return
@@ -129,7 +133,7 @@ public class UserObservable: ObservableObject {
             }
     }
 
-    func addFriend(_ friendProfile: FriendProfile) {
+    func addFriend(_ friendProfile: FriendProfileSearchable) {
         let db = Firestore.firestore()
         db.collection(databaseName).document(uid).updateData([
             "friends": FieldValue.arrayUnion([friendProfile.uid]),

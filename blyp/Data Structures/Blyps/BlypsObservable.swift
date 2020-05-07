@@ -13,15 +13,21 @@ import FirebaseStorage
 
 class BlypsObservable: ObservableObject {
     var user: UserObservable?
-    @Published var list: [Blyp] = []
+    @Published var personal: [Blyp] = []
+    @Published var friends: [Blyp] = []
     
     private let storage = Storage.storage()
+    private var friendBlypSubscription: ListenerRegistration?
     private let databaseName: String = "userProfiles"
     
     private let imageExtension = "jpeg"
     
     init(user: UserObservable) {
         self.user = user
+    }
+    
+    deinit {
+        friendBlypSubscription?.remove()
     }
     
     /// Saves the Blyp to the user's account
@@ -83,7 +89,7 @@ class BlypsObservable: ObservableObject {
                 "name": blyp.name,
                 "description": blyp.description,
                 "createdOn": blyp.createdOn,
-                "imageUrl": blyp.imageUrl,
+                "imageUrl": blyp.imageUrl, // Ignore these warnings, we do NOT want to store a default value
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
                 "imageBlurHashWidth": blyp.imageBlurHashWidth
@@ -97,48 +103,50 @@ class BlypsObservable: ObservableObject {
         }
     }
     
+    private func subscribeToFriendBlyps(_ db: Firestore, _ userProfile: UserProfile) {
+        self.friends = [] // reset this so we can repopulate it
+        if userProfile.friends.count == 0 {return} // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
+        self.friendBlypSubscription = db.collection("userProfiles").whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
+            guard let documents = documentsSnapshot?.documents else {
+                print(error ?? "")
+                return
+            }
+            // Go through each profile
+            for documentSnapshot in documents {
+                // Turn each profile into a UserProfile
+                let result = Result {
+                    try documentSnapshot.data(as: UserProfile.self)
+                }
+                switch result {
+                case let .success(profile):
+                    if let profile = profile {
+                        // This is a horribly inefficient process due to sorting buuuut I'm not sure I care
+                        let currentFriendsBlyps = self.parseBlyps(from: profile)
+                        self.friends.append(contentsOf: currentFriendsBlyps)
+                        self.friends.sort()
+                    }
+                case let .failure(err): print(err)
+                    // FIXME: ADD ERROR HANDLING
+                }
+            }
+        }
+    }
+    
+
+    
     /// Parses blyps from incoming profile and sets to $list
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile) {
-        var tempBlyps: [Blyp] = []
         let db = Firestore.firestore()
+        subscribeToFriendBlyps(db, userProfile)
+        self.personal = parseBlyps(from: userProfile).sorted()
+    }
         
-//        db.collection("userProfiles").document("HtXEsbEJbabtoFdk9GxrsavhsjE3").getDocument { documentSnapshot, error in
-//            let result = Result {
-//                try documentSnapshot.flatMap {
-//                    try $0.data(as: UserProfile.self)
-//                }
-//            }
-//            switch result {
-//            case let .success(profile):
-//                if let profile = profile {
-//                    print(profile)
-//                }
-//            case let .failure(err): print(err)
-//                // FIXME: ADD ERROR HANDLING
-//            }
-//        }
-        
-        db.collection("userProfiles").whereField("uid", in: userProfile.friends).getDocuments { documentSnapshot, error in
-            guard let document = documentSnapshot else {
-              print("Error fetching Friends' blyps: \(error!)")
-              return
-            }
-
-            print("Current data: \(document.documents)")
-        }
-
+    private func parseBlyps(from userProfile: UserProfile) -> [Blyp] {
+        var tempBlyps: [Blyp] = []
         for (_, blyp) in userProfile.blyps {
             tempBlyps.append(blyp)
         }
-        tempBlyps.sort { (a, b) -> Bool in
-            a.createdOn > b.createdOn
-        }
-        self.list = tempBlyps
-        print("Blyps have been updated LIVE!")
-    }
-    
-    init() {
-        self.list = []
+        return tempBlyps
     }
 }
