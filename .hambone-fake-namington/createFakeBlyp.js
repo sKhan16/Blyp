@@ -28,7 +28,7 @@ firestore
         fakeUsers.forEach((uid) => {
           admin.firestore().collection("userProfiles").doc(uid).update("blyps", generateFakeBlyps(testBlyps));
         });
-        process.exit()
+        // process.exit()
       });
   });
 
@@ -46,8 +46,8 @@ firestore
 
         fakeBlyps.push({
             id: faker.random.uuid(),
-            name: faker.lorem.words(faker.random.number(3)),
-            description: faker.lorem.words(faker.random.number(10)),
+            name: faker.lorem.words(faker.random.number({min: 1, max: 3})),
+            description: faker.lorem.words(faker.random.number({min: 1, max: 10})),
             imageBlurHash: selectedImage.imageBlurHash,
             imageBlurHashHeight: selectedImage.imageBlurHashHeight,
             imageBlurHashWidth: selectedImage.imageBlurHashWidth, 
