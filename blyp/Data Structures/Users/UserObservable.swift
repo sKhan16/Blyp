@@ -30,6 +30,7 @@ public class UserObservable: ObservableObject {
     
     deinit {
         blypFirestoreListenerSubscription?.remove()
+        blyps = nil
     }
     
     // MARK: Authentication and Login/Logout functions
@@ -102,16 +103,21 @@ public class UserObservable: ObservableObject {
 
     // MARK: Utility functions
 
+    /// Reset all user data
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
+//        blyps = nil
+        
+        friends = []
     }
 
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         let db = Firestore.firestore()
+        
         blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
-            .addSnapshotListener { documentSnapshot, _ in
+            .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
                 let result = Result {
                     try documentSnapshot.flatMap {
                         try $0.data(as: UserProfile.self)
@@ -125,7 +131,7 @@ public class UserObservable: ObservableObject {
                             print("blyps were not configured in UserObservable")
                             return
                         }
-                        blyps.parse(from: profile)
+                        blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? true)
                     }
                 case let .failure(err): print(err)
                     // FIXME: ADD ERROR HANDLING
@@ -137,6 +143,13 @@ public class UserObservable: ObservableObject {
         let db = Firestore.firestore()
         db.collection(databaseName).document(uid).updateData([
             "friends": FieldValue.arrayUnion([friendProfile.uid]),
+            ])
+    }
+    
+    func removeFriend(_ friendProfile: FriendProfileSearchable) {
+        let db = Firestore.firestore()
+        db.collection(databaseName).document(uid).updateData([
+            "friends": FieldValue.arrayRemove([friendProfile.uid])
         ])
     }
 }

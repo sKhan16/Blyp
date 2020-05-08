@@ -836,7 +836,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -863,7 +863,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;

@@ -12,6 +12,10 @@ struct FriendProfileSearchable: Equatable {
     var displayName: String?
     var uid: String
 
+    func isAlreadyFriend(of user: UserObservable) -> Bool {
+        return user.friends.contains(self)
+    }
+    
     // UID is the only thing we really care about
     static func == (lhs: FriendProfileSearchable, rhs: FriendProfileSearchable) -> Bool {
         return lhs.uid == rhs.uid

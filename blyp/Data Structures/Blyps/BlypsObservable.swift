@@ -104,7 +104,7 @@ class BlypsObservable: ObservableObject {
     }
     
     private func subscribeToFriendBlyps(_ db: Firestore, _ userProfile: UserProfile) {
-        //        self.friendBlypSubscription?.remove()
+        self.friendBlypSubscription?.remove()
         // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
         print("Subscribing to these friends: \(userProfile.friends)")
         if userProfile.friends.count == 0 {
@@ -119,9 +119,11 @@ class BlypsObservable: ObservableObject {
     
     /// Parses blyps from incoming profile and sets to $list
     /// - Parameter userProfile: Profile to parse blyps from
-    func parse(from userProfile: UserProfile) {
+    func parse(from userProfile: UserProfile, isFromCache: Bool) {
         let db = Firestore.firestore()
-        subscribeToFriendBlyps(db, userProfile)
+        if !isFromCache {
+            subscribeToFriendBlyps(db, userProfile)
+        }
         self.personal = userProfile.blyps.values.sorted()
     }
     
