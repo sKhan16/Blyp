@@ -46,6 +46,7 @@ exports.updateSearchableInAlgolia = functions.firestore
     if (oldUsername.displayName === newUsername.displayName) {
       return "just updating uuid"; // probably just updating UUID, ignore it
     }
+    newUsername.objectID = context.params.uid 
 
     // Store new object ID
     return admin

@@ -159,9 +159,3 @@ enum LoginState {
     case signingUp
     case loggedOut
 }
-
-/// Names of Firebase Functions
-enum Funcs: String {
-    case addBlyp
-    case removeBlyp
-}
