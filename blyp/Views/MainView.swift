@@ -10,18 +10,14 @@ import SwiftUI
 import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
-    
-    var blyps: [Blyp]
-    
-    init(blyps: [Blyp]) {
+    init() {
         // This is required to not show the ugly lines between the cards
         UITableView.appearance().separatorColor = .clear
-        self.blyps = blyps
     }
     
     var body: some View {
         NavigationView {
-            BlypList(for: blyps)
+            BlypList(blypsObservable: user.blyps!)
         }
     }
 }
@@ -76,17 +72,13 @@ struct MainViewActionSheet: View {
 }
 
 struct BlypList: View {
-    var blyps: [Blyp]
-    
+    @EnvironmentObject var user: UserObservable
     @State private var isBlypPresented: Bool = false
     @State private var selectedBlyp: Blyp? = nil
-    
-    init (for blyps: [Blyp]) {
-        self.blyps = blyps
-    }
+    @ObservedObject var blypsObservable: BlypsObservable
     
     var body: some View {
-        List(blyps) { blyp in
+        List(blypsObservable.friends ) { blyp in
             BlypCard(blyp: blyp)
                 .padding(.vertical, 4).onTapGesture {
                     // TODO: Also add shrinky animation?
@@ -111,6 +103,6 @@ struct MainView_Previews: PreviewProvider {
         Blyp(name: "Test 4 name", description: "Test 4 description")
     ]
     static var previews: some View {
-        MainView(blyps: testBlyps).environmentObject(UserObservable())
+        MainView().environmentObject(UserObservable())
     }
 }

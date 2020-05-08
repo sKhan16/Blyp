@@ -104,49 +104,56 @@ class BlypsObservable: ObservableObject {
     }
     
     private func subscribeToFriendBlyps(_ db: Firestore, _ userProfile: UserProfile) {
-        self.friends = [] // reset this so we can repopulate it
-        if userProfile.friends.count == 0 {return} // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
-        self.friendBlypSubscription = db.collection("userProfiles").whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
-            guard let documents = documentsSnapshot?.documents else {
-                print(error ?? "")
-                return
-            }
-            // Go through each profile
-            for documentSnapshot in documents {
-                // Turn each profile into a UserProfile
-                let result = Result {
-                    try documentSnapshot.data(as: UserProfile.self)
-                }
-                switch result {
-                case let .success(profile):
-                    if let profile = profile {
-                        // This is a horribly inefficient process due to sorting buuuut I'm not sure I care
-                        let currentFriendsBlyps = self.parseBlyps(from: profile)
-                        self.friends.append(contentsOf: currentFriendsBlyps)
-                        self.friends.sort()
-                    }
-                case let .failure(err): print(err)
-                    // FIXME: ADD ERROR HANDLING
-                }
-            }
+        //        self.friendBlypSubscription?.remove()
+        // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
+        print("Subscribing to these friends: \(userProfile.friends)")
+        if userProfile.friends.count == 0 {
+            self.friends = []
+            return
+        }
+        let userProfilesRef = db.collection("userProfiles")
+        self.friendBlypSubscription = userProfilesRef.whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
+            self.getBlypsFromFriendsSnapshot(snapshot: documentsSnapshot, error: error)
         }
     }
-    
-
     
     /// Parses blyps from incoming profile and sets to $list
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile) {
         let db = Firestore.firestore()
         subscribeToFriendBlyps(db, userProfile)
-        self.personal = parseBlyps(from: userProfile).sorted()
+        self.personal = userProfile.blyps.values.sorted()
     }
-        
-    private func parseBlyps(from userProfile: UserProfile) -> [Blyp] {
-        var tempBlyps: [Blyp] = []
-        for (_, blyp) in userProfile.blyps {
-            tempBlyps.append(blyp)
+    
+    func getBlypsFromFriendsSnapshot(snapshot: QuerySnapshot?, error: Error?) {
+        if let error = error {
+            print("Error retreiving collection: \(error)")
         }
-        return tempBlyps
+        guard let documents = snapshot?.documents else {
+            print("Error getting friends' blyps: \(String(describing: error))")
+            return
+        }
+        
+        var tempFriends: [Blyp] = []
+        // Go through each profile
+        for documentSnapshot in documents {
+            // Turn each profile into a UserProfile
+            let result = Result {
+                try documentSnapshot.data(as: UserProfile.self)
+            }
+            switch result {
+            case let .success(profile):
+                if let profile = profile {
+                    print("Adding \(profile.blyps.values.count) new items to the friends' list we're building")
+                    tempFriends.append(contentsOf: profile.blyps.values)
+                }
+            case let .failure(err): print(err)
+                // FIXME: ADD ERROR HANDLING
+            }
+        }
+        tempFriends.sort()
+        self.friends.removeAll()
+        self.friends.append(contentsOf: tempFriends)
+        print("Friends' blyps are now \(self.friends.count) long")
     }
 }

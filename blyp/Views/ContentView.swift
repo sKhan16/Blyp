@@ -18,8 +18,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if user.loginState == .loggedIn {
-//                MainView(blyps: user.blyps?.personal ?? [])
-                MainView(blyps: user.blyps?.friends ?? [])
+                MainView()
             } else if user.loginState == .signingUp {
                 SignUpView()
             } else if user.loginState == .loggedOut {
