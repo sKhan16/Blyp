@@ -1,54 +1,97 @@
-.app-container, .main {
-    width: inherit;
-}
-
-.blyp-button a {
-    color: white;
-}
-
-.blyp-button:hover a {
-    color: white;
+a {
     text-decoration: none;
 }
 
-.blyp-logo, .name {
+#about {
+    background-image: radial-gradient(circle, #E8C11A,  #97C9AF);
+    background-size: 200% 200%;
+}
+
+.about-img {
+    height: 200px;
+}
+
+.about-section {
+    margin-top: 8em;
+    margin-bottom: 8em;
+}
+
+.blyp-text-logo, .nav-link, .name {
     font-style: italic;
-    font-family: agenda, sans-serif;
     font-weight: 700;
 }
 
-.blyp-logo, .header, h2, h3, .headline, .temp-button {
-    color: white;
-
+.blyp-text-logo, .button, h1, h2, h3, .navigation li, .name, .subheader {
+    font-family: Agenda,  Helvetica, Arial, sans-serif;
 }
 
-.download-btn {
+.button {
+    border: solid 2px white;
+    background-color: transparent;
+    border-radius: 1em;
+    font-weight: 500;
+    font-size: 1rem;
+    padding-bottom: .35em;
+    padding-left: .6em;
+    padding-right: .6em;
+    padding-top: .3em;
+    width: 150px;
+}
+
+.button:hover{
+    color: #EA7F36;
+    box-shadow: 0px, 0px, 5px, rgba(234, 126, 54, 0.527);
+}
+
+.button:hover, footer {
+    background-color: white;
+}
+
+.button, .navigation .nav-link{
+    color: white;
+}
+
+.button-temp {
+    width: fit-content;
+}
+
+.card {
+    
+    padding: 25px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.download-button {
     background-image: url("./img/badge-download-on-the-app-store-white.svg");
     display: block;
     height: 40px;
     width: 120px;
 }
 
-.download-btn, .temp-button {
-    margin-top: 7em;
-}
-
-.blyp-button, .download-btn, .temp-button {
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .email {
     font-style: italic;
 }
 
-.link, .link:hover {
+footer {
+    padding: 1em;
+}
+
+footer .link {
     color: #EA7F36;
 }
 
-.link:hover {
-    font-style: italic;
-    text-decoration: none;
+h2 {
+    font-size: 4rem;
+    line-height: 85%;
+    margin: 0px;
+}
+
+h3 {
+    font-size: 2rem;
 }
 
 .header {
@@ -56,32 +99,72 @@
     line-height: 85%;
 }
 
-.header, .nav-link, .subheader, .temp-button, h2, h3 {
-    font-family: agenda, sans-serif;
+.header, .navigation ul, .blyp-logo {
+    margin: 0;
+    padding: 0;
 }
 
-.header, .nav-link {
-    font-weight: 700;
-}
-
-.headline-container {
-    padding-bottom: 10em;
-    padding-top: 10em;
-}
-
-.main {
-    background: linear-gradient(-200deg, #97C9AF, #97C9AF, #E8C11A, rgb(232, 150, 26), #EA7F36, #EA7F36);
+#headline {
+    background: linear-gradient(-200deg, #97C9AF, #97C9AF, #C5C45A, #E8C11A, #E5A21C, #EA7F36);
     background-size: 200% 200%;
-    position: relative;
-    top: -60px;
-    -webkit-animation: gradient 7s ease infinite;
-	        animation: gradient 7s ease infinite;
+    padding-bottom: 14em;
+    padding-top: 14em;
+    -webkit-animation: gradient 5s ease infinite;
+	        animation: gradient 5s ease infinite;
     width: inherit;
 }
 
+.name {
+    font-size: 1.25rem;
+}
+
+.navigation {
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    height: 2em;
+    justify-content: space-between;
+    padding-top: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navigation ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.navigation li {
+    float: left;
+}
+  
+.nav-link {
+    border: solid 2px transparent;
+    display: block;
+    text-align: center;
+    margin: 1em;
+    padding-bottom: .3em;
+    padding-left: .6em;
+    padding-right: .6em;
+    padding-top: .3em;
+    text-decoration: none;
+}
+.nav-link:hover {
+    border: solid 2px white;
+    border-radius: 1em; 
+}
+
+#purpose {
+    background-color: #97C9AF;
+}
+
 .section {
-    padding-bottom: 4em;
-    padding-top: 4em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 2em;
 }
 
 .subheader {
@@ -91,32 +174,12 @@
     padding-top: .2em;
 }
 
-.support- {
+#support {
+    background-color: #E5A21C;
+}
+
+#team {
     background-color: #E8C11A;
-    width: 100%;
-}
-
-.support-link-button, .btn-primary {
-  background-color: #FF7F29;
-  border: none;
-  box-shadow:  0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
-  transition: 0.2s ease;
-}
-
-.support-link-button:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: 0.2s ease;
-}
-
-.temp-button, .blyp-button {
-    border: solid 2px white;
-    border-radius: 15px;
-    font-weight: 500;
-    padding-bottom: .3em;
-    padding-left: .6em;
-    padding-right: .6em;
-    padding-top: .3em;
-    width: fit-content;
 }
 
 @-webkit-keyframes gradient {
@@ -142,6 +205,29 @@
 	}
 }
 
-.blyp-logo:hover {
-    color: white;
+/* Extra small devices (portrait phones, less than 576px) */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
 }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .section {
+        padding-bottom: 10em;
+        padding-left: 13em;
+        padding-right: 13em;
+        padding-top: 10em;
+    }
+ }
