@@ -2,7 +2,6 @@ name: Push landing page to S3
 on:
   push:
     branches:    
-      - master
       - landing_page
 jobs:
   deploy:
