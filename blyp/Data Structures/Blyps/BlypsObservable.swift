@@ -41,7 +41,7 @@ class BlypsObservable: ObservableObject {
         // Store the image in the Firebase Cloud Storage bucket
         if (blyp.image != nil) {
             let storageRef = storage.reference()
-            let imageChild = "\(user.uid)/\(blyp.id).\(imageExtension)"
+            let imageChild = "test-blyps/\(blyp.id).\(imageExtension)"
             let imageRef = storageRef.child(imageChild)
             let imageData = (blyp.image?.jpegData(compressionQuality: 0.5))!
             
@@ -82,7 +82,7 @@ class BlypsObservable: ObservableObject {
     private func saveBlypToFirebase(_ blyp: Blyp) {
         let db = Firestore.firestore()
         // Save the blyp to the Firestore database
-        db.collection(databaseName).document(user!.uid).updateData([
+        db.collection(databaseName).document("test-blyps").updateData([
             // This MUST adhere to the Blyp struct
             "blyps.\(blyp.id)": [
                 "id": blyp.id.uuidString,

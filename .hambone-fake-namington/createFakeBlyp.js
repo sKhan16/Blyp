@@ -39,9 +39,14 @@ function generateFakeBlyps(testBlyps) {
   for (let key in testBlyps) {
     testBlypsArr.push(testBlyps[key]);
   }
+  let previouslySelected = [];
   testBlyps = testBlypsArr;
   for (let i = 0; i < 10; i++) {
     let index = faker.random.number(testBlyps.length - 1);
+    while (previouslySelected.includes(index)) {
+      index = faker.random.number(testBlyps.length - 1);
+    }
+    previouslySelected.push(index);
     let selectedImage = testBlyps[index];
     let id = faker.random.uuid();
     fakeBlyps[id] = {
@@ -52,7 +57,7 @@ function generateFakeBlyps(testBlyps) {
       imageBlurHash: selectedImage.imageBlurHash,
       imageBlurHashHeight: selectedImage.imageBlurHashHeight,
       imageBlurHashWidth: selectedImage.imageBlurHashWidth,
-      imageUrl: selectedImage.imageUrl
+      imageUrl: selectedImage.imageUrl,
     };
   }
 
