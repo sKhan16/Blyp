@@ -23,7 +23,7 @@ exports.createUserProfileDocumentOnAccountCreation = functions.auth.user().onCre
   // Create the user profile document
   return admin.firestore().collection(userProfiles).doc(user.uid).create({
     friends: [],
-    blyps: [],
+    blyps: {},
     legacyContact: {},
     uid: user.uid
   }).then((result: FirebaseFirestore.WriteResult) => {
