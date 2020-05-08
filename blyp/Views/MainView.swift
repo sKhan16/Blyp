@@ -10,6 +10,9 @@ import SwiftUI
 import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
+    @State private var isBlypPresented: Bool = false
+    @State private var selectedBlyp: Blyp? = nil
+    
     init() {
         // This is required to not show the ugly lines between the cards
         UITableView.appearance().separatorColor = .clear
@@ -17,7 +20,29 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            BlypList(blypsObservable: user.blyps!)
+            TabView {
+                BlypList(isBlypPresented: $isBlypPresented, selectedBlyp: $selectedBlyp, blypsObservable: user.blyps!, selectedBlypList: .personal)
+                    .tabItem {
+                        Image(systemName: "person.crop.circle.fill")
+                        Text("Profile")
+                }
+                BlypList(isBlypPresented: $isBlypPresented, selectedBlyp: $selectedBlyp, blypsObservable: user.blyps!, selectedBlypList: .friends)
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                }
+                Text("SURPRISE, I'M NOT DONE YET")
+                    .tabItem {
+                        Image(systemName: "exclamationmark.circle.fill")
+                        Text("Secret")
+                }
+            }
+            .sheet(isPresented: $isBlypPresented) {
+                BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
+            }
+            .navigationBarTitle("Blyp", displayMode: .inline)
+            .navigationBarItems(leading: AddBlypViewButton(),
+                                trailing: MainViewActionSheet())
         }
     }
 }
@@ -65,7 +90,7 @@ struct MainViewActionSheet: View {
                 .cancel(),
             ])
         }
-    .sheet(isPresented: $addingFriend) {
+        .sheet(isPresented: $addingFriend) {
             AddFriend(isPresented: self.$addingFriend).environmentObject(self.user)
         }
     }
@@ -73,25 +98,32 @@ struct MainViewActionSheet: View {
 
 struct BlypList: View {
     @EnvironmentObject var user: UserObservable
-    @State private var isBlypPresented: Bool = false
-    @State private var selectedBlyp: Blyp? = nil
+    @Binding var isBlypPresented: Bool
+    @Binding var selectedBlyp: Blyp?
     @ObservedObject var blypsObservable: BlypsObservable
+    var selectedBlypList: SelectedBlypList
     
     var body: some View {
-        List(blypsObservable.friends ) { blyp in
+        List(selectedBlypList == .friends ? blypsObservable.friends : blypsObservable.personal ) { blyp in
             BlypCard(blyp: blyp)
-                .padding(.vertical, 4).onTapGesture {
-                    // TODO: Also add shrinky animation?
+                .padding(.vertical, 4)
+                .onTapGesture {
                     self.selectedBlyp = blyp
                     self.isBlypPresented.toggle()
-            }.shadow(radius: 9.0, x: 0, y: 5)
+            }
+            .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
+            .scaleEffect(self.isBlypPressed(blyp) ? 0.95 : 1.0) // shrinky animation for selected blypcard
+            .animation(.spring())
         }
-        .sheet(isPresented: $isBlypPresented) {
-            BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
-        }
-        .navigationBarTitle("Blyp", displayMode: .inline)
-        .navigationBarItems(leading: AddBlypViewButton(),
-                            trailing: MainViewActionSheet())
+    }
+    
+    func isBlypPressed(_ blyp: Blyp) -> Bool {
+        return self.selectedBlyp == blyp && self.isBlypPresented
+    }
+    
+    enum SelectedBlypList {
+        case friends
+        case personal
     }
 }
 

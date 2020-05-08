@@ -21,7 +21,6 @@ struct BlypImage: View {
         }
         .resizable()
         .placeholder(Image(uiImage: UIImage(blurHash: blyp.imageBlurHash!, size: CGSize(width: blyp.imageBlurHashWidth!, height: blyp.imageBlurHashHeight!))!))
-        .indicator(.activity)
         .scaledToFit()
         .aspectRatio(contentMode: contentMode != nil ? contentMode! : .fill)
         .frame(width: width == nil ? UIScreen.main.bounds.width - 20 : width, height: height, alignment: .center)
