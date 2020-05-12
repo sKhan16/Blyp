@@ -15,11 +15,13 @@ struct AddBlypView: View {
     @State private var name: String = ""
     @State private var desc: String = ""
     
-    /// MARK: State items for the image picker button
+    // MARK: State items for the image picker button
     @State private var isShowingImagePicker: Bool = false
     @State private var imageData: UIImage?
     @State var imageView: Image?
     
+    // MARK: State items for map view
+    @State private var isShowingMapView: Bool = false
     
     init(imageView: Image?) {
         self.init()
@@ -32,26 +34,37 @@ struct AddBlypView: View {
     
     var body: some View {
         VStack {
-            NewBlypHeader(saveBlyp: saveBlyp, presentationMode: presentationMode)
+            NewBlypHeader(presentationMode: presentationMode, saveBlyp: saveBlyp, isSubmittable: !(name == "" || desc == ""))
                 .padding(.bottom, -12.0)
             NavigationView {
                 Form {
-                    Section {
+                    Section(header: HStack {
+                        Text("General")
+                        Text("Required")
+                            .foregroundColor(Color.red)
+                    }) {
                         TextField("Blyp name", text: $name)
                         TextField("Description", text: $desc)
                     }
                     
-                    Section {
-                        Button(imageView == nil ? "Add an image" : "Select a different image", action: {self.isShowingImagePicker = true})
+                    Section(header: Text("Media")) {
+                        Button(imageView == nil ? "Add an image" : "Select a different image", action: {self.isShowingImagePicker.toggle()})
                         if (imageView != nil) {
                             SelectedImageView(image: imageView!)
                         }
+                    }
+                    
+                    Section(header: Text("Location")) {
+                        Button(imageView == nil ? "Add a location" : "Select a different location", action: {self.isShowingMapView.toggle()})
                     }
                 }
                 .navigationBarTitle("New Blyp")
                 .navigationBarHidden(true)
                 .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
                     ImagePicker(image: self.$imageData)
+                }
+                .sheet(isPresented: $isShowingMapView) {
+                    MapView()
                 }
             }
         }
@@ -84,8 +97,9 @@ struct AddBlypView_Previews: PreviewProvider {
 }
 
 struct NewBlypHeader: View {
-    var saveBlyp: () -> Void
     @Binding var presentationMode: PresentationMode
+    var saveBlyp: () -> Void
+    var isSubmittable: Bool
     var body: some View {
         HStack(alignment: .bottom) {
             Button(action: {self.presentationMode.dismiss()}) {
@@ -106,7 +120,8 @@ struct NewBlypHeader: View {
             Button(action: saveBlyp) {
                 Text("Done")
             }
-            .foregroundColor(.black)
+            .foregroundColor(isSubmittable ? .black : .gray)
+            .disabled(!isSubmittable)
         }
         .padding([.all])
         .background(Color.blypGreen)

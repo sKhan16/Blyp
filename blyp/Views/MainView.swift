@@ -17,7 +17,7 @@ struct MainView: View {
         // This is required to not show the ugly lines between the cards
         UITableView.appearance().separatorColor = .clear
     }
-    
+
     var body: some View {
         NavigationView {
             TabView {

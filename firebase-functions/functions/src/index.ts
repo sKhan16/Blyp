@@ -91,9 +91,25 @@ exports.deleteSearchableInAlgolia = functions.firestore
     return index.deleteObject(username.objectID);
   });
 
-exports.deleteUserDocumentOnAccountDeletion = functions.auth.user().onDelete((user) => {
-  return admin.firestore().collection(userProfiles).doc(user.uid).delete();
-});
+// exports.deleteUserDocumentOnAccountDeletion = functions.auth.user().onDelete((user) => {
+//   return admin.firestore().collection(userProfiles).doc(user.uid).delete().then(() => {
+//     admin.storage().bucket()
+//   });
+// });
+
+// exports.deleteImageUponBlypDeletion = functions.firestore
+//   .document(`${userProfiles}/{uid}`).onUpdate((change, context) => {
+//     // Only delete images if a blyp was removed, not if one was added or another change was made
+//     let beforeLength = Object.keys(change.before!.data()!['blyps']).length
+//     let afterLength = Object.keys(change.after!.data()!['blyps']).length
+//     if (beforeLength <= afterLength) {
+//       return
+//     }
+//     let beforeKeys = Object.keys(change.before!.data()!['blyps'])
+//     let afterKeys = Object.keys(change.after!.data()!['blyps'])
+//     let removedKeys = beforeKeys.filter(key => afterKeys.includes(key))
+//     admin.storage().bucket().file("${}")
+//   })
 
 exports.deleteUserDisplayNameOnAccountDeletion = functions.auth.user().onDelete((user) => {
   return admin.firestore().collection(userDisplayNames).doc(user.uid).delete();
