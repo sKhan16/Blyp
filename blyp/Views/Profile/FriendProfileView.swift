@@ -11,57 +11,55 @@ import SwiftUI
 struct FriendProfileView: View {
     @EnvironmentObject var user: UserObservable
     var friendProfile: FriendProfileSearchable
-
+    
     init(friendProfile: FriendProfileSearchable) {
         self.friendProfile = friendProfile
     }
-
+    
     var body: some View {
-        NavigationView {
+        VStack {
+            Text("Here's some information about \(friendProfile.displayName ?? "")")
             VStack {
-                Text("Here's some information about \(friendProfile.displayName ?? "")")
-                Spacer()
-                VStack {
-                    Button(action: {
-                        if self.friendProfile.isAlreadyFriend(of: self.user) {
-                            self.user.removeFriend(self.friendProfile)
-                        } else {
-                            self.user.addFriend(self.friendProfile)
-                        }
-                    }) {
-                        Text(self.friendProfile.isAlreadyFriend(of: self.user) ? "Remove Friend 🥺" : "Add friend")
-                            .foregroundColor(Color.white)
+                Button(action: {
+                    if self.friendProfile.isAlreadyFriend(of: self.user) {
+                        self.user.removeFriend(self.friendProfile)
+                    } else {
+                        self.user.addFriend(self.friendProfile)
                     }
-                    .padding()
-                    .frame(minWidth: 100, minHeight: 50.0)
-                    .background(self.friendProfile.isAlreadyFriend(of: self.user) ? Color.red : Color.blue)
-                    .cornerRadius(50.0)
-                    .shadow(radius: 1)
-                    .padding()
-                    .animation(.easeInOut)
-
-                    Button(action: {
-                        if self.friendProfile.isLegacyContact(of: self.user) {
-                            self.user.removeLegacyContact()
-                        } else {
-                            self.user.setLegacyContact(to: self.friendProfile)
-                        }
-                    }) {
-                        Text(self.friendProfile.isLegacyContact(of: self.user) ? "Remove Legacy Contact" : "Set as Legacy Contact")
-                            .foregroundColor(Color.white)
-                    }
-                    .padding()
-                    .background(self.friendProfile.isLegacyContact(of: self.user) ? Color.red : Color.blue)
-                    .cornerRadius(50.0)
-                    .shadow(radius: 1)
-                    .padding()
-                    .animation(.easeInOut)
+                }) {
+                    Text(self.friendProfile.isAlreadyFriend(of: self.user) ? "Remove Friend 🥺" : "Add friend")
+                        .foregroundColor(Color.white)
                 }
+                .padding()
+                .frame(minWidth: 100, minHeight: 50.0)
+                .background(self.friendProfile.isAlreadyFriend(of: self.user) ? Color.red : Color.blue)
+                .cornerRadius(50.0)
+                .shadow(radius: 1)
+                .padding()
+                .animation(.easeInOut)
+                
+                Button(action: {
+                    if self.friendProfile.isLegacyContact(of: self.user) {
+                        self.user.removeLegacyContact()
+                    } else {
+                        self.user.setLegacyContact(to: self.friendProfile)
+                    }
+                }) {
+                    Text(self.friendProfile.isLegacyContact(of: self.user) ? "Remove Legacy Contact" : "Set as Legacy Contact")
+                        .foregroundColor(Color.white)
+                }
+                .padding()
+                .background(self.friendProfile.isLegacyContact(of: self.user) ? Color.red : Color.blue)
+                .cornerRadius(50.0)
+                .shadow(radius: 1)
+                .padding()
+                .animation(.easeInOut)
             }
-            .navigationBarTitle(Text(friendProfile.displayName ?? ""))
-        }.onAppear(perform: {UIApplication.shared.endEditing(true)}) // close keyboard on this view
+        }
+        .navigationBarTitle(Text(friendProfile.displayName ?? ""))
     }
 }
+
 
 struct FriendProfileView_Previews: PreviewProvider {
     private static var friendProfile: FriendProfileSearchable = FriendProfileSearchable(displayName: "Bill", uid: "")

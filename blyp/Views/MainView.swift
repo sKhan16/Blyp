@@ -91,7 +91,8 @@ struct MainViewActionSheet: View {
             ])
         }
         .sheet(isPresented: $addingFriend) {
-            AddFriend(isPresented: self.$addingFriend).environmentObject(self.user)
+            // For some reason we HAVE to pass the user as an environment object
+            ManageFriends().environmentObject(self.user)
         }
     }
 }

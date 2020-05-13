@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FriendProfileSearchable: Decodable, Equatable, Identifiable {
+struct FriendProfileSearchable: Decodable, Equatable, Identifiable, Comparable {
     var id = UUID()
     var displayName: String?
     var uid: String
@@ -29,5 +29,10 @@ struct FriendProfileSearchable: Decodable, Equatable, Identifiable {
     // UID is the only thing we really care about
     static func == (lhs: FriendProfileSearchable, rhs: FriendProfileSearchable) -> Bool {
         return lhs.uid == rhs.uid
+    }
+    
+    // Alphabetical O(nlogn)
+    static func < (lhs: FriendProfileSearchable, rhs: FriendProfileSearchable) -> Bool {
+        return lhs.displayName ?? "" < rhs.displayName ?? ""
     }
 }

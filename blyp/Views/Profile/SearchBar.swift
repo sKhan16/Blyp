@@ -26,7 +26,7 @@ struct SearchBar: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(10.0)
         }
-        .padding(.horizontal)
+        .padding()
     }
 }
 

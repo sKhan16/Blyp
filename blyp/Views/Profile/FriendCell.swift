@@ -24,11 +24,9 @@ struct FriendCell: View {
             Spacer()
             if (profile.isLegacyContact(of: user)) {
                 Image(systemName: "person.crop.circle.badge.checkmark")
-                    .padding(.trailing)
             }
             if (profile.isAlreadyFriend(of: user)) {
                 Image(systemName: "person.2")
-                    .padding(.trailing)
             }
         }
     }

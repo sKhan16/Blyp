@@ -158,6 +158,7 @@ public class UserObservable: ObservableObject {
                 return
             }
             self.friends = []
+            var tempFriends: [FriendProfileSearchable] = []
             for document in documents {
                 let result = Result {
                     try document.data(as: FriendProfileSearchable.self)
@@ -166,12 +167,14 @@ public class UserObservable: ObservableObject {
                 case let .success(friendProfile):
                     if let profile = friendProfile {
                         print("Got username for \(profile.uid): \(profile.displayName ?? "")")
-                        self.friends.append(profile)
+                        tempFriends.append(profile)
                     }
                 case let .failure(err): print(err)
                     // FIXME: ADD ERROR HANDLING
                 }
             }
+            tempFriends.sort()
+            self.friends = tempFriends
         }
     }
     
@@ -194,7 +197,6 @@ public class UserObservable: ObservableObject {
     }
     
     func removeLegacyContact() {
-        let db = Firestore.firestore()
         userProfileRef.updateData([
             "legacyContact": ""
         ])

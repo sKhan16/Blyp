@@ -9,16 +9,29 @@
 import SwiftUI
 
 struct FriendsList: View {
-    @EnvironmentObject var user: UserObservable
+    var friends: [FriendProfileSearchable]
+    
+    init(friends: [FriendProfileSearchable]) {
+        UITableView.appearance().separatorColor = nil
+        self.friends = friends
+    }
+    
+    init(searchHits: [DisplayNameAlgoliaResult]) {
+        UITableView.appearance().separatorColor = .clear
+        self.friends = searchHits.map { FriendProfileSearchable(displayName: $0.displayName, uid: $0.objectID) }
+    }
+    
     var body: some View {
-        List(user.friends) { friend in
-            FriendCell(friend: friend)
+        List(friends) { friend in
+            NavigationLink(destination: FriendProfileView(friendProfile: friend)) {
+                FriendCell(friend: friend)
+            }
         }
     }
 }
 
-struct FriendsList_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendsList()
-    }
-}
+//struct FriendsList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FriendsList(friends: )
+//    }
+//}
