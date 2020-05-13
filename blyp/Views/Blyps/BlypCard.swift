@@ -12,7 +12,7 @@ import MapKit
 struct BlypCard: View {
     private var backgroundColor: Color? = nil
     private var backgroundImage: BlypImage? = nil
-    private var backgroundMap: BlypCardMap? = nil
+    private var backgroundMap: StaticMap? = nil
 
     @State private var isPressed = false
     
@@ -31,7 +31,7 @@ struct BlypCard: View {
                 setBackupStyle()
                 return
             }
-            backgroundMap = BlypCardMap(title: blyp.name, subtitle: blyp.description, latitude: latitude, longitude: longitude)
+            backgroundMap = StaticMap(title: blyp.name, subtitle: blyp.description, latitude: latitude, longitude: longitude)
         } else {
             setBackupStyle()
         }

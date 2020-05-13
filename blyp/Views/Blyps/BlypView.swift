@@ -17,6 +17,9 @@ struct BlypView: View {
             }
             Text(blyp.name).font(.largeTitle)
             Text(blyp.description)
+            if blyp.hasLocation {
+                StaticMap(title: blyp.name, subtitle: blyp.description, latitude: blyp.latitude ?? 0, longitude: blyp.longitude ?? 0, isScrollable: true).frame(maxHeight: 400)
+            }
             Spacer()
         }
         .edgesIgnoringSafeArea(.top)

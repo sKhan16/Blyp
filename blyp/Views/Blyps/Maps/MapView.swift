@@ -53,7 +53,7 @@ struct MapView: UIViewRepresentable {
     }
 }
 
-struct StaticMapView: UIViewRepresentable {
+struct UpdatingMap: UIViewRepresentable {
     @Binding var location: MKPointAnnotation?
     @Binding var title: String
     @Binding var subtitle: String
@@ -88,19 +88,20 @@ struct StaticMapView: UIViewRepresentable {
     }
 }
 
-struct BlypCardMap: UIViewRepresentable {
+struct StaticMap: UIViewRepresentable {
     var title: String
     var subtitle: String
     var latitude: Double
     var longitude: Double
+    var isScrollable: Bool = false
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         // We don't set isUserInteractionEnabled becuase we want them to open the annotation lol
-        mapView.isScrollEnabled = false
-        mapView.isPitchEnabled = false
-        mapView.isZoomEnabled = false
-        mapView.isScrollEnabled = false
+        mapView.isScrollEnabled = isScrollable
+        mapView.isPitchEnabled = isScrollable
+        mapView.isZoomEnabled = isScrollable
+        mapView.isScrollEnabled = isScrollable
         let location = MKPointAnnotation()
         location.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         zoomToLocation(of: location, on: mapView)

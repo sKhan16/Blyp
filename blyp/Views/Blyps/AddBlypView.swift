@@ -79,7 +79,7 @@ struct AddBlypView: View {
                             }
                         })
                         if location != nil {
-                            StaticMapView(location: $location, title: $name, subtitle: $desc)
+                            UpdatingMap(location: $location, title: $name, subtitle: $desc)
                                 .frame(height: 300)
                                 .edgesIgnoringSafeArea(.horizontal)
                         }
