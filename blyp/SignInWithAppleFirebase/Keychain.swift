@@ -100,7 +100,7 @@ extension Keychain {
             _ = try retrieve()
 
             let updates = [
-                String(kSecAttrGeneric): archived,
+                String(kSecAttrGeneric): archived
             ]
 
             status = SecItemUpdate(query as CFDictionary, updates as CFDictionary)

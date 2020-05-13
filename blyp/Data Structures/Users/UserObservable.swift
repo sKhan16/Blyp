@@ -20,21 +20,29 @@ public class UserObservable: ObservableObject {
     @Published var loginState: LoginState = .loggedOut
     @Published var blyps: BlypsObservable?
     @Published var friends: [FriendProfileSearchable] = []
-
-    private let databaseName: String = "userProfiles"
+    @Published var legacyContact: String = ""
+    
+    private var userProfileRef: DocumentReference {
+        return Firestore.firestore().collection("userProfiles").document(uid)
+    }
+    
+    private var userDisplayNameRef: DocumentReference {
+        return Firestore.firestore().collection("userDisplayNames").document(uid)
+    }
+    
     private var blypFirestoreListenerSubscription: ListenerRegistration?
-
+    
     init() {
         blyps = BlypsObservable(user: self)
     }
-
+    
     deinit {
         blypFirestoreListenerSubscription?.remove()
         blyps = nil
     }
-
+    
     // MARK: Authentication and Login/Logout functions
-
+    
     /// Set our Observable's values to the incoming User's values
     func completeLogin(user: User) {
         if let displayName = user.displayName {
@@ -46,7 +54,7 @@ public class UserObservable: ObservableObject {
         uid = user.uid
         subscribeToFirestore()
     }
-
+    
     /// Logout from Firebase
     func logout() {
         let firebaseAuth = Auth.auth()
@@ -62,28 +70,28 @@ public class UserObservable: ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
-
+    
     func developerLogin() {
         #if DEBUG
-            if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
-                if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
-                    Auth.auth().signIn(withEmail: email, password: password) { authResult, _ in
-                        // Forcing this is okay because it's debug. If something breaks here.... we're doomed
-                        self.completeLogin(user: authResult!.user)
-                    }
-                } else {
-                    print("Make sure you have BLYP_PASSWORD in your Xcode environment")
+        if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
+            if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
+                Auth.auth().signIn(withEmail: email, password: password) { authResult, _ in
+                    // Forcing this is okay because it's debug. If something breaks here.... we're doomed
+                    self.completeLogin(user: authResult!.user)
                 }
             } else {
-                print("Make sure you have BLYP_EMAIL in your Xcode environment")
+                print("Make sure you have BLYP_PASSWORD in your Xcode environment")
             }
+        } else {
+            print("Make sure you have BLYP_EMAIL in your Xcode environment")
+        }
         #else
-            print("What the FUCK do you think you're doing? You CANNOT use developer login in a release environment")
+        print("What the FUCK do you think you're doing? You CANNOT use developer login in a release environment")
         #endif
     }
-
+    
     // MARK: Functions that edit user's data
-
+    
     /// Update the user's display name
     /// - Parameter displayName: display name (username) to set it to
     func changeDisplayName(displayName: String) {
@@ -94,62 +102,101 @@ public class UserObservable: ObservableObject {
             if error == nil {
                 self.displayName = trimmedName
                 self.loginState = .loggedIn
-                Firestore.firestore().collection("userDisplayNames").document(self.uid).setData(["displayName": trimmedName])
+                self.userDisplayNameRef.updateData(["displayName" : trimmedName])
             } else {
                 // FIXME: Add error state
             }
         }
     }
-
+    
     // MARK: Utility functions
-
+    
     /// Reset all user data
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
-//        blyps = nil
-
         friends = []
     }
-
+    
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
-        let db = Firestore.firestore()
-
-        blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
-            .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
-                let result = Result {
-                    try documentSnapshot.flatMap {
-                        try $0.data(as: UserProfile.self)
+        blypFirestoreListenerSubscription = userProfileRef.addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
+            let result = Result {
+                try documentSnapshot.flatMap {
+                    try $0.data(as: UserProfile.self)
+                }
+            }
+            switch result {
+            case let .success(profile):
+                if let profile = profile {
+                    self.getFriendsUsernames(uids: profile.friends)
+                    guard let blyps = self.blyps else {
+                        print("blyps were not configured in UserObservable")
+                        return
                     }
+                    self.legacyContact = profile.legacyContact
+                    blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? true)
+                }
+            case let .failure(err): print(err)
+                // FIXME: ADD ERROR HANDLING
+            }
+        }
+    }
+    
+    private func getFriendsUsernames(uids: [String]) {
+        if (uids.count == 0) {
+            return // can't run whereField on empty array
+        }
+        print("Getting usernames for \(uids)")
+        // sorry about not making this a field
+        Firestore.firestore().collection("userDisplayNames").whereField("objectID", in: uids).getDocuments { (documentsSnapshot, error) in
+            if let error = error {
+                print("Error retreiving collection: \(error)")
+            }
+            guard let documents = documentsSnapshot?.documents else {
+                print("Error getting friends' usernames: \(String(describing: error))")
+                return
+            }
+            self.friends = []
+            for document in documents {
+                let result = Result {
+                    try document.data(as: FriendProfileSearchable.self)
                 }
                 switch result {
-                case let .success(profile):
-                    if let profile = profile {
-                        self.friends = profile.friends.map { FriendProfileSearchable(uid: $0) }
-                        guard let blyps = self.blyps else {
-                            print("blyps were not configured in UserObservable")
-                            return
-                        }
-                        blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? true)
+                case let .success(friendProfile):
+                    if let profile = friendProfile {
+                        print("Got username for \(profile.uid): \(profile.displayName ?? "")")
+                        self.friends.append(profile)
                     }
                 case let .failure(err): print(err)
                     // FIXME: ADD ERROR HANDLING
                 }
             }
+        }
     }
-
+    
     func addFriend(_ friendProfile: FriendProfileSearchable) {
-        let db = Firestore.firestore()
-        db.collection(databaseName).document(uid).updateData([
-            "friends": FieldValue.arrayUnion([friendProfile.uid]),
+        userProfileRef.updateData([
+            "friends": FieldValue.arrayUnion([friendProfile.uid])
         ])
     }
-
+    
     func removeFriend(_ friendProfile: FriendProfileSearchable) {
+        userProfileRef.updateData([
+            "friends": FieldValue.arrayRemove([friendProfile.uid])
+        ])
+    }
+    
+    func setLegacyContact(to friendProfile: FriendProfileSearchable) {
+        userProfileRef.updateData([
+            "legacyContact": friendProfile.uid
+        ])
+    }
+    
+    func removeLegacyContact() {
         let db = Firestore.firestore()
-        db.collection(databaseName).document(uid).updateData([
-            "friends": FieldValue.arrayRemove([friendProfile.uid]),
+        userProfileRef.updateData([
+            "legacyContact": ""
         ])
     }
 }

@@ -8,12 +8,22 @@
 
 import Foundation
 
-struct FriendProfileSearchable: Equatable {
+struct FriendProfileSearchable: Decodable, Equatable, Identifiable {
+    var id = UUID()
     var displayName: String?
     var uid: String
+    
+    enum CodingKeys: String, CodingKey {
+        case displayName
+        case uid = "objectID"
+    }
 
     func isAlreadyFriend(of user: UserObservable) -> Bool {
         return user.friends.contains(self)
+    }
+
+    func isLegacyContact(of user: UserObservable) -> Bool {
+        return user.legacyContact == uid
     }
 
     // UID is the only thing we really care about

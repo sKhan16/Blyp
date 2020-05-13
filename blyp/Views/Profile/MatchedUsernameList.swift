@@ -14,7 +14,7 @@ struct MatchedUsernameList: View {
         NavigationView {
             List(userSearcher.displayNameAlgolia.hits) { hit in
                 NavigationLink(destination: FriendProfileView(friendProfile: FriendProfileSearchable(displayName: hit.displayName, uid: hit.objectID))) {
-                    Text(hit.displayName)
+                    FriendCell(for: hit)
                 }
             }
             .navigationBarHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
@@ -26,6 +26,7 @@ struct MatchedUsernameList: View {
 
 struct MatchedUsernameList_Previews: PreviewProvider {
     @State static var userSearcher: UserSearcher = UserSearcher()
+
     static var previews: some View {
         MatchedUsernameList(userSearcher: userSearcher)
     }

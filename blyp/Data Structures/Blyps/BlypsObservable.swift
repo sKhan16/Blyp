@@ -93,7 +93,7 @@ class BlypsObservable: ObservableObject {
                 "imageBlurHashWidth": blyp.imageBlurHashWidth,
                 "latitude": blyp.latitude,
                 "longitude": blyp.longitude
-            ],
+            ]
         ]) { err in
             if let err = err {
                 print("Error saving \(blyp.id): \(err)")

@@ -21,7 +21,7 @@ struct Blyp: Identifiable, Codable, Comparable {
     var imageBlurHash: String?
     var imageBlurHashWidth: CGFloat?
     var imageBlurHashHeight: CGFloat?
-    
+
     var longitude: Double?
     var latitude: Double?
     var hasLocation: Bool {
@@ -29,6 +29,7 @@ struct Blyp: Identifiable, Codable, Comparable {
     }
 
     // MARK: CodingKeys for JUST properties listed above
+
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -50,6 +51,7 @@ struct Blyp: Identifiable, Codable, Comparable {
     }
 
     // MARK: Make sure sortable by date in reverse chronological order
+
     static func < (lhs: Blyp, rhs: Blyp) -> Bool {
         lhs.createdOn > rhs.createdOn
     }

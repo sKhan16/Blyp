@@ -13,16 +13,18 @@ import SwiftUI
 struct AddFriend: View {
     @EnvironmentObject var user: UserObservable
     @Binding var isPresented: Bool
-
-    @State private var searchText = ""
     @State private var userSearcher = UserSearcher()
 
     var body: some View {
         NavigationView {
             VStack {
-                AddFriendHeader(isPresented: $isPresented)
+                AddFriendHeader(userSearcher: userSearcher)
                 SearchBar(userSearcher: userSearcher)
-                MatchedUsernameList(userSearcher: userSearcher)
+                if (userSearcher.searchQuery != "") {
+                    MatchedUsernameList(userSearcher: userSearcher)
+                } else {
+                    FriendsList()
+                }
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
@@ -38,23 +40,28 @@ struct AddFriend_Previews: PreviewProvider {
 }
 
 struct AddFriendHeader: View {
-    @Binding var isPresented: Bool
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var userSearcher: UserSearcher
     var body: some View {
-        HStack(alignment: .bottom) {
-            Button(action: {
-                self.isPresented = false
-            }) {
-                Text("Close")
+        VStack {
+            HStack(alignment: .bottom) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Close")
+                }
+                Spacer()
+                Text(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend")
+                Spacer()
+                Button(action: {
+                    // TODO: Open help
+                }) {
+                    Text("Help")
+                }
             }
-            Spacer()
-            Text("Add Friend")
-            Spacer()
-            Button(action: {
-                // TODO: Open help
-            }) {
-                Text("Help")
-            }
-        }.padding([.top, .leading, .trailing]).frame(minHeight: 32)
+            Divider()
+        }
+        .padding([.top, .leading, .trailing])
     }
 }
 

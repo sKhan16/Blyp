@@ -24,6 +24,8 @@
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
 		C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934C2452394900B846E0 /* ResizeImageExtension.swift */; };
 		C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063B5CA244E8D9B0095F291 /* ImagePicker.swift */; };
+		C0711218246C8E300047FA2E /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0711217246C8E300047FA2E /* FriendsList.swift */; };
+		C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0711219246C8E8B0047FA2E /* FriendCell.swift */; };
 		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E7A2400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
@@ -106,6 +108,8 @@
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
 		C05C934C2452394900B846E0 /* ResizeImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageExtension.swift; sourceTree = "<group>"; };
 		C063B5CA244E8D9B0095F291 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C0711217246C8E300047FA2E /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
+		C0711219246C8E8B0047FA2E /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		C07A2EC62400B2A2004BB749 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				C090476B2432B57700E13BC9 /* SearchBar.swift */,
 				C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */,
 				C093083E243C4C730002BF0C /* FriendProfileView.swift */,
+				C0711217246C8E300047FA2E /* FriendsList.swift */,
+				C0711219246C8E8B0047FA2E /* FriendCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -648,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
+				C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */,
 				C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */,
 				C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */,
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
@@ -678,6 +685,7 @@
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
 				C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */,
+				C0711218246C8E300047FA2E /* FriendsList.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
@@ -860,7 +868,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -887,7 +895,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;

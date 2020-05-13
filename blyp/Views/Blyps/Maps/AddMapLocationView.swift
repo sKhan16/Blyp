@@ -16,8 +16,8 @@ struct AddMapLocationView: View {
     @Binding var subtitle: String
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var location: MKPointAnnotation?
-    
-    private var previousLocation: MKPointAnnotation? = nil
+
+    private var previousLocation: MKPointAnnotation?
 
     init(title: Binding<String>, subtitle: Binding<String>, centerCoordinate: Binding<CLLocationCoordinate2D>, location: Binding<MKPointAnnotation?>) {
         _title = title
@@ -25,7 +25,7 @@ struct AddMapLocationView: View {
         _centerCoordinate = centerCoordinate
         _location = location
         // Save the previous location just in case
-        self.previousLocation = location.wrappedValue
+        previousLocation = location.wrappedValue
     }
 
     var body: some View {

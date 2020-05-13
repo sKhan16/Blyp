@@ -11,7 +11,7 @@ import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
     @State private var isBlypPresented: Bool = false
-    @State private var selectedBlyp: Blyp? = nil
+    @State private var selectedBlyp: Blyp?
 
     init() {
         // This is required to not show the ugly lines between the cards
@@ -87,7 +87,7 @@ struct MainViewActionSheet: View {
                     self.user.logout()
                 }),
 
-                .cancel(),
+                .cancel()
             ])
         }
         .sheet(isPresented: $addingFriend) {
@@ -132,7 +132,7 @@ struct MainView_Previews: PreviewProvider {
         Blyp(name: "Test 1 name", description: "Test 1 description"),
         Blyp(name: "Test 2 name", description: "Test 2 description"),
         Blyp(name: "Test 3 name", description: "Test 3 description"),
-        Blyp(name: "Test 4 name", description: "Test 4 description"),
+        Blyp(name: "Test 4 name", description: "Test 4 description")
     ]
     static var previews: some View {
         MainView().environmentObject(UserObservable())
