@@ -23,7 +23,7 @@ struct ManageFriends: View {
                     FriendsList(friends: user.friends)
                 }
             }
-            .navigationBarTitle(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend", displayMode: .inline)
+            .navigationBarTitle(Text(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend").bold().italic(), displayMode: .inline)
             .navigationBarItems(leading: CloseButton())
         }
     }

@@ -16,9 +16,9 @@ struct AddMapLocationView: View {
     @Binding var subtitle: String
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var location: MKPointAnnotation?
-
+    
     private var previousLocation: MKPointAnnotation?
-
+    
     init(title: Binding<String>, subtitle: Binding<String>, centerCoordinate: Binding<CLLocationCoordinate2D>, location: Binding<MKPointAnnotation?>) {
         _title = title
         _subtitle = subtitle
@@ -27,18 +27,19 @@ struct AddMapLocationView: View {
         // Save the previous location just in case
         previousLocation = location.wrappedValue
     }
-
+    
     var body: some View {
-        VStack {
+        NavigationView {
             ZStack {
                 MapView(centerCoordinate: $centerCoordinate, location: $location, title: $title, subtitle: $subtitle).edgesIgnoringSafeArea(.all)
                 CenterDotView()
-                Header(location: $location, centerCoordinate: $centerCoordinate, previousLocation: previousLocation)
                 Footer(action: setLocation)
             }
+            .navigationBarTitle("Blyp Location", displayMode: .inline)
+            .navigationBarItems(leading: CloseButton(presentationMode: presentationMode, location: $location, centerCoordinate: $centerCoordinate), trailing: DoneButton(presentationMode: presentationMode))
         }
     }
-
+    
     func setLocation() {
         let newLocation = MKPointAnnotation()
         newLocation.coordinate = centerCoordinate
@@ -76,6 +77,33 @@ private struct SetLocationButton: View {
     }
 }
 
+fileprivate struct CloseButton: View {
+    @Binding var presentationMode: PresentationMode
+    @Binding var location: MKPointAnnotation?
+    @Binding var centerCoordinate: CLLocationCoordinate2D
+    var previousLocation: MKPointAnnotation?
+    var body: some View {
+        Button(action: {
+            // Close uses the old location
+            self.location = self.previousLocation
+            self.presentationMode.dismiss()
+        }) {
+            Text("Close")
+        }
+    }
+}
+
+fileprivate struct DoneButton: View {
+    @Binding var presentationMode: PresentationMode
+    var body: some View {
+        Button(action: {
+            self.presentationMode.dismiss()
+        }) {
+            Text("Done")
+        }
+    }
+}
+
 private struct Footer: View {
     var action: () -> Void
     var body: some View {
@@ -86,35 +114,6 @@ private struct Footer: View {
                 SetLocationButton(action: action)
                 Spacer()
             }
-        }
-    }
-}
-
-private struct Header: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Binding var location: MKPointAnnotation?
-    @Binding var centerCoordinate: CLLocationCoordinate2D
-    var previousLocation: MKPointAnnotation?
-    var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    // Close uses the old location
-                    self.location = self.previousLocation
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Close")
-                }.padding()
-                Spacer()
-                Text("Blyp Location")
-                Spacer()
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Done")
-                }.padding()
-            }.background(Blur(style: .systemMaterial))
-            Spacer()
         }
     }
 }

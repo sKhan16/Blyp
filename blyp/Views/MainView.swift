@@ -40,7 +40,7 @@ struct MainView: View {
             .sheet(isPresented: $isBlypPresented) {
                 BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
             }
-            .navigationBarTitle("Blyp", displayMode: .inline)
+            .navigationBarTitle(Text("Blyp").bold().italic(), displayMode: .inline)
             .navigationBarItems(leading: AddBlypViewButton(),
                                 trailing: MainViewActionSheet())
         }

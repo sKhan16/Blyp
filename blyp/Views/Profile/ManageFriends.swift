@@ -11,6 +11,7 @@ import Introspect
 import SwiftUI
 
 struct ManageFriends: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
     @ObservedObject private var userSearcher = UserSearcher()
     var body: some View {
@@ -24,16 +25,16 @@ struct ManageFriends: View {
                 }
             }
             .navigationBarTitle(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend", displayMode: .inline)
-            .navigationBarItems(leading: CloseButton())
+            .navigationBarItems(leading: CloseButton(presentationMode: presentationMode))
         }
     }
 }
 
 fileprivate struct CloseButton: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var presentationMode: PresentationMode
     var body: some View {
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
+            self.presentationMode.dismiss()
         }) {
             Text("Close")
         }
