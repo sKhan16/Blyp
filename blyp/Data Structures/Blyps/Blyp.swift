@@ -22,8 +22,8 @@ struct Blyp: Identifiable, Codable, Comparable {
     var imageBlurHashWidth: CGFloat?
     var imageBlurHashHeight: CGFloat?
     
-    var longitude: CGFloat?
-    var latitude: CGFloat?
+    var longitude: Double?
+    var latitude: Double?
     var hasLocation: Bool {
         return longitude != nil && latitude != nil
     }

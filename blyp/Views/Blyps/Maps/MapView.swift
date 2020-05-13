@@ -12,7 +12,9 @@ import SwiftUI
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var location: MKPointAnnotation?
-
+    @Binding var title: String
+    @Binding var subtitle: String
+    
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: CLLocationDistance(exactly: 10000)!, longitudinalMeters: CLLocationDistance(exactly: 10000)!)
@@ -24,33 +26,76 @@ struct MapView: UIViewRepresentable {
         mapView.setAnnotation(to: location)
         return mapView
     }
-
+    
     func updateUIView(_ view: MKMapView, context _: Context) {
         guard let location = location else {
             return
         }
+        location.title = title
+        location.subtitle = subtitle
         view.setAnnotation(to: location)
     }
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
-
+        
         init(_ parent: MapView) {
             self.parent = parent
         }
-
+        
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
         }
     }
 }
 
+struct StaticMapView: UIViewRepresentable {
+    @Binding var location: MKPointAnnotation?
+    @Binding var title: String
+    @Binding var subtitle: String
+    
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        // We don't set isUserInteractionEnabled becuase we want them to open the annotation lol
+        mapView.isScrollEnabled = false
+        mapView.isPitchEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.isScrollEnabled = false
+        
+        zoomToLocation(of: location, on: mapView)
+        return mapView
+    }
+    
+    func updateUIView(_ view: MKMapView, context _: Context) {
+        zoomToLocation(of: location, on: view)
+    }
+    
+    private func zoomToLocation(of location: MKPointAnnotation?, on mapView: MKMapView) {
+        guard let location = location else {
+            print("No location available for StaticMapView... what gives?")
+            return
+        }
+        location.title = title
+        location.subtitle = subtitle
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: CLLocationDistance(exactly: 10000)!, longitudinalMeters: CLLocationDistance(exactly: 10000)!)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        mapView.setAnnotation(to: location)
+    }
+}
+
 extension MKMapView {
     func setAnnotation(to annotation: MKPointAnnotation) {
+        // Only update it if we have to, this fixes flickering
+        if (self.annotations.contains { compare in
+            compare.title == annotation.title
+                && annotation.subtitle == annotation.subtitle
+                && compare.coordinate.latitude == annotation.coordinate.latitude
+                && compare.coordinate.longitude == annotation.coordinate.longitude
+        }) {return}
         removeAnnotations(annotations)
         addAnnotation(annotation)
     }
