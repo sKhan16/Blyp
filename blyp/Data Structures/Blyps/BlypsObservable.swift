@@ -91,6 +91,8 @@ class BlypsObservable: ObservableObject {
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
                 "imageBlurHashWidth": blyp.imageBlurHashWidth,
+                "latitude": blyp.latitude,
+                "longitude": blyp.longitude
             ],
         ]) { err in
             if let err = err {

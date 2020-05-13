@@ -7,21 +7,33 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct BlypCard: View {
-    var backgroundColor: Color?
-    var backgroundImage: BlypImage?
+    private var backgroundColor: Color? = nil
+    private var backgroundImage: BlypImage? = nil
+    private var backgroundMap: BlypCardMap? = nil
 
     @State private var isPressed = false
-
+    
     let blyp: Blyp
 
     init(blyp: Blyp) {
         self.blyp = blyp
         if blyp.hasImage {
             backgroundImage = BlypImage(blyp: blyp, height: 250)
+        } else if blyp.hasLocation {
+            guard let latitude = blyp.latitude else {
+                setBackupStyle()
+                return
+            }
+            guard let longitude = blyp.longitude else {
+                setBackupStyle()
+                return
+            }
+            backgroundMap = BlypCardMap(title: blyp.name, subtitle: blyp.description, latitude: latitude, longitude: longitude)
         } else {
-            backgroundColor = .blypGreen
+            setBackupStyle()
         }
     }
 
@@ -31,6 +43,8 @@ struct BlypCard: View {
                 ZStack {
                     if self.backgroundImage != nil {
                         self.backgroundImage
+                    } else if self.backgroundMap != nil {
+                        self.backgroundMap
                     }
 
                     VStack(alignment: .leading) {
@@ -54,6 +68,10 @@ struct BlypCard: View {
         .scaleEffect(isPressed ? 0.5 : 1.0)
         .animation(.easeInOut)
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+    }
+    
+    mutating func setBackupStyle() {
+        backgroundColor = .blypGreen
     }
 }
 

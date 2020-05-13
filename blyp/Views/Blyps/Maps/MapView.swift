@@ -57,14 +57,15 @@ struct StaticMapView: UIViewRepresentable {
     @Binding var location: MKPointAnnotation?
     @Binding var title: String
     @Binding var subtitle: String
+    var isScrollable: Bool = false
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         // We don't set isUserInteractionEnabled becuase we want them to open the annotation lol
-        mapView.isScrollEnabled = false
-        mapView.isPitchEnabled = false
-        mapView.isZoomEnabled = false
-        mapView.isScrollEnabled = false
+        mapView.isScrollEnabled = isScrollable
+        mapView.isPitchEnabled = isScrollable
+        mapView.isZoomEnabled = isScrollable
+        mapView.isScrollEnabled = isScrollable
         
         zoomToLocation(of: location, on: mapView)
         return mapView
@@ -79,6 +80,36 @@ struct StaticMapView: UIViewRepresentable {
             print("No location available for StaticMapView... what gives?")
             return
         }
+        location.title = title
+        location.subtitle = subtitle
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: CLLocationDistance(exactly: 10000)!, longitudinalMeters: CLLocationDistance(exactly: 10000)!)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        mapView.setAnnotation(to: location)
+    }
+}
+
+struct BlypCardMap: UIViewRepresentable {
+    var title: String
+    var subtitle: String
+    var latitude: Double
+    var longitude: Double
+    
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        // We don't set isUserInteractionEnabled becuase we want them to open the annotation lol
+        mapView.isScrollEnabled = false
+        mapView.isPitchEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.isScrollEnabled = false
+        let location = MKPointAnnotation()
+        location.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        zoomToLocation(of: location, on: mapView)
+        return mapView
+    }
+    
+    func updateUIView(_ view: MKMapView, context _: Context) {}
+    
+    private func zoomToLocation(of location: MKPointAnnotation, on mapView: MKMapView) {
         location.title = title
         location.subtitle = subtitle
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: CLLocationDistance(exactly: 10000)!, longitudinalMeters: CLLocationDistance(exactly: 10000)!)
