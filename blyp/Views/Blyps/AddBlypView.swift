@@ -53,7 +53,9 @@ struct AddBlypView: View {
                     }
                     
                     Section(header: Text("Media")) {
-                        Button(imageView == nil ? "Add an image" : "Select a different image", action: { self.isShowingImagePicker.toggle() })
+                        Button(imageView == nil ? "Add an image" : "Select a different image", action: { self.isShowingImagePicker = true }).sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
+                            ImagePicker(image: self.$imageData)
+                        }
                         if imageView != nil {
                             SelectedImageView(image: imageView!)
                         }
@@ -77,7 +79,10 @@ struct AddBlypView: View {
                             } else {
                                 self.isShowingMapView.toggle()
                             }
-                        })
+                        }).sheet(isPresented: $isShowingMapView) {
+                            AddMapLocationView(title: self.$name, subtitle: self.$desc, centerCoordinate: self.$centerCoordinate, location: self.$location)
+                        }
+                        
                         if location != nil {
                             UpdatingMap(location: $location, title: $name, subtitle: $desc)
                                 .frame(height: 300)
@@ -87,12 +92,6 @@ struct AddBlypView: View {
                 }
                 .navigationBarTitle("New Blyp")
                 .navigationBarHidden(true)
-                .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
-                    ImagePicker(image: self.$imageData)
-                }
-                .sheet(isPresented: $isShowingMapView) {
-                    AddMapLocationView(title: self.$name, subtitle: self.$desc, centerCoordinate: self.$centerCoordinate, location: self.$location)
-                }
             }
         }
     }
@@ -219,7 +218,7 @@ extension UIImage {
         }
         
         ctx.concatenate(transform)
-    
+        
         switch imageOrientation {
         case .left, .leftMirrored, .right, .rightMirrored:
             ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
