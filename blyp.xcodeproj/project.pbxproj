@@ -19,6 +19,7 @@
 		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
 		C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0365C6224562BDE00C55F15 /* BlypCard.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
+		C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B3A58246B372300CE01BA /* AddMapLocationView.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
 		C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934C2452394900B846E0 /* ResizeImageExtension.swift */; };
@@ -100,6 +101,7 @@
 		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
 		C0365C6224562BDE00C55F15 /* BlypCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCard.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
+		C05B3A58246B372300CE01BA /* AddMapLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapLocationView.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
 		C05C934C2452394900B846E0 /* ResizeImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageExtension.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
 				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
 				C0208761246B2AB000FA497E /* MapView.swift */,
+				C05B3A58246B372300CE01BA /* AddMapLocationView.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */,
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
+				C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,

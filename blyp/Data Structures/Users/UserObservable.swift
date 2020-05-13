@@ -23,16 +23,16 @@ public class UserObservable: ObservableObject {
 
     private let databaseName: String = "userProfiles"
     private var blypFirestoreListenerSubscription: ListenerRegistration?
-    
+
     init() {
-        self.blyps = BlypsObservable(user: self)
+        blyps = BlypsObservable(user: self)
     }
-    
+
     deinit {
         blypFirestoreListenerSubscription?.remove()
         blyps = nil
     }
-    
+
     // MARK: Authentication and Login/Logout functions
 
     /// Set our Observable's values to the incoming User's values
@@ -108,14 +108,14 @@ public class UserObservable: ObservableObject {
         displayName = ""
         loginState = .loggedOut
 //        blyps = nil
-        
+
         friends = []
     }
 
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         let db = Firestore.firestore()
-        
+
         blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
             .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
                 let result = Result {
@@ -143,13 +143,13 @@ public class UserObservable: ObservableObject {
         let db = Firestore.firestore()
         db.collection(databaseName).document(uid).updateData([
             "friends": FieldValue.arrayUnion([friendProfile.uid]),
-            ])
+        ])
     }
-    
+
     func removeFriend(_ friendProfile: FriendProfileSearchable) {
         let db = Firestore.firestore()
         db.collection(databaseName).document(uid).updateData([
-            "friends": FieldValue.arrayRemove([friendProfile.uid])
+            "friends": FieldValue.arrayRemove([friendProfile.uid]),
         ])
     }
 }

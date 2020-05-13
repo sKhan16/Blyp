@@ -17,4 +17,3 @@ struct FriendProfileSearchable: Equatable {
         return lhs.uid == rhs.uid
     }
 }
-

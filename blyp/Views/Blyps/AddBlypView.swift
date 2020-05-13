@@ -6,32 +6,37 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
+import MapKit
+import SwiftLocation
 import SwiftUI
 
 struct AddBlypView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-    
+
     @State private var name: String = ""
     @State private var desc: String = ""
-    
+
     // MARK: State items for the image picker button
+
     @State private var isShowingImagePicker: Bool = false
     @State private var imageData: UIImage?
     @State var imageView: Image?
-    
+
     // MARK: State items for map view
+
     @State private var isShowingMapView: Bool = false
-    
+    @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 122.3493, longitude: 47.6205) // space needle ❤️
+
     init(imageView: Image?) {
         self.init()
         self.imageView = imageView
     }
-    
+
     init() {
         UITableView.appearance().separatorColor = nil
     }
-    
+
     var body: some View {
         VStack {
             NewBlypHeader(presentationMode: presentationMode, saveBlyp: saveBlyp, isSubmittable: !(name == "" || desc == ""))
@@ -46,16 +51,30 @@ struct AddBlypView: View {
                         TextField("Blyp name", text: $name)
                         TextField("Description", text: $desc)
                     }
-                    
+
                     Section(header: Text("Media")) {
-                        Button(imageView == nil ? "Add an image" : "Select a different image", action: {self.isShowingImagePicker.toggle()})
-                        if (imageView != nil) {
+                        Button(imageView == nil ? "Add an image" : "Select a different image", action: { self.isShowingImagePicker.toggle() })
+                        if imageView != nil {
                             SelectedImageView(image: imageView!)
                         }
                     }
-                    
+
                     Section(header: Text("Location")) {
-                        Button(imageView == nil ? "Add a location" : "Select a different location", action: {self.isShowingMapView.toggle()})
+                        Button(imageView == nil ? "Add a location" : "Select a different location", action: {
+//                            self.isShowingMapView.toggle()
+                            // Try to get user's location
+                            LocationManager.shared.locateFromGPS(.oneShot, accuracy: .city) { result in
+                                switch result {
+                                case let .failure(error):
+                                    debugPrint("Received error: \(error)")
+                                    self.isShowingMapView.toggle()
+                                case let .success(location):
+                                    debugPrint("Location received: \(location)")
+                                    self.centerCoordinate = location.coordinate
+                                }
+                                self.isShowingMapView.toggle()
+                            }
+                        })
                     }
                 }
                 .navigationBarTitle("New Blyp")
@@ -64,21 +83,21 @@ struct AddBlypView: View {
                     ImagePicker(image: self.$imageData)
                 }
                 .sheet(isPresented: $isShowingMapView) {
-                    MapView()
+                    AddMapLocationView(title: self.name, subtitle: self.desc, centerCoordinate: self.$centerCoordinate)
                 }
             }
         }
     }
-    
+
     /// Loads image data from the selected image (or not)
     func loadImage() {
         guard let imageData = imageData else { return }
         imageView = Image(uiImage: imageData.fixedOrientation()!)
     }
-    
+
     /// Saves blyp and dismiss view
     func saveBlyp() {
-        let blyp = Blyp(name: self.name, description: self.desc, image: self.imageData)
+        let blyp = Blyp(name: name, description: desc, image: imageData)
         user.blyps?.addBlyp(blyp)
         presentationMode.wrappedValue.dismiss()
     }
@@ -102,21 +121,21 @@ struct NewBlypHeader: View {
     var isSubmittable: Bool
     var body: some View {
         HStack(alignment: .bottom) {
-            Button(action: {self.presentationMode.dismiss()}) {
+            Button(action: { self.presentationMode.dismiss() }) {
                 Text("Close")
             }
             .foregroundColor(.black)
-            
+
             Spacer()
-            
+
             Text("New Blyp")
                 .foregroundColor(.black)
                 .font(.Agenda)
                 .bold()
                 .italic()
-            
+
             Spacer()
-            
+
             Button(action: saveBlyp) {
                 Text("Done")
             }
@@ -145,20 +164,20 @@ extension UIImage {
     func fixedOrientation() -> UIImage? {
         guard imageOrientation != UIImage.Orientation.up else {
             // This is default orientation, don't need to do anything
-            return self.copy() as? UIImage
+            return copy() as? UIImage
         }
-        
+
         guard let cgImage = self.cgImage else {
             // CGImage is not available
             return nil
         }
-        
+
         guard let colorSpace = cgImage.colorSpace, let ctx = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 0, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
             return nil // Not able to create CGContext
         }
-        
+
         var transform: CGAffineTransform = CGAffineTransform.identity
-        
+
         switch imageOrientation {
         case .down, .downMirrored:
             transform = transform.translatedBy(x: size.width, y: size.height)
@@ -173,9 +192,8 @@ extension UIImage {
             break
         @unknown default:
             fatalError("Missing...")
-            break
         }
-        
+
         // Flip image one more time if needed to, this is to prevent flipped image
         switch imageOrientation {
         case .upMirrored, .downMirrored:
@@ -188,20 +206,18 @@ extension UIImage {
             break
         @unknown default:
             fatalError("Missing...")
-            break
         }
-        
+
         ctx.concatenate(transform)
-        
+
         switch imageOrientation {
         case .left, .leftMirrored, .right, .rightMirrored:
             ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
         default:
             ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            break
         }
-        
+
         guard let newCGImage = ctx.makeImage() else { return nil }
-        return UIImage.init(cgImage: newCGImage, scale: 1, orientation: .up)
+        return UIImage(cgImage: newCGImage, scale: 1, orientation: .up)
     }
 }

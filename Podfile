@@ -15,7 +15,7 @@ target 'blyp' do
   pod 'SDWebImageSwiftUI'
   pod 'Introspect'
   pod 'Pastel'
-  # Pods for blyp
+  pod 'SwiftLocation', '~> 4.0'
 
   target 'blypTests' do
     inherit! :search_paths

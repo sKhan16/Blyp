@@ -47,6 +47,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Blyp uses your location when creating new mapped Blyps</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Blyp uses your location when creating new mapped Blyps</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

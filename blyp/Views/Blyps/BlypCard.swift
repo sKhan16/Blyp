@@ -11,7 +11,7 @@ import SwiftUI
 struct BlypCard: View {
     var backgroundColor: Color?
     var backgroundImage: BlypImage?
-    
+
     @State private var isPressed = false
 
     let blyp: Blyp
@@ -32,7 +32,7 @@ struct BlypCard: View {
                     if self.backgroundImage != nil {
                         self.backgroundImage
                     }
-                    
+
                     VStack(alignment: .leading) {
                         Spacer()
                         VStack {

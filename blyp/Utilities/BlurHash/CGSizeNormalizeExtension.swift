@@ -9,10 +9,10 @@
 import UIKit
 extension CGSize {
     func scale(to scale: CGFloat) -> CGSize {
-        if (height < width) {
-            return CGSize(width: ((width / height) * scale), height: 32)
+        if height < width {
+            return CGSize(width: (width / height) * scale, height: 32)
         } else {
-            return CGSize(width: 32, height: ((height / width) * scale))
+            return CGSize(width: 32, height: (height / width) * scale)
         }
     }
 }
