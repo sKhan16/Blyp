@@ -7,25 +7,42 @@
 //
 
 import SwiftUI
-
+import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
+    @State private var isBlypPresented: Bool = false
+    @State private var selectedBlyp: Blyp? = nil
     
+    init() {
+        // This is required to not show the ugly lines between the cards
+        UITableView.appearance().separatorColor = .clear
+    }
+
     var body: some View {
         NavigationView {
-            List(user.blyps?.list ?? []) { blyp in
-                NavigationLink(destination: BlypView(blyp: blyp)) {
-                    VStack {
-                        Text(blyp.name)
-                        if blyp.imageAvailable {
-                            BlypImage(blyp: blyp)
-                        }
-                    }
+            TabView {
+                BlypList(isBlypPresented: $isBlypPresented, selectedBlyp: $selectedBlyp, blypsObservable: user.blyps!, selectedBlypList: .personal)
+                    .tabItem {
+                        Image(systemName: "person.crop.circle.fill")
+                        Text("Profile")
+                }
+                BlypList(isBlypPresented: $isBlypPresented, selectedBlyp: $selectedBlyp, blypsObservable: user.blyps!, selectedBlypList: .friends)
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                }
+                Text("SURPRISE, I'M NOT DONE YET")
+                    .tabItem {
+                        Image(systemName: "exclamationmark.circle.fill")
+                        Text("Secret")
                 }
             }
+            .sheet(isPresented: $isBlypPresented) {
+                BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
+            }
             .navigationBarTitle("Blyp", displayMode: .inline)
-            .navigationBarItems(leading: AddBlypViewButton().environmentObject(user),
-                                trailing: MainViewActionSheet().environmentObject(user))
+            .navigationBarItems(leading: AddBlypViewButton(),
+                                trailing: MainViewActionSheet())
         }
     }
 }
@@ -79,7 +96,44 @@ struct MainViewActionSheet: View {
     }
 }
 
+struct BlypList: View {
+    @EnvironmentObject var user: UserObservable
+    @Binding var isBlypPresented: Bool
+    @Binding var selectedBlyp: Blyp?
+    @ObservedObject var blypsObservable: BlypsObservable
+    var selectedBlypList: SelectedBlypList
+    
+    var body: some View {
+        List(selectedBlypList == .friends ? blypsObservable.friends : blypsObservable.personal ) { blyp in
+            BlypCard(blyp: blyp)
+                .padding(.vertical, 4)
+                .onTapGesture {
+                    self.selectedBlyp = blyp
+                    self.isBlypPresented.toggle()
+            }
+            .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
+            .scaleEffect(self.isBlypPressed(blyp) ? 0.95 : 1.0) // shrinky animation for selected blypcard
+            .animation(.spring())
+        }
+    }
+    
+    func isBlypPressed(_ blyp: Blyp) -> Bool {
+        return self.selectedBlyp == blyp && self.isBlypPresented
+    }
+    
+    enum SelectedBlypList {
+        case friends
+        case personal
+    }
+}
+
 struct MainView_Previews: PreviewProvider {
+    static private var testBlyps: [Blyp] = [
+        Blyp(name: "Test 1 name", description: "Test 1 description"),
+        Blyp(name: "Test 2 name", description: "Test 2 description"),
+        Blyp(name: "Test 3 name", description: "Test 3 description"),
+        Blyp(name: "Test 4 name", description: "Test 4 description")
+    ]
     static var previews: some View {
         MainView().environmentObject(UserObservable())
     }

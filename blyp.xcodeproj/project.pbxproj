@@ -15,7 +15,9 @@
 		C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AC2409D90500BB1C84 /* SignUpView.swift */; };
 		C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3AE2409DD6300BB1C84 /* MainView.swift */; };
 		C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01AA3B42409EAD300BB1C84 /* ContentView.swift */; };
+		C0208762246B2AB000FA497E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0208761246B2AB000FA497E /* MapView.swift */; };
 		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
+		C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0365C6224562BDE00C55F15 /* BlypCard.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
@@ -40,6 +42,7 @@
 		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
+		C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08DE2672458DA760057770F /* PastelViewRepresentable.swift */; };
 		C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476B2432B57700E13BC9 /* SearchBar.swift */; };
 		C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */; };
 		C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0904974244F9F5A0065000F /* BlypsObservable.swift */; };
@@ -51,7 +54,7 @@
 		C0EB8B65244CFA950068CC0B /* agenda-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */; };
 		C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB8B66244CFAF40068CC0B /* BlypFonts.swift */; };
 		C0EB8B69244CFCEA0068CC0B /* BlypColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB8B68244CFCEA0068CC0B /* BlypColors.swift */; };
-		C0ED0FF1244973B700BCCD88 /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0FF0244973B700BCCD88 /* FriendProfile.swift */; };
+		C0ED0FF1244973B700BCCD88 /* FriendProfileSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0FF0244973B700BCCD88 /* FriendProfileSearchable.swift */; };
 		C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */; };
 		C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */; };
 		C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE9D8323E4F20F004C4621 /* LoginView.swift */; };
@@ -93,7 +96,9 @@
 		C01AA3AC2409D90500BB1C84 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C01AA3AE2409DD6300BB1C84 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C01AA3B42409EAD300BB1C84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C0208761246B2AB000FA497E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
+		C0365C6224562BDE00C55F15 /* BlypCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCard.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		C08DE2672458DA760057770F /* PastelViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelViewRepresentable.swift; sourceTree = "<group>"; };
 		C090476B2432B57700E13BC9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsernameList.swift; sourceTree = "<group>"; };
 		C0904974244F9F5A0065000F /* BlypsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypsObservable.swift; sourceTree = "<group>"; };
@@ -119,7 +125,7 @@
 		C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "agenda-medium.ttf"; sourceTree = "<group>"; };
 		C0EB8B66244CFAF40068CC0B /* BlypFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypFonts.swift; sourceTree = "<group>"; };
 		C0EB8B68244CFCEA0068CC0B /* BlypColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypColors.swift; sourceTree = "<group>"; };
-		C0ED0FF0244973B700BCCD88 /* FriendProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
+		C0ED0FF0244973B700BCCD88 /* FriendProfileSearchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileSearchable.swift; sourceTree = "<group>"; };
 		C0FE9D7C23E4F20E004C4621 /* blyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE9D7F23E4F20F004C4621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FE9D8123E4F20F004C4621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 			children = (
 				C0FE9D8323E4F20F004C4621 /* LoginView.swift */,
 				C01AA3AC2409D90500BB1C84 /* SignUpView.swift */,
+				C08DE2672458DA760057770F /* PastelViewRepresentable.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -223,7 +230,7 @@
 			children = (
 				C0836757240EF16700BE31DD /* UserObservable.swift */,
 				C011C22C241B4C7900114AE9 /* UserProfile.swift */,
-				C0ED0FF0244973B700BCCD88 /* FriendProfile.swift */,
+				C0ED0FF0244973B700BCCD88 /* FriendProfileSearchable.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -255,6 +262,8 @@
 				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
 				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
 				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
+				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
+				C0208761246B2AB000FA497E /* MapView.swift */,
 			);
 			path = Blyps;
 			sourceTree = "<group>";
@@ -630,15 +639,18 @@
 				C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */,
 				C0FE9D8023E4F20F004C4621 /* AppDelegate.swift in Sources */,
 				C01AA3AF2409DD6300BB1C84 /* MainView.swift in Sources */,
-				C0ED0FF1244973B700BCCD88 /* FriendProfile.swift in Sources */,
+				C0ED0FF1244973B700BCCD88 /* FriendProfileSearchable.swift in Sources */,
 				C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */,
 				C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */,
 				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
+				C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */,
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
+				C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */,
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
+				C0208762246B2AB000FA497E /* MapView.swift in Sources */,
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,
@@ -828,7 +840,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -843,7 +855,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -855,7 +867,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -870,7 +882,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

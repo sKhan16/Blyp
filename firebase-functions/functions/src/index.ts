@@ -17,14 +17,17 @@ const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
 
 admin.initializeApp(functions.config().firebase);
 
+// Create a user profile document when an account is created
 exports.createUserProfileDocumentOnAccountCreation = functions.auth.user().onCreate((user) => {
   let hasDisplayName = user.displayName !== undefined
-
+  // Create the user profile document
   return admin.firestore().collection(userProfiles).doc(user.uid).create({
     friends: [],
-    blyps: [],
+    blyps: {},
     legacyContact: {},
+    uid: user.uid
   }).then((result: FirebaseFirestore.WriteResult) => {
+    // Create the display name document if one is given (typically only on creating fake users )
     if (hasDisplayName) {
       return admin.firestore().collection(userDisplayNames).doc(user.uid).create({
         displayName: user.displayName
@@ -43,15 +46,14 @@ exports.updateSearchableInAlgolia = functions.firestore
     if (oldUsername.displayName === newUsername.displayName) {
       return "just updating uuid"; // probably just updating UUID, ignore it
     }
-    const newObjectID = uuidv4();
-    // Add an 'objectID' field which Algolia requires
-    newUsername.objectID = newObjectID;
+    newUsername.objectID = context.params.uid 
+
     // Store new object ID
     return admin
       .firestore()
       .collection(userDisplayNames)
       .doc(context.params.uid)
-      .set({ objectID: newObjectID, displayName: newUsername.displayName })
+      .set({ objectID: context.params.uid, displayName: newUsername.displayName })
       .then(() => {
         const index = client.initIndex(ALGOLIA_INDEX_NAME);
         console.log("object ID: " + "`" + oldUsername.objectID + "`");
@@ -68,13 +70,12 @@ exports.createSearchableInAlgolia = functions.firestore
   .document(`${userDisplayNames}/{uid}`)
   .onCreate((snap: any, context: any) => {
     const username = snap.data();
-    const uuid = uuidv4();
-    username.objectID = uuid;
+    username.objectID = context.params.uid
     return admin
       .firestore()
       .collection(userDisplayNames)
       .doc(context.params.uid)
-      .set({ objectID: username.objectID, displayName: username.displayName })
+      .set({ objectID: username.objectID, displayName: username.displayName }) // uid is objectID
       .then(() => {
         const index = client.initIndex(ALGOLIA_INDEX_NAME);
         // Create new username in Algolia
@@ -90,19 +91,26 @@ exports.deleteSearchableInAlgolia = functions.firestore
     return index.deleteObject(username.objectID);
   });
 
-exports.deleteUserDocumentOnAccountDeletion = functions.auth.user().onDelete((user) => {
-  return admin.firestore().collection(userProfiles).doc(user.uid).delete();
-});
+// exports.deleteUserDocumentOnAccountDeletion = functions.auth.user().onDelete((user) => {
+//   return admin.firestore().collection(userProfiles).doc(user.uid).delete().then(() => {
+//     admin.storage().bucket()
+//   });
+// });
+
+// exports.deleteImageUponBlypDeletion = functions.firestore
+//   .document(`${userProfiles}/{uid}`).onUpdate((change, context) => {
+//     // Only delete images if a blyp was removed, not if one was added or another change was made
+//     let beforeLength = Object.keys(change.before!.data()!['blyps']).length
+//     let afterLength = Object.keys(change.after!.data()!['blyps']).length
+//     if (beforeLength <= afterLength) {
+//       return
+//     }
+//     let beforeKeys = Object.keys(change.before!.data()!['blyps'])
+//     let afterKeys = Object.keys(change.after!.data()!['blyps'])
+//     let removedKeys = beforeKeys.filter(key => afterKeys.includes(key))
+//     admin.storage().bucket().file("${}")
+//   })
 
 exports.deleteUserDisplayNameOnAccountDeletion = functions.auth.user().onDelete((user) => {
   return admin.firestore().collection(userDisplayNames).doc(user.uid).delete();
 });
-
-// UUIDV4 generator
-function uuidv4() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    let r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}

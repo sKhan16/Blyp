@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
-struct Blyp: Identifiable, Codable {
+struct Blyp: Identifiable, Codable, Comparable {
+    
     // MARK: Properties that are expected for the JSON
     var id: UUID = UUID()
     var name: String
     var description: String
+    var createdOn: Date = Date()// Default to now
     
     var imageUrl: String?
     var imageBlurHash: String?
@@ -25,6 +27,7 @@ struct Blyp: Identifiable, Codable {
         case id
         case name
         case description
+        case createdOn
         case imageUrl
         case imageBlurHash
         case imageBlurHashWidth
@@ -33,9 +36,14 @@ struct Blyp: Identifiable, Codable {
     
     // MARK: Properties used for saving and using Blyps
     var image: UIImage?
-    var imageAvailable: Bool {
+    var hasImage: Bool {
         get {
             return self.imageUrl != nil && self.imageBlurHash != nil && self.imageBlurHashWidth != nil && self.imageBlurHashHeight != nil
         }
+    }
+    
+    // MARK: Make sure sortable by date in reverse chronological order
+    static func < (lhs: Blyp, rhs: Blyp) -> Bool {
+        lhs.createdOn > rhs.createdOn
     }
 }

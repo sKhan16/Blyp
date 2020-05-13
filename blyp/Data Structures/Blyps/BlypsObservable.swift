@@ -13,15 +13,21 @@ import FirebaseStorage
 
 class BlypsObservable: ObservableObject {
     var user: UserObservable?
-    @Published var list: [Blyp] = []
+    @Published var personal: [Blyp] = []
+    @Published var friends: [Blyp] = []
     
     private let storage = Storage.storage()
+    private var friendBlypSubscription: ListenerRegistration?
     private let databaseName: String = "userProfiles"
     
     private let imageExtension = "jpeg"
     
     init(user: UserObservable) {
         self.user = user
+    }
+    
+    deinit {
+        friendBlypSubscription?.remove()
     }
     
     /// Saves the Blyp to the user's account
@@ -82,7 +88,8 @@ class BlypsObservable: ObservableObject {
                 "id": blyp.id.uuidString,
                 "name": blyp.name,
                 "description": blyp.description,
-                "imageUrl": blyp.imageUrl,
+                "createdOn": blyp.createdOn,
+                "imageUrl": blyp.imageUrl, // Ignore these warnings, we do NOT want to store a default value
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
                 "imageBlurHashWidth": blyp.imageBlurHashWidth
@@ -96,21 +103,59 @@ class BlypsObservable: ObservableObject {
         }
     }
     
-    /// Parses blyps from incoming profile and sets to $list
-    /// - Parameter userProfile: Profile to parse blyps from
-    func parse(from userProfile: UserProfile) {
-        var tempBlyps: [Blyp] = []
-        for (_, blyp) in userProfile.blyps {
-            tempBlyps.append(blyp)
+    private func subscribeToFriendBlyps(_ db: Firestore, _ userProfile: UserProfile) {
+        self.friendBlypSubscription?.remove()
+        // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
+        print("Subscribing to these friends: \(userProfile.friends)")
+        if userProfile.friends.count == 0 {
+            self.friends = []
+            return
         }
-        tempBlyps.sort { (a, b) -> Bool in
-            a.name < b.name
+        let userProfilesRef = db.collection("userProfiles")
+        self.friendBlypSubscription = userProfilesRef.whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
+            self.getBlypsFromFriendsSnapshot(snapshot: documentsSnapshot, error: error)
         }
-        self.list = tempBlyps
-        print("Blyps have been updated LIVE!")
     }
     
-    init() {
-        self.list = []
+    /// Parses blyps from incoming profile and sets to $list
+    /// - Parameter userProfile: Profile to parse blyps from
+    func parse(from userProfile: UserProfile, isFromCache: Bool) {
+        let db = Firestore.firestore()
+        if !isFromCache {
+            subscribeToFriendBlyps(db, userProfile)
+        }
+        self.personal = userProfile.blyps.values.sorted()
+    }
+    
+    func getBlypsFromFriendsSnapshot(snapshot: QuerySnapshot?, error: Error?) {
+        if let error = error {
+            print("Error retreiving collection: \(error)")
+        }
+        guard let documents = snapshot?.documents else {
+            print("Error getting friends' blyps: \(String(describing: error))")
+            return
+        }
+        
+        var tempFriends: [Blyp] = []
+        // Go through each profile
+        for documentSnapshot in documents {
+            // Turn each profile into a UserProfile
+            let result = Result {
+                try documentSnapshot.data(as: UserProfile.self)
+            }
+            switch result {
+            case let .success(profile):
+                if let profile = profile {
+                    print("Adding \(profile.blyps.values.count) new items to the friends' list we're building")
+                    tempFriends.append(contentsOf: profile.blyps.values)
+                }
+            case let .failure(err): print(err)
+                // FIXME: ADD ERROR HANDLING
+            }
+        }
+        tempFriends.sort()
+        self.friends.removeAll()
+        self.friends.append(contentsOf: tempFriends)
+        print("Friends' blyps are now \(self.friends.count) long")
     }
 }

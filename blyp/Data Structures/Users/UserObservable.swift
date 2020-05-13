@@ -19,13 +19,18 @@ public class UserObservable: ObservableObject {
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
     @Published var blyps: BlypsObservable?
-    @Published var friends: [FriendProfile] = []
+    @Published var friends: [FriendProfileSearchable] = []
 
     private let databaseName: String = "userProfiles"
     private var blypFirestoreListenerSubscription: ListenerRegistration?
     
     init() {
         self.blyps = BlypsObservable(user: self)
+    }
+    
+    deinit {
+        blypFirestoreListenerSubscription?.remove()
+        blyps = nil
     }
     
     // MARK: Authentication and Login/Logout functions
@@ -98,16 +103,21 @@ public class UserObservable: ObservableObject {
 
     // MARK: Utility functions
 
+    /// Reset all user data
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
+//        blyps = nil
+        
+        friends = []
     }
 
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         let db = Firestore.firestore()
+        
         blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
-            .addSnapshotListener { documentSnapshot, _ in
+            .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
                 let result = Result {
                     try documentSnapshot.flatMap {
                         try $0.data(as: UserProfile.self)
@@ -116,12 +126,12 @@ public class UserObservable: ObservableObject {
                 switch result {
                 case let .success(profile):
                     if let profile = profile {
-                        self.friends = profile.friends.map { FriendProfile(uid: $0) }
+                        self.friends = profile.friends.map { FriendProfileSearchable(uid: $0) }
                         guard let blyps = self.blyps else {
                             print("blyps were not configured in UserObservable")
                             return
                         }
-                        blyps.parse(from: profile)
+                        blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? true)
                     }
                 case let .failure(err): print(err)
                     // FIXME: ADD ERROR HANDLING
@@ -129,10 +139,17 @@ public class UserObservable: ObservableObject {
             }
     }
 
-    func addFriend(_ friendProfile: FriendProfile) {
+    func addFriend(_ friendProfile: FriendProfileSearchable) {
         let db = Firestore.firestore()
         db.collection(databaseName).document(uid).updateData([
             "friends": FieldValue.arrayUnion([friendProfile.uid]),
+            ])
+    }
+    
+    func removeFriend(_ friendProfile: FriendProfileSearchable) {
+        let db = Firestore.firestore()
+        db.collection(databaseName).document(uid).updateData([
+            "friends": FieldValue.arrayRemove([friendProfile.uid])
         ])
     }
 }
@@ -141,10 +158,4 @@ enum LoginState {
     case loggedIn
     case signingUp
     case loggedOut
-}
-
-/// Names of Firebase Functions
-enum Funcs: String {
-    case addBlyp
-    case removeBlyp
 }
