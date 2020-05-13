@@ -11,18 +11,24 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
-    @Binding var location: MKPointAnnotation
+    @Binding var location: MKPointAnnotation?
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: CLLocationDistance(exactly: 10000)!, longitudinalMeters: CLLocationDistance(exactly: 10000)!)
         mapView.setRegion(mapView.regionThatFits(region), animated: true)
         mapView.delegate = context.coordinator
+        guard let location = location else {
+            return mapView
+        }
         mapView.setAnnotation(to: location)
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context _: Context) {
+        guard let location = location else {
+            return
+        }
         view.setAnnotation(to: location)
     }
 

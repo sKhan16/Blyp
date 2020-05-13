@@ -21,9 +21,14 @@ struct Blyp: Identifiable, Codable, Comparable {
     var imageBlurHash: String?
     var imageBlurHashWidth: CGFloat?
     var imageBlurHashHeight: CGFloat?
+    
+    var longitude: CGFloat?
+    var latitude: CGFloat?
+    var hasLocation: Bool {
+        return longitude != nil && latitude != nil
+    }
 
     // MARK: CodingKeys for JUST properties listed above
-
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -33,6 +38,8 @@ struct Blyp: Identifiable, Codable, Comparable {
         case imageBlurHash
         case imageBlurHashWidth
         case imageBlurHashHeight
+        case longitude
+        case latitude
     }
 
     // MARK: Properties used for saving and using Blyps
@@ -43,7 +50,6 @@ struct Blyp: Identifiable, Codable, Comparable {
     }
 
     // MARK: Make sure sortable by date in reverse chronological order
-
     static func < (lhs: Blyp, rhs: Blyp) -> Bool {
         lhs.createdOn > rhs.createdOn
     }

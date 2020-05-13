@@ -27,6 +27,8 @@ struct AddBlypView: View {
 
     @State private var isShowingMapView: Bool = false
     @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 122.3493, longitude: 47.6205) // space needle ❤️
+    @State private var location: MKPointAnnotation? = nil
+
 
     init(imageView: Image?) {
         self.init()
@@ -60,13 +62,12 @@ struct AddBlypView: View {
                     }
 
                     Section(header: Text("Location")) {
-                        Button(imageView == nil ? "Add a location" : "Select a different location", action: {
-//                            self.isShowingMapView.toggle()
+                        Button(location == nil ? "Add a location" : "Select a different location", action: {
                             // Try to get user's location
                             LocationManager.shared.locateFromGPS(.oneShot, accuracy: .city) { result in
                                 switch result {
                                 case let .failure(error):
-                                    debugPrint("Received error: \(error)")
+                                    debugPrint("Received location error: \(error), this is fine")
                                     self.isShowingMapView.toggle()
                                 case let .success(location):
                                     debugPrint("Location received: \(location)")
@@ -83,7 +84,7 @@ struct AddBlypView: View {
                     ImagePicker(image: self.$imageData)
                 }
                 .sheet(isPresented: $isShowingMapView) {
-                    AddMapLocationView(title: self.name, subtitle: self.desc, centerCoordinate: self.$centerCoordinate)
+                    AddMapLocationView(title: self.name, subtitle: self.desc, centerCoordinate: self.$centerCoordinate, location: self.$location)
                 }
             }
         }

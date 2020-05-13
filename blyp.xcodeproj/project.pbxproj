@@ -260,15 +260,31 @@
 		C0363F41241AE9E4006EE664 /* Blyps */ = {
 			isa = PBXGroup;
 			children = (
+				C05B3A5B246B814900CE01BA /* Maps */,
+				C05B3A5A246B813E00CE01BA /* Images */,
 				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
 				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
+				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
+			);
+			path = Blyps;
+			sourceTree = "<group>";
+		};
+		C05B3A5A246B813E00CE01BA /* Images */ = {
+			isa = PBXGroup;
+			children = (
 				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
 				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
-				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C05B3A5B246B814900CE01BA /* Maps */ = {
+			isa = PBXGroup;
+			children = (
 				C0208761246B2AB000FA497E /* MapView.swift */,
 				C05B3A58246B372300CE01BA /* AddMapLocationView.swift */,
 			);
-			path = Blyps;
+			path = Maps;
 			sourceTree = "<group>";
 		};
 		C05C934624522B7E00B846E0 /* Utilities */ = {

@@ -14,13 +14,17 @@ struct AddMapLocationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var title: String
     var subtitle: String
-    @Binding var centerCoordinate: CLLocationCoordinate2D //  CLLocationCoordinate2D()
-    @State private var location: MKPointAnnotation = MKPointAnnotation()
+    private var previousLocation: MKPointAnnotation? = nil
+    @Binding var centerCoordinate: CLLocationCoordinate2D
+    @Binding var location: MKPointAnnotation?
 
-    init(title: String, subtitle: String, centerCoordinate: Binding<CLLocationCoordinate2D>) {
+    init(title: String, subtitle: String, centerCoordinate: Binding<CLLocationCoordinate2D>, location: Binding<MKPointAnnotation?>) {
         self.title = title
         self.subtitle = subtitle
         _centerCoordinate = centerCoordinate
+        _location = location
+        // Save the previous location just in case
+        self.previousLocation = location.wrappedValue
     }
 
     var body: some View {
@@ -28,7 +32,7 @@ struct AddMapLocationView: View {
             ZStack {
                 MapView(centerCoordinate: $centerCoordinate, location: $location).edgesIgnoringSafeArea(.all)
                 CenterDotView()
-                Header(saveLocation: saveLocation)
+                Header(location: $location, previousLocation: previousLocation)
                 Footer(action: setLocation)
             }
         }
@@ -40,10 +44,6 @@ struct AddMapLocationView: View {
         newLocation.title = title
         newLocation.subtitle = subtitle
         location = newLocation
-    }
-
-    func saveLocation() {
-        presentationMode.wrappedValue.dismiss()
     }
 }
 
@@ -72,7 +72,6 @@ private struct SetLocationButton: View {
                 .padding()
                 .contentShape(Rectangle())
         }
-
         .background(Blur(style: .systemMaterial))
         .cornerRadius(40)
     }
@@ -94,17 +93,22 @@ private struct Footer: View {
 
 private struct Header: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var saveLocation: () -> Void
+    @Binding var location: MKPointAnnotation?
+    var previousLocation: MKPointAnnotation?
     var body: some View {
         VStack {
             HStack {
-                Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                Button(action: {
+                    // Close uses the old location
+                    self.location = self.previousLocation
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
                     Text("Close")
                 }.padding()
                 Spacer()
                 Text("Blyp Location")
                 Spacer()
-                Button(action: saveLocation) {
+                Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                     Text("Done")
                 }.padding()
             }.background(Blur(style: .systemMaterial))
@@ -114,8 +118,10 @@ private struct Header: View {
 }
 
 struct AddMapLocationView_Previews: PreviewProvider {
-    @State static var spaceNeedle = CLLocationCoordinate2D()
+    @State static var seattle = CLLocationCoordinate2D()
+    @State static var spaceNeedle: MKPointAnnotation? = MKPointAnnotation()
+
     static var previews: some View {
-        AddMapLocationView(title: "Title", subtitle: "Subtitle", centerCoordinate: $spaceNeedle)
+        AddMapLocationView(title: "Title", subtitle: "Subtitle", centerCoordinate: $seattle, location: $spaceNeedle)
     }
 }
