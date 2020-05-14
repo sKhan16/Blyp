@@ -10,26 +10,53 @@ import SwiftUI
 
 struct BlypView: View {
     @EnvironmentObject var user: UserObservable
-    @State var blyp: Blyp
+    var blyp: Blyp
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader {geometry in
             ScrollView {
+                // Header image at the top
                 if self.blyp.hasImage {
-                    BlypImage(blyp: self.blyp,contentMode: .fit)
-                        .edgesIgnoringSafeArea(.all).frame(maxWidth: geometry.size.width)
+                    BlypImage(blyp: self.blyp, contentMode: .fill)
+                        .edgesIgnoringSafeArea(.top)
+                        .frame(width: geometry.size.width, height: self.scale(geom: geometry, to: self.blyp).height)
                 }
+                // Big name of the Blyp
                 Text(self.self.blyp.name).font(.largeTitle).padding([.top, .horizontal])
+                // If it's a blyp with a createdBy property, we'll add the username to it
                 if self.blyp.createdBy != nil {
                     Text(self.user.friends.first(where: { f in f.uid == self.blyp.createdBy })?.displayName ?? "")
                         .font(.subheadline)
                 }
-                Text(self.self.blyp.description).multilineTextAlignment(.leading).padding().lineLimit(nil).fixedSize(horizontal: false, vertical: true)
+                // Big, long appearance for descriptions
+                Text(self.self.blyp.description)
+                    .multilineTextAlignment(.leading)
+                    .padding().lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                // Square map
                 if self.blyp.hasLocation {
                     StaticMap(title: self.blyp.name, subtitle: self.blyp.description, latitude: self.blyp.latitude ?? 0, longitude: self.blyp.longitude ?? 0, isScrollable: true)
-                        .frame(height: 500)
+                        .frame(height: geometry.size.width) // make it a square map
                 }
-            }.edgesIgnoringSafeArea(.all)
+            }
         }
+    }
+    
+    /// Scales an image to fit the maximum width (necessary for ScrollViews)
+    /// - Parameters:
+    ///   - geom: geometry of the view to take the full width out of
+    ///   - blyp: blyp with the image we're using (we need the imageBlurHashWidth/height to get the aspect ratio)
+    /// - Returns: Size that the frame of the image should be
+    private func scale(geom: GeometryProxy, to blyp: Blyp) -> CGSize {
+        guard let aspectWidth = blyp.imageBlurHashWidth else {
+            return CGSize(width: geom.size.width, height: geom.size.width)
+        }
+        guard let aspectHeight = blyp.imageBlurHashHeight else {
+            return CGSize(width: geom.size.width, height: geom.size.width)
+        }
+        
+        let height = (geom.size.width / aspectWidth) * aspectHeight
+                
+        return CGSize(width: geom.size.width, height: height)
     }
 }
 
