@@ -10,12 +10,12 @@ import SwiftUI
 
 struct FriendCell: View {
     @EnvironmentObject var user: UserObservable
-    private var profile: FriendProfileSearchable
+    private var profile: FriendProfile
     
     init(for user: DisplayNameAlgoliaResult) {
-        self.profile = FriendProfileSearchable(displayName: user.displayName, uid: user.objectID)
+        self.profile = FriendProfile(uid: user.objectID, displayName: user.displayName)
     }
-    init(friend: FriendProfileSearchable) {
+    init(friend: FriendProfile) {
         self.profile = friend
     }
     var body: some View {

@@ -19,15 +19,16 @@ public class UserObservable: ObservableObject {
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
     @Published var blyps: BlypsObservable?
-    @Published var friends: [FriendProfileSearchable] = []
+    @Published var friends: [FriendProfile] = []
     @Published var legacyContact: String = ""
     
+    private var userProfilesCollectionRef: CollectionReference = Firestore.firestore().collection("userProfiles")
+    private var userDisplayNameCollectionRef: CollectionReference = Firestore.firestore().collection("userDisplayNames")
     private var userProfileRef: DocumentReference {
-        return Firestore.firestore().collection("userProfiles").document(uid)
+        return userProfilesCollectionRef.document(uid)
     }
-    
     private var userDisplayNameRef: DocumentReference {
-        return Firestore.firestore().collection("userDisplayNames").document(uid)
+        return userDisplayNameCollectionRef.document(uid)
     }
     
     private var blypFirestoreListenerSubscription: ListenerRegistration?
@@ -145,11 +146,12 @@ public class UserObservable: ObservableObject {
     
     private func getFriendsUsernames(uids: [String]) {
         if (uids.count == 0) {
+            print("No friends to get usernames from right now")
+            self.friends.removeAll()
             return // can't run whereField on empty array
         }
         print("Getting usernames for \(uids)")
-        // sorry about not making this a field
-        Firestore.firestore().collection("userDisplayNames").whereField("objectID", in: uids).getDocuments { (documentsSnapshot, error) in
+        userDisplayNameCollectionRef.whereField("objectID", in: uids).getDocuments { (documentsSnapshot, error) in
             if let error = error {
                 print("Error retreiving collection: \(error)")
             }
@@ -157,11 +159,10 @@ public class UserObservable: ObservableObject {
                 print("Error getting friends' usernames: \(String(describing: error))")
                 return
             }
-            self.friends = []
-            var tempFriends: [FriendProfileSearchable] = []
+            var tempFriends: [FriendProfile] = []
             for document in documents {
                 let result = Result {
-                    try document.data(as: FriendProfileSearchable.self)
+                    try document.data(as: FriendProfile.self)
                 }
                 switch result {
                 case let .success(friendProfile):
@@ -174,23 +175,24 @@ public class UserObservable: ObservableObject {
                 }
             }
             tempFriends.sort()
-            self.friends = tempFriends
+            self.friends.removeAll()
+            self.friends.append(contentsOf: tempFriends)
         }
     }
     
-    func addFriend(_ friendProfile: FriendProfileSearchable) {
+    func addFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
             "friends": FieldValue.arrayUnion([friendProfile.uid])
         ])
     }
     
-    func removeFriend(_ friendProfile: FriendProfileSearchable) {
+    func removeFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
             "friends": FieldValue.arrayRemove([friendProfile.uid])
         ])
     }
     
-    func setLegacyContact(to friendProfile: FriendProfileSearchable) {
+    func setLegacyContact(to friendProfile: FriendProfile) {
         userProfileRef.updateData([
             "legacyContact": friendProfile.uid
         ])
@@ -201,10 +203,20 @@ public class UserObservable: ObservableObject {
             "legacyContact": ""
         ])
     }
+    
+    func set(friend: FriendProfile, as status: DeceasedStatus) {
+        let friendProfileDocumentRef = userProfilesCollectionRef.document(friend.uid)
+        friendProfileDocumentRef.updateData(["deceased": status == .deceased])
+    }
 }
 
 enum LoginState {
     case loggedIn
     case signingUp
     case loggedOut
+}
+
+enum DeceasedStatus {
+    case deceased
+    case alive
 }

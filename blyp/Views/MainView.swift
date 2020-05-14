@@ -41,7 +41,7 @@ struct MainView: View {
             .sheet(isPresented: $isBlypPresented) {
                 BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
             }
-            .navigationBarTitle(Text("Blyp").bold().italic(), displayMode: .inline)
+            .navigationBarTitle(Text("Blyp").bold().italic())
             .navigationBarItems(leading: AddBlypViewButton(),
                                 trailing: MainViewActionSheet())
         }
@@ -93,7 +93,7 @@ struct MainViewActionSheet: View {
         }
         .sheet(isPresented: $addingFriend) {
             // For some reason we HAVE to pass the user as an environment object
-            ManageFriends().environmentObject(self.user)
+            ManageFriends(userSearcher: UserSearcher()).environmentObject(self.user)
         }
     }
 }

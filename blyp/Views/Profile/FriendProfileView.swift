@@ -10,9 +10,9 @@ import SwiftUI
 
 struct FriendProfileView: View {
     @EnvironmentObject var user: UserObservable
-    var friendProfile: FriendProfileSearchable
+    var friendProfile: FriendProfile
     
-    init(friendProfile: FriendProfileSearchable) {
+    init(friendProfile: FriendProfile) {
         self.friendProfile = friendProfile
     }
     
@@ -37,7 +37,6 @@ struct FriendProfileView: View {
                 .shadow(radius: 1)
                 .padding()
                 .animation(.easeInOut)
-                
                 Button(action: {
                     if self.friendProfile.isLegacyContact(of: self.user) {
                         self.user.removeLegacyContact()
@@ -55,15 +54,16 @@ struct FriendProfileView: View {
                 .padding()
                 .animation(.easeInOut)
             }
+            Spacer()
         }
-        .navigationBarTitle(Text(friendProfile.displayName ?? ""))
+        .navigationBarTitle(Text(friendProfile.displayName ?? "NAME"))
     }
 }
 
 
-struct FriendProfileView_Previews: PreviewProvider {
-    private static var friendProfile: FriendProfileSearchable = FriendProfileSearchable(displayName: "Bill", uid: "")
-    static var previews: some View {
-        FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
-    }
-}
+//struct FriendProfileView_Previews: PreviewProvider {
+//    private static var friendProfile: FriendProfileSearchable = FriendProfileSearchable(displayName: "Bill", uid: "")
+//    static var previews: some View {
+//        FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
+//    }
+//}

@@ -61,7 +61,7 @@ struct AddBlypView: View {
                         LocationSection(name: $name, description: $desc, location: $location, centerCoordinate: $centerCoordinate, isShowingMapView: $isShowingMapView)
                     }
                 }
-                .navigationBarTitle("New Blyp", displayMode: .inline)
+                .navigationBarTitle("New Blyp")
                 .navigationBarItems(leading: CloseButton(presentationMode: self.presentationMode), trailing: PostButton(saveBlyp: saveBlyp, isSubmittable: self.isSubmittable()))
             }
         }

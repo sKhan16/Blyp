@@ -13,19 +13,26 @@ import SwiftUI
 struct ManageFriends: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-    @ObservedObject private var userSearcher = UserSearcher()
+    @State var isShowingAddFriends: Bool = false
+    @ObservedObject var userSearcher: UserSearcher // = UserSearcher()
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(userSearcher: userSearcher)
-                if userSearcher.searchQuery != "" {
-                    FriendsList(searchHits: userSearcher.displayNameAlgolia.hits)
-                } else {
-                    FriendsList(friends: user.friends)
-                }
-            }
-            .navigationBarTitle(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend", displayMode: .inline)
-            .navigationBarItems(leading: CloseButton(presentationMode: presentationMode))
+            FriendsList(friends: user.friends)
+                .navigationBarTitle("Friends")
+                .navigationBarItems(leading: CloseButton(presentationMode: presentationMode), trailing: AddFriendsButton(isShowingAddFriends: $isShowingAddFriends))
+        }.sheet(isPresented: $isShowingAddFriends) {
+            AddFriends(userSearcher: UserSearcher()).environmentObject(self.user)
+        }
+    }
+}
+
+fileprivate struct AddFriendsButton: View {
+    @Binding var isShowingAddFriends: Bool
+    var body: some View {
+        Button(action: {
+            self.isShowingAddFriends.toggle()
+        }) {
+            Text("Add Friends")
         }
     }
 }
@@ -68,6 +75,6 @@ extension View {
 
 struct AddFriend_Previews: PreviewProvider {
     static var previews: some View {
-        ManageFriends().environmentObject(UserObservable())
+        ManageFriends(userSearcher: UserSearcher()).environmentObject(UserObservable())
     }
 }
