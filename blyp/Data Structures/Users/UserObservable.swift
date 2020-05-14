@@ -21,29 +21,30 @@ public class UserObservable: ObservableObject {
     @Published var blyps: BlypsObservable?
     @Published var friends: [FriendProfile] = []
     @Published var legacyContact: String = ""
-    
+
     private var userProfilesCollectionRef: CollectionReference = Firestore.firestore().collection("userProfiles")
     private var userDisplayNameCollectionRef: CollectionReference = Firestore.firestore().collection("userDisplayNames")
     private var userProfileRef: DocumentReference {
         return userProfilesCollectionRef.document(uid)
     }
+
     private var userDisplayNameRef: DocumentReference {
         return userDisplayNameCollectionRef.document(uid)
     }
-    
+
     private var blypFirestoreListenerSubscription: ListenerRegistration?
-    
+
     init() {
         blyps = BlypsObservable(user: self)
     }
-    
+
     deinit {
         blypFirestoreListenerSubscription?.remove()
         blyps = nil
     }
-    
+
     // MARK: Authentication and Login/Logout functions
-    
+
     /// Set our Observable's values to the incoming User's values
     func completeLogin(user: User) {
         if let displayName = user.displayName {
@@ -55,7 +56,7 @@ public class UserObservable: ObservableObject {
         uid = user.uid
         subscribeToFirestore()
     }
-    
+
     /// Logout from Firebase
     func logout() {
         let firebaseAuth = Auth.auth()
@@ -71,28 +72,28 @@ public class UserObservable: ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
-    
+
     func developerLogin() {
         #if DEBUG
-        if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
-            if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
-                Auth.auth().signIn(withEmail: email, password: password) { authResult, _ in
-                    // Forcing this is okay because it's debug. If something breaks here.... we're doomed
-                    self.completeLogin(user: authResult!.user)
+            if let email = ProcessInfo.processInfo.environment["BLYP_EMAIL"] {
+                if let password = ProcessInfo.processInfo.environment["BLYP_PASSWORD"] {
+                    Auth.auth().signIn(withEmail: email, password: password) { authResult, _ in
+                        // Forcing this is okay because it's debug. If something breaks here.... we're doomed
+                        self.completeLogin(user: authResult!.user)
+                    }
+                } else {
+                    print("Make sure you have BLYP_PASSWORD in your Xcode environment")
                 }
             } else {
-                print("Make sure you have BLYP_PASSWORD in your Xcode environment")
+                print("Make sure you have BLYP_EMAIL in your Xcode environment")
             }
-        } else {
-            print("Make sure you have BLYP_EMAIL in your Xcode environment")
-        }
         #else
-        print("What the FUCK do you think you're doing? You CANNOT use developer login in a release environment")
+            print("What the FUCK do you think you're doing? You CANNOT use developer login in a release environment")
         #endif
     }
-    
+
     // MARK: Functions that edit user's data
-    
+
     /// Update the user's display name
     /// - Parameter displayName: display name (username) to set it to
     func changeDisplayName(displayName: String) {
@@ -103,22 +104,22 @@ public class UserObservable: ObservableObject {
             if error == nil {
                 self.displayName = trimmedName
                 self.loginState = .loggedIn
-                self.userDisplayNameRef.updateData(["displayName" : trimmedName])
+                self.userDisplayNameRef.updateData(["displayName": trimmedName])
             } else {
                 // FIXME: Add error state
             }
         }
     }
-    
+
     // MARK: Utility functions
-    
+
     /// Reset all user data
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
         friends = []
     }
-    
+
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
         blypFirestoreListenerSubscription = userProfileRef.addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
@@ -143,15 +144,15 @@ public class UserObservable: ObservableObject {
             }
         }
     }
-    
+
     private func getFriendsUsernames(uids: [String]) {
-        if (uids.count == 0) {
+        if uids.count == 0 {
             print("No friends to get usernames from right now")
-            self.friends.removeAll()
+            friends.removeAll()
             return // can't run whereField on empty array
         }
         print("Getting usernames for \(uids)")
-        userDisplayNameCollectionRef.whereField("objectID", in: uids).getDocuments { (documentsSnapshot, error) in
+        userDisplayNameCollectionRef.whereField("objectID", in: uids).getDocuments { documentsSnapshot, error in
             if let error = error {
                 print("Error retreiving collection: \(error)")
             }
@@ -179,31 +180,31 @@ public class UserObservable: ObservableObject {
             self.friends.append(contentsOf: tempFriends)
         }
     }
-    
+
     func addFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "friends": FieldValue.arrayUnion([friendProfile.uid])
+            "friends": FieldValue.arrayUnion([friendProfile.uid]),
         ])
     }
-    
+
     func removeFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "friends": FieldValue.arrayRemove([friendProfile.uid])
+            "friends": FieldValue.arrayRemove([friendProfile.uid]),
         ])
     }
-    
+
     func setLegacyContact(to friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "legacyContact": friendProfile.uid
+            "legacyContact": friendProfile.uid,
         ])
     }
-    
+
     func removeLegacyContact() {
         userProfileRef.updateData([
-            "legacyContact": ""
+            "legacyContact": "",
         ])
     }
-    
+
     func set(friend: FriendProfile, as status: DeceasedStatus) {
         let friendProfileDocumentRef = userProfilesCollectionRef.document(friend.uid)
         friendProfileDocumentRef.updateData(["deceased": status == .deceased])

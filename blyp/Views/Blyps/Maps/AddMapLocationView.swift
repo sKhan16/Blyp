@@ -16,9 +16,9 @@ struct AddMapLocationView: View {
     @Binding var subtitle: String
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var location: MKPointAnnotation?
-    
+
     private var previousLocation: MKPointAnnotation?
-    
+
     init(title: Binding<String>, subtitle: Binding<String>, centerCoordinate: Binding<CLLocationCoordinate2D>, location: Binding<MKPointAnnotation?>) {
         _title = title
         _subtitle = subtitle
@@ -27,7 +27,7 @@ struct AddMapLocationView: View {
         // Save the previous location just in case
         previousLocation = location.wrappedValue
     }
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -39,7 +39,7 @@ struct AddMapLocationView: View {
             .navigationBarItems(leading: CloseButton(presentationMode: presentationMode, location: $location, centerCoordinate: $centerCoordinate), trailing: DoneButton(presentationMode: presentationMode))
         }
     }
-    
+
     func setLocation() {
         let newLocation = MKPointAnnotation()
         newLocation.coordinate = centerCoordinate
@@ -77,7 +77,7 @@ private struct SetLocationButton: View {
     }
 }
 
-fileprivate struct CloseButton: View {
+private struct CloseButton: View {
     @Binding var presentationMode: PresentationMode
     @Binding var location: MKPointAnnotation?
     @Binding var centerCoordinate: CLLocationCoordinate2D
@@ -93,7 +93,7 @@ fileprivate struct CloseButton: View {
     }
 }
 
-fileprivate struct DoneButton: View {
+private struct DoneButton: View {
     @Binding var presentationMode: PresentationMode
     var body: some View {
         Button(action: {

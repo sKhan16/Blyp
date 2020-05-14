@@ -13,33 +13,33 @@ import SwiftUI
 struct AddBlypView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-    
+
     // MARK: State items for the required Blyp descriptors
-    
+
     @State private var name: String = ""
     @State private var desc: String = ""
-    
+
     // MARK: State items for the image picker button
-    
+
     @State private var isShowingImagePicker: Bool = false
     @State private var imageData: UIImage?
     @State var imageView: Image?
-    
+
     // MARK: State items for map view
-    
+
     @State private var isShowingMapView: Bool = false
     @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 122.3493, longitude: 47.6205) // space needle ❤️
     @State private var location: MKPointAnnotation?
-    
+
     init(imageView: Image?) {
         self.init()
         self.imageView = imageView
     }
-    
+
     init() {
         UITableView.appearance().separatorColor = nil
     }
-    
+
     var body: some View {
         VStack {
             NavigationView {
@@ -51,12 +51,11 @@ struct AddBlypView: View {
                     }) {
                         MainSection(name: $name, description: $desc)
                     }
-                    
-                    
+
                     Section(header: Text("Media")) {
                         MediaSection(isShowingImagePicker: $isShowingImagePicker, imageView: $imageView, imageData: $imageData, loadImage: loadImage)
                     }
-                    
+
                     Section(header: Text("Location")) {
                         LocationSection(name: $name, description: $desc, location: $location, centerCoordinate: $centerCoordinate, isShowingMapView: $isShowingMapView)
                     }
@@ -66,17 +65,17 @@ struct AddBlypView: View {
             }
         }
     }
-    
+
     /// Loads image data from the selected image (or not)
     func loadImage() {
         guard let imageData = imageData else { return }
         imageView = Image(uiImage: imageData.fixedOrientation()!)
     }
-    
+
     func isSubmittable() -> Bool {
-        self.name != "" && self.desc != ""
+        name != "" && desc != ""
     }
-    
+
     /// Saves blyp and dismiss view
     func saveBlyp() {
         let latitude: Double? = location?.coordinate.latitude
@@ -98,7 +97,6 @@ struct AddBlypView_Previews: PreviewProvider {
         }
     }
 }
-
 
 struct SelectedImageView: View {
     let image: Image
@@ -122,7 +120,7 @@ struct PostButton: View {
     }
 }
 
-fileprivate struct CloseButton: View {
+private struct CloseButton: View {
     @Binding var presentationMode: PresentationMode
     var body: some View {
         Button(action: {
@@ -161,7 +159,6 @@ struct MediaSection: View {
     }
 }
 
-
 struct LocationSection: View {
     @Binding var name: String
     @Binding var description: String
@@ -190,7 +187,7 @@ struct LocationSection: View {
             }).sheet(isPresented: $isShowingMapView) {
                 AddMapLocationView(title: self.$name, subtitle: self.$description, centerCoordinate: self.$centerCoordinate, location: self.$location)
             }
-            
+
             if location != nil {
                 UpdatingMap(location: $location, title: $name, subtitle: $description)
                     .frame(height: 300)

@@ -53,6 +53,7 @@
 		C09825B0244A3A240086D4CB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09825AF244A3A240086D4CB /* Secrets.swift */; };
 		C0A53C9B246CEAF100DF68AC /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9A246CEAF100DF68AC /* FriendsList.swift */; };
 		C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9C246CFAD200DF68AC /* AddFriends.swift */; };
+		C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9E246D128500DF68AC /* StringExtensions.swift */; };
 		C0CE42E9241BF59D00A2E24F /* ManageFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* ManageFriends.swift */; };
 		C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA06A124526058003DFEF4 /* BlypImage.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
@@ -127,6 +128,7 @@
 		C09825AF244A3A240086D4CB /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C0A53C9A246CEAF100DF68AC /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		C0A53C9C246CFAD200DF68AC /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
+		C0A53C9E246D128500DF68AC /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
 		C0CE42E8241BF59D00A2E24F /* ManageFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFriends.swift; sourceTree = "<group>"; };
 		C0D1B2AF2449063800782FB3 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				C05C934724522B8D00B846E0 /* BlurHash */,
 				C071121B246CAD9C0047FA2E /* NavigationConfigurator.swift */,
 				C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */,
+				C0A53C9E246D128500DF68AC /* StringExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
 				C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */,
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
+				C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */,
 				C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */,

@@ -16,6 +16,7 @@ struct Blyp: Identifiable, Codable, Comparable {
     var name: String
     var description: String
     var createdOn: Date = Date() // Default to now
+    var createdBy: String? // UUID
 
     var imageUrl: String?
     var imageBlurHash: String?
@@ -35,6 +36,7 @@ struct Blyp: Identifiable, Codable, Comparable {
         case name
         case description
         case createdOn
+        case createdBy
         case imageUrl
         case imageBlurHash
         case imageBlurHashWidth

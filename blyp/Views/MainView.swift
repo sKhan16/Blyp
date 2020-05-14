@@ -6,8 +6,8 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUI
 import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
@@ -39,7 +39,7 @@ struct MainView: View {
                     }
             }
             .sheet(isPresented: $isBlypPresented) {
-                BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong"))
+                BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong")).environmentObject(self.user)
             }
             .navigationBarTitle(Text("Blyp").bold().italic())
             .navigationBarItems(leading: AddBlypViewButton(),
@@ -88,7 +88,7 @@ struct MainViewActionSheet: View {
                     self.user.logout()
                 }),
 
-                .cancel()
+                .cancel(),
             ])
         }
         .sheet(isPresented: $addingFriend) {
@@ -134,7 +134,7 @@ struct MainView_Previews: PreviewProvider {
         Blyp(name: "Test 1 name", description: "Test 1 description"),
         Blyp(name: "Test 2 name", description: "Test 2 description"),
         Blyp(name: "Test 3 name", description: "Test 3 description"),
-        Blyp(name: "Test 4 name", description: "Test 4 description")
+        Blyp(name: "Test 4 name", description: "Test 4 description"),
     ]
     static var previews: some View {
         MainView().environmentObject(UserObservable())

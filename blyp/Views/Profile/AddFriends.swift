@@ -25,7 +25,7 @@ struct AddFriends: View {
 }
 
 // Copied and pasted, sorry
-fileprivate struct CloseButton: View {
+private struct CloseButton: View {
     @Binding var presentationMode: PresentationMode
     var body: some View {
         Button(action: {
@@ -36,8 +36,8 @@ fileprivate struct CloseButton: View {
     }
 }
 
-//struct AddFriends_Previews: PreviewProvider {
+// struct AddFriends_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddFriends()
 //    }
-//}
+// }

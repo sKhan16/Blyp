@@ -26,7 +26,7 @@ struct ManageFriends: View {
     }
 }
 
-fileprivate struct AddFriendsButton: View {
+private struct AddFriendsButton: View {
     @Binding var isShowingAddFriends: Bool
     var body: some View {
         Button(action: {
@@ -37,7 +37,7 @@ fileprivate struct AddFriendsButton: View {
     }
 }
 
-fileprivate struct CloseButton: View {
+private struct CloseButton: View {
     @Binding var presentationMode: PresentationMode
     var body: some View {
         Button(action: {
@@ -61,7 +61,7 @@ struct ResignKeyboardOnDragGesture: ViewModifier {
     var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
-    
+
     func body(content: Content) -> some View {
         content.gesture(gesture)
     }

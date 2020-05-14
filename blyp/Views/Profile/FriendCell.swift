@@ -11,29 +11,31 @@ import SwiftUI
 struct FriendCell: View {
     @EnvironmentObject var user: UserObservable
     private var profile: FriendProfile
-    
+
     init(for user: DisplayNameAlgoliaResult) {
-        self.profile = FriendProfile(uid: user.objectID, displayName: user.displayName)
+        profile = FriendProfile(uid: user.objectID, displayName: user.displayName)
     }
+
     init(friend: FriendProfile) {
-        self.profile = friend
+        profile = friend
     }
+
     var body: some View {
         HStack {
             Text(profile.displayName ?? "Unknown Name")
             Spacer()
-            if (profile.isLegacyContact(of: user)) {
+            if profile.isLegacyContact(of: user) {
                 Image(systemName: "person.crop.circle.badge.checkmark")
             }
-            if (profile.isAlreadyFriend(of: user)) {
+            if profile.isAlreadyFriend(of: user) {
                 Image(systemName: "person.2")
             }
         }
     }
 }
 
-//struct FriendCell_Previews: PreviewProvider {
+// struct FriendCell_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FriendCell()
 //    }
-//}
+// }

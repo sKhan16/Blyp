@@ -11,11 +11,11 @@ import SwiftUI
 struct FriendProfileView: View {
     @EnvironmentObject var user: UserObservable
     var friendProfile: FriendProfile
-    
+
     init(friendProfile: FriendProfile) {
         self.friendProfile = friendProfile
     }
-    
+
     var body: some View {
         VStack {
             Text("Here's some information about \(friendProfile.displayName ?? "")")
@@ -60,10 +60,9 @@ struct FriendProfileView: View {
     }
 }
 
-
-//struct FriendProfileView_Previews: PreviewProvider {
+// struct FriendProfileView_Previews: PreviewProvider {
 //    private static var friendProfile: FriendProfileSearchable = FriendProfileSearchable(displayName: "Bill", uid: "")
 //    static var previews: some View {
 //        FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
 //    }
-//}
+// }

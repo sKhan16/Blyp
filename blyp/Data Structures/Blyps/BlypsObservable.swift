@@ -87,13 +87,14 @@ class BlypsObservable: ObservableObject {
                 "name": blyp.name,
                 "description": blyp.description,
                 "createdOn": blyp.createdOn,
+                "createdBy": user?.uid,
                 "imageUrl": blyp.imageUrl, // Ignore these warnings, we do NOT want to store a default value
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
                 "imageBlurHashWidth": blyp.imageBlurHashWidth,
                 "latitude": blyp.latitude,
-                "longitude": blyp.longitude
-            ]
+                "longitude": blyp.longitude,
+            ],
         ]) { err in
             if let err = err {
                 print("Error saving \(blyp.id): \(err)")

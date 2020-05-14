@@ -29,7 +29,7 @@ struct ManageFriends: View {
     }
 }
 
-fileprivate struct CloseButton: View {
+private struct CloseButton: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         Button(action: {
@@ -53,7 +53,7 @@ struct ResignKeyboardOnDragGesture: ViewModifier {
     var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
-    
+
     func body(content: Content) -> some View {
         content.gesture(gesture)
     }

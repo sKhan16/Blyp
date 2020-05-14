@@ -14,7 +14,7 @@ struct FriendProfile: Decodable, Equatable, Identifiable, Comparable {
     var displayName: String?
     var legacyContact: String?
     var deceased: Bool?
-    
+
     enum CodingKeys: String, CodingKey {
         case uid = "objectID"
         case displayName
@@ -29,11 +29,11 @@ struct FriendProfile: Decodable, Equatable, Identifiable, Comparable {
     func isLegacyContact(of user: UserObservable) -> Bool {
         return user.legacyContact == uid
     }
-    
+
     func isUsersLegacyContact(user: UserObservable) -> Bool {
-        return user.legacyContact == self.uid
+        return user.legacyContact == uid
     }
-    
+
     func isDeceased(using user: UserObservable) -> Bool {
         // We have to check live since these don't update too quickly
         return user.friends.contains(where: { $0.deceased ?? false && $0.uid == self.uid })
@@ -43,7 +43,7 @@ struct FriendProfile: Decodable, Equatable, Identifiable, Comparable {
     static func == (lhs: FriendProfile, rhs: FriendProfile) -> Bool {
         return lhs.uid == rhs.uid
     }
-    
+
     // Alphabetical O(nlogn)
     static func < (lhs: FriendProfile, rhs: FriendProfile) -> Bool {
         return lhs.displayName ?? "" < rhs.displayName ?? ""
