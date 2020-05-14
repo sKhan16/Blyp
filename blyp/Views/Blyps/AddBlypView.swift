@@ -31,15 +31,6 @@ struct AddBlypView: View {
     @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 122.3493, longitude: 47.6205) // space needle ❤️
     @State private var location: MKPointAnnotation?
 
-    init(imageView: Image?) {
-        self.init()
-        self.imageView = imageView
-    }
-
-    init() {
-        UITableView.appearance().separatorColor = nil
-    }
-
     var body: some View {
         VStack {
             NavigationView {
@@ -63,7 +54,7 @@ struct AddBlypView: View {
                 .navigationBarTitle("New Blyp")
                 .navigationBarItems(leading: CloseButton(presentationMode: self.presentationMode), trailing: PostButton(saveBlyp: saveBlyp, isSubmittable: self.isSubmittable()))
             }
-        }
+        }.modifier(TableViewLine(is: .shown))
     }
 
     /// Loads image data from the selected image (or not)

@@ -13,8 +13,8 @@ import SwiftUI
 struct ManageFriends: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-    @State var isShowingAddFriends: Bool = false
-    @ObservedObject var userSearcher: UserSearcher // = UserSearcher()
+    @State private var isShowingAddFriends: Bool = false
+    
     var body: some View {
         NavigationView {
             FriendsList(friends: user.friends)
@@ -22,7 +22,7 @@ struct ManageFriends: View {
                 .navigationBarItems(leading: CloseButton(presentationMode: presentationMode), trailing: AddFriendsButton(isShowingAddFriends: $isShowingAddFriends))
         }.sheet(isPresented: $isShowingAddFriends) {
             AddFriends(userSearcher: UserSearcher()).environmentObject(self.user)
-        }
+        }.modifier(TableViewLine(is: .shown))
     }
 }
 
@@ -61,7 +61,7 @@ struct ResignKeyboardOnDragGesture: ViewModifier {
     var gesture = DragGesture().onChanged { _ in
         UIApplication.shared.endEditing(true)
     }
-
+    
     func body(content: Content) -> some View {
         content.gesture(gesture)
     }
@@ -75,6 +75,6 @@ extension View {
 
 struct AddFriend_Previews: PreviewProvider {
     static var previews: some View {
-        ManageFriends(userSearcher: UserSearcher()).environmentObject(UserObservable())
+        ManageFriends().environmentObject(UserObservable())
     }
 }

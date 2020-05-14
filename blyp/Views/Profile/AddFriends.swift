@@ -12,6 +12,7 @@ struct AddFriends: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
     @ObservedObject var userSearcher: UserSearcher // = UserSearcher()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -20,7 +21,7 @@ struct AddFriends: View {
                     .navigationBarTitle("Add Friends")
                     .navigationBarItems(leading: CloseButton(presentationMode: presentationMode))
             }
-        }
+        }.modifier(TableViewLine(is: .shown))
     }
 }
 

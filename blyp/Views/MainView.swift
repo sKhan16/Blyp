@@ -13,12 +13,7 @@ struct MainView: View {
     @EnvironmentObject var user: UserObservable
     @State private var isBlypPresented: Bool = false
     @State private var selectedBlyp: Blyp?
-
-    init() {
-        // This is required to not show the ugly lines between the cards
-        UITableView.appearance().separatorColor = .clear
-    }
-
+    
     var body: some View {
         NavigationView {
             TabView {
@@ -26,17 +21,12 @@ struct MainView: View {
                     .tabItem {
                         Image(systemName: "person.crop.circle.fill")
                         Text("Profile")
-                    }
+                }
                 BlypList(isBlypPresented: $isBlypPresented, selectedBlyp: $selectedBlyp, blypsObservable: user.blyps!, selectedBlypList: .friends)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Home")
-                    }
-                Text("SURPRISE, I'M NOT DONE YET")
-                    .tabItem {
-                        Image(systemName: "exclamationmark.circle.fill")
-                        Text("Secret")
-                    }
+                }
             }
             .sheet(isPresented: $isBlypPresented) {
                 BlypView(blyp: self.selectedBlyp ?? Blyp(name: "Oops", description: "Something went wrong")).environmentObject(self.user)
@@ -44,7 +34,7 @@ struct MainView: View {
             .navigationBarTitle(Text("Blyp").bold().italic())
             .navigationBarItems(leading: AddBlypViewButton(),
                                 trailing: MainViewActionSheet())
-        }
+        }.modifier(TableViewLine(is: .hidden))
     }
 }
 
@@ -67,7 +57,7 @@ struct MainViewActionSheet: View {
     @EnvironmentObject var user: UserObservable
     @State var addingFriend = false
     @State private var showingSheet = false
-
+    
     var body: some View {
         Button(action: {
             self.showingSheet = true
@@ -79,21 +69,21 @@ struct MainViewActionSheet: View {
                 .default(Text("Manage Friends"), action: {
                     self.addingFriend.toggle()
                 }),
-
+                
                 .default(Text("Update Username"), action: {
                     self.user.loginState = .signingUp
                 }),
-
+                
                 .destructive(Text("Logout"), action: {
                     self.user.logout()
                 }),
-
+                
                 .cancel(),
             ])
         }
         .sheet(isPresented: $addingFriend) {
             // For some reason we HAVE to pass the user as an environment object
-            ManageFriends(userSearcher: UserSearcher()).environmentObject(self.user)
+            ManageFriends().environmentObject(self.user)
         }
     }
 }
@@ -104,7 +94,7 @@ struct BlypList: View {
     @Binding var selectedBlyp: Blyp?
     @ObservedObject var blypsObservable: BlypsObservable
     var selectedBlypList: SelectedBlypList
-
+    
     var body: some View {
         List(selectedBlypList == .friends ? blypsObservable.friends : blypsObservable.personal) { blyp in
             BlypCard(blyp: blyp)
@@ -112,17 +102,17 @@ struct BlypList: View {
                 .onTapGesture {
                     self.selectedBlyp = blyp
                     self.isBlypPresented.toggle()
-                }
-                .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
+            }
+            .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
                 .scaleEffect(self.isBlypPressed(blyp) ? 0.95 : 1.0) // shrinky animation for selected blypcard
                 .animation(.spring())
         }
     }
-
+    
     func isBlypPressed(_ blyp: Blyp) -> Bool {
         return selectedBlyp == blyp && isBlypPresented
     }
-
+    
     enum SelectedBlypList {
         case friends
         case personal
