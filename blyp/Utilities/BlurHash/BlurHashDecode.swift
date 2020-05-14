@@ -2,6 +2,7 @@
 
 import UIKit
 
+// swiftlint:disable all
 extension UIImage {
     public convenience init?(blurHash: String, size: CGSize, punch: Float = 1) {
         guard blurHash.count >= 6 else { return nil }
@@ -144,3 +145,4 @@ private extension String {
         return self[start ..< end]
     }
 }
+// swiftlint:enable all

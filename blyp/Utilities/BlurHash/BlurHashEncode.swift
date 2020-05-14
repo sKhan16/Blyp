@@ -1,7 +1,7 @@
 // https://github.com/woltapp/blurhash
 
 import UIKit
-
+// swiftlint:disable all
 extension UIImage {
     public func blurHash(numberOfComponents components: (Int, Int)) -> String? {
         let pixelWidth = Int(round(size.width * scale))
@@ -143,3 +143,4 @@ extension BinaryInteger {
 private func pow(_ base: Int, _ exponent: Int) -> Int {
     return (0 ..< exponent).reduce(1) { value, _ in value * base }
 }
+// swiftlint:enable all

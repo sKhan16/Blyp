@@ -183,25 +183,25 @@ public class UserObservable: ObservableObject {
 
     func addFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "friends": FieldValue.arrayUnion([friendProfile.uid]),
+            "friends": FieldValue.arrayUnion([friendProfile.uid])
         ])
     }
 
     func removeFriend(_ friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "friends": FieldValue.arrayRemove([friendProfile.uid]),
+            "friends": FieldValue.arrayRemove([friendProfile.uid])
         ])
     }
 
     func setLegacyContact(to friendProfile: FriendProfile) {
         userProfileRef.updateData([
-            "legacyContact": friendProfile.uid,
+            "legacyContact": friendProfile.uid
         ])
     }
 
     func removeLegacyContact() {
         userProfileRef.updateData([
-            "legacyContact": "",
+            "legacyContact": ""
         ])
     }
 

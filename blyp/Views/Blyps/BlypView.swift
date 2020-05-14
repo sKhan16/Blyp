@@ -40,7 +40,7 @@ struct BlypView: View {
             }
         }
     }
-    
+
     /// Scales an image to fit the maximum width (necessary for ScrollViews)
     /// - Parameters:
     ///   - geom: geometry of the view to take the full width out of
@@ -53,9 +53,9 @@ struct BlypView: View {
         guard let aspectHeight = blyp.imageBlurHashHeight else {
             return CGSize(width: geom.size.width, height: geom.size.width)
         }
-        
+
         let height = (geom.size.width / aspectWidth) * aspectHeight
-                
+
         return CGSize(width: geom.size.width, height: height)
     }
 }
@@ -68,10 +68,10 @@ struct NewBlypView_Previews: PreviewProvider {
         Group {
             // Blyp with just text
             BlypView(blyp: Blyp(name: "Grazie Vettel 🏎", description: copyPasta)) // .previewLayout(.sizeThatFits)
-            
+
             // Blyp with image and location
             BlypView(blyp: Blyp(id: UUID(), name: "Grazie Vettel 🏎", description: copyPasta, createdOn: Date(), imageUrl: "https://firebasestorage.googleapis.com/v0/b/blyp-ae6e4.appspot.com/o/QQzrVomYKhQEIQJdKmXne9JdQKC2%2FBD895A77-3B14-45E6-A71E-F44C667D2740.jpeg?alt=media&token=a478b704-36df-4daf-9494-fd01daf4d828", imageBlurHash: "UWECReM{tRj@~CWBWojZ$*kCWBaynmkCjafR", imageBlurHashWidth: 56.8421052631579, imageBlurHashHeight: 32.0, longitude: 9.722223645836072, latitude: 50.514466054613855)) // .previewLayout(.sizeThatFits)
-            
+
             // Blyp with just image
             BlypView(blyp: Blyp(id: UUID(), name: "Grazie Vettel 🏎", description: copyPasta, createdOn: Date(), imageUrl: "https://firebasestorage.googleapis.com/v0/b/blyp-ae6e4.appspot.com/o/QQzrVomYKhQEIQJdKmXne9JdQKC2%2FBD895A77-3B14-45E6-A71E-F44C667D2740.jpeg?alt=media&token=a478b704-36df-4daf-9494-fd01daf4d828", imageBlurHash: "UWECReM{tRj@~CWBWojZ$*kCWBaynmkCjafR", imageBlurHashWidth: 56.8421052631579, imageBlurHashHeight: 32.0)) // .previewLayout(.sizeThatFits)
             // Blyp with just location

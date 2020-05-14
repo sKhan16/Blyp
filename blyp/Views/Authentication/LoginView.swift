@@ -6,12 +6,6 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-/**
-
- This file is an absolute crime against coding best practices, please never look at it
-
- */
-
 import AuthenticationServices
 import FirebaseAuth
 import SwiftUI
@@ -57,7 +51,12 @@ struct LoginView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(PastelViewRepresentable(colors: [UIColor(named: "BlypOrange")!, UIColor(named: "BlypYellow")!, UIColor(named: "BlypGreen")!], startPastelPoint: .top, endPastelPoint: .bottom).edgesIgnoringSafeArea(.all))
+        .background(PastelViewRepresentable(colors: [UIColor(named: "BlypOrange")!,
+                                                     UIColor(named: "BlypYellow")!,
+                                                     UIColor(named: "BlypGreen")!],
+                                            startPastelPoint: .top,
+                                            endPastelPoint: .bottom)
+            .edgesIgnoringSafeArea(.all))
     }
 }
 

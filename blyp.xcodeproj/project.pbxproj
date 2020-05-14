@@ -18,6 +18,7 @@
 		C0208762246B2AB000FA497E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0208761246B2AB000FA497E /* MapView.swift */; };
 		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
 		C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0365C6224562BDE00C55F15 /* BlypCard.swift */; };
+		C0544F04246DD64E004B3690 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0544F03246DD64E004B3690 /* CloseButton.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
 		C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B3A58246B372300CE01BA /* AddMapLocationView.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
@@ -55,7 +56,7 @@
 		C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9C246CFAD200DF68AC /* AddFriends.swift */; };
 		C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9E246D128500DF68AC /* StringExtensions.swift */; };
 		C0A53CA1246D15FF00DF68AC /* TableViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */; };
-		C0CE42E9241BF59D00A2E24F /* ManageFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* ManageFriends.swift */; };
+		C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* FriendManager.swift */; };
 		C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA06A124526058003DFEF4 /* BlypImage.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
 		C0EB8B65244CFA950068CC0B /* agenda-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */; };
@@ -106,6 +107,7 @@
 		C0208761246B2AB000FA497E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
 		C0365C6224562BDE00C55F15 /* BlypCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCard.swift; sourceTree = "<group>"; };
+		C0544F03246DD64E004B3690 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
 		C05B3A58246B372300CE01BA /* AddMapLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapLocationView.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		C0A53C9E246D128500DF68AC /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLine.swift; sourceTree = "<group>"; };
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
-		C0CE42E8241BF59D00A2E24F /* ManageFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFriends.swift; sourceTree = "<group>"; };
+		C0CE42E8241BF59D00A2E24F /* FriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManager.swift; sourceTree = "<group>"; };
 		C0D1B2AF2449063800782FB3 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
 		C0DA06A124526058003DFEF4 /* BlypImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypImage.swift; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				C0363F41241AE9E4006EE664 /* Blyps */,
 				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
+				C0544F05246DD770004B3690 /* Utilities */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
 			);
@@ -261,7 +264,7 @@
 		C0363F40241AE9CE006EE664 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C0CE42E8241BF59D00A2E24F /* ManageFriends.swift */,
+				C0CE42E8241BF59D00A2E24F /* FriendManager.swift */,
 				C090476B2432B57700E13BC9 /* SearchBar.swift */,
 				C093083E243C4C730002BF0C /* FriendProfileView.swift */,
 				C0711219246C8E8B0047FA2E /* FriendCell.swift */,
@@ -281,6 +284,14 @@
 				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
 			);
 			path = Blyps;
+			sourceTree = "<group>";
+		};
+		C0544F05246DD770004B3690 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C0544F03246DD64E004B3690 /* CloseButton.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C05B3A5A246B813E00CE01BA /* Images */ = {
@@ -434,6 +445,7 @@
 				C0FE9D7923E4F20E004C4621 /* Frameworks */,
 				C0FE9D7A23E4F20E004C4621 /* Resources */,
 				F49FF928EB2B793AFB089A46 /* [CP] Embed Pods Frameworks */,
+				C0544F06246DDB58004B3690 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -580,6 +592,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C0544F06246DDB58004B3690 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    # We only care about errors in our own project\n    cd blyp\n    swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		D3804108CA002EC57169C551 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -672,6 +701,7 @@
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
 				C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */,
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
+				C0544F04246DD64E004B3690 /* CloseButton.swift in Sources */,
 				C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */,
@@ -705,7 +735,7 @@
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
-				C0CE42E9241BF59D00A2E24F /* ManageFriends.swift in Sources */,
+				C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */,
 				C0EB8B69244CFCEA0068CC0B /* BlypColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

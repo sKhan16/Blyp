@@ -12,7 +12,7 @@ struct AddFriends: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
     @ObservedObject var userSearcher: UserSearcher // = UserSearcher()
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -22,18 +22,6 @@ struct AddFriends: View {
                     .navigationBarItems(leading: CloseButton(presentationMode: presentationMode))
             }
         }.modifier(TableViewLine(is: .shown))
-    }
-}
-
-// Copied and pasted, sorry
-private struct CloseButton: View {
-    @Binding var presentationMode: PresentationMode
-    var body: some View {
-        Button(action: {
-            self.presentationMode.dismiss()
-        }) {
-            Text("Close")
-        }
     }
 }
 

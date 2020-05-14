@@ -10,7 +10,7 @@ import Combine
 import Introspect
 import SwiftUI
 
-/// View that manages
+/// View that manages user's existing friends and lets them add new friends
 struct FriendManager: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable

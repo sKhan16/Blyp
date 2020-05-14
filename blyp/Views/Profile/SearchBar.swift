@@ -6,15 +6,18 @@
 
 import SwiftUI
 
+/// In lieu of a real search bar, we create a custom TextField
 struct SearchBar: View {
     @ObservedObject var userSearcher: UserSearcher
     var placeholder: String = "Search"
-
     var body: some View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField(placeholder, text: $userSearcher.searchQuery).foregroundColor(.primary)
+                TextField(placeholder, text: $userSearcher.searchQuery)
+                    .foregroundColor(.primary)
+                    .accessibility(label: Text("Search"))
+                // Clear search bar
                 Button(action: {
                     self.userSearcher.searchQuery = ""
                 }) {
@@ -25,6 +28,7 @@ struct SearchBar: View {
             .foregroundColor(.secondary)
             .background(Color(.secondarySystemBackground))
             .cornerRadius(10.0)
+            .accessibility(label: Text("Search"))
         }
         .padding()
     }

@@ -22,7 +22,7 @@ struct BlypImage: View {
             .placeholder(Image(uiImage: UIImage(blurHash: self.blyp.imageBlurHash!, size: CGSize(width: self.blyp.imageBlurHashWidth!, height: self.blyp.imageBlurHashHeight!))!))
             .scaledToFit()
             .aspectRatio(contentMode: self.contentMode != nil ? self.contentMode! : .fill)
-            .frame(width: geometry.size.width, height: geometry.size.height,  alignment: .center)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
         }
     }
 }

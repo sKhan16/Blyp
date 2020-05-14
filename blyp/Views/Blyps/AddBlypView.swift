@@ -111,17 +111,6 @@ struct PostButton: View {
     }
 }
 
-private struct CloseButton: View {
-    @Binding var presentationMode: PresentationMode
-    var body: some View {
-        Button(action: {
-            self.presentationMode.dismiss()
-        }) {
-            Text("Close")
-        }
-    }
-}
-
 struct MainSection: View {
     @Binding var name: String
     @Binding var description: String

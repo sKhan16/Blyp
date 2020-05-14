@@ -36,7 +36,7 @@ struct AddMapLocationView: View {
                 Footer(action: setLocation)
             }
             .navigationBarTitle("Blyp Location", displayMode: .inline)
-            .navigationBarItems(leading: CloseButton(presentationMode: presentationMode, location: $location, centerCoordinate: $centerCoordinate), trailing: DoneButton(presentationMode: presentationMode))
+            .navigationBarItems(leading: CloseMapButton(presentationMode: presentationMode, location: $location), trailing: DoneButton(presentationMode: presentationMode))
         }
     }
 
@@ -77,14 +77,14 @@ private struct SetLocationButton: View {
     }
 }
 
-private struct CloseButton: View {
+// Slightly different CloseButton that restores previous location data
+private struct CloseMapButton: View {
     @Binding var presentationMode: PresentationMode
     @Binding var location: MKPointAnnotation?
-    @Binding var centerCoordinate: CLLocationCoordinate2D
     var previousLocation: MKPointAnnotation?
     var body: some View {
         Button(action: {
-            // Close uses the old location
+            // Override new location with previous location then close
             self.location = self.previousLocation
             self.presentationMode.dismiss()
         }) {

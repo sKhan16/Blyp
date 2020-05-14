@@ -63,7 +63,13 @@ struct BlypCard: View {
 }
 
 struct BlypCard_Previews: PreviewProvider {
-    static var blypWithImage = BlypCard(blyp: Blyp(id: UUID(), name: "911 GT3 RS", description: "Such a beautiful car loook at this insanely long string lalalalalalalalal", imageUrl: "https://firebasestorage.googleapis.com/v0/b/blyp-ae6e4.appspot.com/o/test-data%2F911.jpg?alt=media&token=f1daee29-2dd2-434d-97d4-23dc39d9a848", imageBlurHash: "USFirmaf%M%3~1aebHxc_NWFIUt9-qM_R:t8", imageBlurHashWidth: 42.666666666666664, imageBlurHashHeight: 32.0))
+    static var blypWithImage = BlypCard(blyp: Blyp(id: UUID(),
+                                                   name: "911 GT3 RS",
+                                                   description: "Such a beautiful car loook at this insanely long string lalalalalalalalal",
+                                                   imageUrl: "https://firebasestorage.googleapis.com/v0/b/blyp-ae6e4.appspot.com/o/test-data%2F911.jpg?alt=media&token=f1daee29-2dd2-434d-97d4-23dc39d9a848",
+                                                   imageBlurHash: "USFirmaf%M%3~1aebHxc_NWFIUt9-qM_R:t8",
+                                                   imageBlurHashWidth: 42.666666666666664,
+                                                   imageBlurHashHeight: 32.0))
 
     static var previews: some View {
         Group {
