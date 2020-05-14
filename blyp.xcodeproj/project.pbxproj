@@ -46,6 +46,7 @@
 		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
+		C0861345246CBCBF00E1DF7E /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */; };
 		C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08DE2672458DA760057770F /* PastelViewRepresentable.swift */; };
 		C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476B2432B57700E13BC9 /* SearchBar.swift */; };
 		C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0904974244F9F5A0065000F /* BlypsObservable.swift */; };
@@ -118,6 +119,7 @@
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		C08DE2672458DA760057770F /* PastelViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelViewRepresentable.swift; sourceTree = "<group>"; };
 		C090476B2432B57700E13BC9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C0904974244F9F5A0065000F /* BlypsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypsObservable.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			children = (
 				C05C934724522B8D00B846E0 /* BlurHash */,
 				C071121B246CAD9C0047FA2E /* NavigationConfigurator.swift */,
+				C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
 				C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */,
+				C0861345246CBCBF00E1DF7E /* UIImageExtensions.swift in Sources */,
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
 				C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */,

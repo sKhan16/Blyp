@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 import UIKit
 struct MainView: View {
     @EnvironmentObject var user: UserObservable
@@ -75,7 +76,7 @@ struct MainViewActionSheet: View {
         }
         .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("What do you want to do?"), buttons: [
-                .default(Text("Add Friends"), action: {
+                .default(Text("Manage Friends"), action: {
                     self.addingFriend.toggle()
                 }),
 
