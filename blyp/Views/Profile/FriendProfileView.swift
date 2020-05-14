@@ -19,14 +19,18 @@ struct FriendProfileView: View {
             FriendHeader(for: friendProfile)
 
             VStack {
-                // Add/Remove Friend
+                // Add/Remove Friend (always appears)
                 ToggleFriendshipButton(friendProfile: friendProfile)
 
-                // Add/Remove Legacy Contact
-                ToggleLegacyContactButton(friendProfile: friendProfile)
+                // Add/Remove Legacy Contact (only appears if user has friend in friends list)
+                if friendProfile.isAlreadyFriend(of: user) {
+                    ToggleLegacyContactButton(friendProfile: friendProfile)
+                }
 
-                // Mark as deceased
-                ToggleDeceasedButton(friendProfile: friendProfile)
+                // Mark as deceased (only appears if user is the legacy contact of friend)
+                if user.isLegacyContact(of: friendProfile) {
+                    ToggleDeceasedButton(friendProfile: friendProfile)
+                }
             }
             Spacer()
         }

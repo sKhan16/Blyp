@@ -122,7 +122,7 @@ public class UserObservable: ObservableObject {
 
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
-        blypFirestoreListenerSubscription = userProfileRef.addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, _ in
+        blypFirestoreListenerSubscription = userProfileRef.addSnapshotListener { documentSnapshot, _ in
             let result = Result {
                 try documentSnapshot.flatMap {
                     try $0.data(as: UserProfile.self)
@@ -152,7 +152,7 @@ public class UserObservable: ObservableObject {
             return // can't run whereField on empty array
         }
         print("Getting usernames for \(uids)")
-        userDisplayNameCollectionRef.whereField("objectID", in: uids).getDocuments { documentsSnapshot, error in
+        userProfilesCollectionRef.whereField("uid", in: uids).getDocuments { documentsSnapshot, error in
             if let error = error {
                 print("Error retreiving collection: \(error)")
             }
@@ -203,6 +203,10 @@ public class UserObservable: ObservableObject {
         userProfileRef.updateData([
             "legacyContact": ""
         ])
+    }
+
+    func isLegacyContact(of friendProfile: FriendProfile) -> Bool {
+        return friendProfile.legacyContact == self.uid
     }
 
     func set(friend: FriendProfile, as status: DeceasedStatus) {

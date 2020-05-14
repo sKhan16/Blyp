@@ -19,23 +19,45 @@ admin.initializeApp(functions.config().firebase);
 
 // Create a user profile document when an account is created
 exports.createUserProfileDocumentOnAccountCreation = functions.auth.user().onCreate((user) => {
-  let hasDisplayName = user.displayName !== undefined
+  let hasDisplayName = user.displayName !== undefined;
   // Create the user profile document
-  return admin.firestore().collection(userProfiles).doc(user.uid).create({
-    friends: [],
-    blyps: {},
-    legacyContact: {},
-    uid: user.uid
-  }).then((result: FirebaseFirestore.WriteResult) => {
-    // Create the display name document if one is given (typically only on creating fake users )
-    if (hasDisplayName) {
-      return admin.firestore().collection(userDisplayNames).doc(user.uid).create({
-        displayName: user.displayName
-      })
-    }
-    return;
-  });
+  return admin
+    .firestore()
+    .collection(userProfiles)
+    .doc(user.uid)
+    .create({
+      friends: [],
+      blyps: {},
+      legacyContact: "",
+      uid: user.uid,
+    })
+    .then((result: FirebaseFirestore.WriteResult) => {
+      // Create the display name document if one is given (typically only on creating fake users )
+      if (hasDisplayName) {
+        return admin.firestore().collection(userDisplayNames).doc(user.uid).create({
+          displayName: user.displayName,
+        });
+      }
+      return;
+    });
 });
+
+// Update the display name in userProfile
+exports.updateSearchableInAlgolia = functions.firestore
+  .document(`${userDisplayNames}/{uid}`)
+  .onUpdate((snap: any, context: any) => {
+    const oldUsername = snap.before.data();
+    const newUsername = snap.after.data();
+    if (oldUsername.displayName === newUsername.displayName) {
+      return "just updating uuid"; // probably just updating UUID, ignore it
+    }
+    newUsername.objectID = context.params.uid;
+    return admin
+      .firestore()
+      .collection(userProfiles)
+      .doc(context.params.uid)
+      .update({ displayName: newUsername.displayName });
+  });
 
 // Update the search index every time a username is written.
 exports.updateSearchableInAlgolia = functions.firestore
@@ -46,7 +68,7 @@ exports.updateSearchableInAlgolia = functions.firestore
     if (oldUsername.displayName === newUsername.displayName) {
       return "just updating uuid"; // probably just updating UUID, ignore it
     }
-    newUsername.objectID = context.params.uid 
+    newUsername.objectID = context.params.uid;
 
     // Store new object ID
     return admin
@@ -70,7 +92,11 @@ exports.createSearchableInAlgolia = functions.firestore
   .document(`${userDisplayNames}/{uid}`)
   .onCreate((snap: any, context: any) => {
     const username = snap.data();
-    username.objectID = context.params.uid
+    username.objectID = context.params.uid;
+    if (username.displayName == null) {
+      return;
+    }
+
     return admin
       .firestore()
       .collection(userDisplayNames)
@@ -91,6 +117,10 @@ exports.deleteSearchableInAlgolia = functions.firestore
     return index.deleteObject(username.objectID);
   });
 
+
+
+  // This won't get done but it's supposed to clean images we don't need anymore
+  
 // exports.deleteUserDocumentOnAccountDeletion = functions.auth.user().onDelete((user) => {
 //   return admin.firestore().collection(userProfiles).doc(user.uid).delete().then(() => {
 //     admin.storage().bucket()

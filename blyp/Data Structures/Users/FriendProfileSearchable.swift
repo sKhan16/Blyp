@@ -16,7 +16,7 @@ struct FriendProfile: Decodable, Equatable, Identifiable, Comparable {
     var deceased: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case uid = "objectID"
+        case uid
         case displayName
         case legacyContact
         case deceased
