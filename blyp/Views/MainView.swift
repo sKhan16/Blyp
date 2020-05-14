@@ -96,16 +96,20 @@ struct BlypList: View {
     var selectedBlypList: SelectedBlypList
     
     var body: some View {
-        List(selectedBlypList == .friends ? blypsObservable.friends : blypsObservable.personal) { blyp in
-            BlypCard(blyp: blyp)
-                .padding(.vertical, 4)
-                .onTapGesture {
-                    self.selectedBlyp = blyp
-                    self.isBlypPresented.toggle()
+        List(self.selectedBlypList == .friends ? self.blypsObservable.friends : self.blypsObservable.personal) { blyp in
+            VStack(alignment: .center) {
+                GeometryReader { innerGeometry in
+                    BlypCard(blyp: blyp)
+                        .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
+                        .scaleEffect(self.isBlypPressed(blyp) ? 0.95 : 1.0) // shrinky animation for selected blypcard
+                        .animation(.spring())
+                        .onTapGesture {
+                            self.selectedBlyp = blyp
+                            self.isBlypPresented.toggle()
+                    }.frame(width: innerGeometry.size.width)
+                }
             }
-            .shadow(radius: self.isBlypPressed(blyp) ? 3.0 : 9.0, x: 0, y: 5)
-                .scaleEffect(self.isBlypPressed(blyp) ? 0.95 : 1.0) // shrinky animation for selected blypcard
-                .animation(.spring())
+            .frame(height: 256)
         }
     }
     
@@ -126,6 +130,7 @@ struct MainView_Previews: PreviewProvider {
         Blyp(name: "Test 3 name", description: "Test 3 description"),
         Blyp(name: "Test 4 name", description: "Test 4 description"),
     ]
+    
     static var previews: some View {
         MainView().environmentObject(UserObservable())
     }

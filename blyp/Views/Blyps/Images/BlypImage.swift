@@ -12,18 +12,18 @@ import SwiftUI
 /// A VERY unsafe view for BlypImage. ONLY use this if you're sure everything required isn't null.
 struct BlypImage: View {
     var blyp: Blyp
-    var width: CGFloat?
-    var height: CGFloat?
     var contentMode: ContentMode?
     var body: some View {
-        WebImage(url: URL(string: blyp.imageUrl!))
-            .onSuccess { _, _ in
+        GeometryReader { geometry in
+            WebImage(url: URL(string: self.blyp.imageUrl!))
+                .onSuccess { _, _ in
             }
             .resizable()
-            .placeholder(Image(uiImage: UIImage(blurHash: blyp.imageBlurHash!, size: CGSize(width: blyp.imageBlurHashWidth!, height: blyp.imageBlurHashHeight!))!))
+            .placeholder(Image(uiImage: UIImage(blurHash: self.blyp.imageBlurHash!, size: CGSize(width: self.blyp.imageBlurHashWidth!, height: self.blyp.imageBlurHashHeight!))!))
             .scaledToFit()
-            .aspectRatio(contentMode: contentMode != nil ? contentMode! : .fill)
-            .frame(width: width == nil ? UIScreen.main.bounds.width - 20 : width, height: height, alignment: .center)
+            .aspectRatio(contentMode: self.contentMode != nil ? self.contentMode! : .fill)
+            .frame(width: geometry.size.width, height: geometry.size.height,  alignment: .center)
+        }
     }
 }
 

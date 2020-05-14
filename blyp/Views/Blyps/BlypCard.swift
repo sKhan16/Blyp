@@ -11,44 +11,21 @@ import SwiftUI
 
 struct BlypCard: View {
     @EnvironmentObject var user: UserObservable
-    private var backgroundColor: Color?
-    private var backgroundImage: BlypImage?
-    private var backgroundMap: StaticMap?
 
     @State private var isPressed = false
 
     let blyp: Blyp
 
-    init(blyp: Blyp) {
-        self.blyp = blyp
-        if blyp.hasImage {
-            backgroundImage = BlypImage(blyp: blyp, height: 250)
-        }
-
-        if blyp.hasLocation {
-            guard let latitude = blyp.latitude else {
-                setBackupStyle()
-                return
-            }
-            guard let longitude = blyp.longitude else {
-                setBackupStyle()
-                return
-            }
-            backgroundMap = StaticMap(title: blyp.name, subtitle: blyp.description, latitude: latitude, longitude: longitude)
-        } else {
-            setBackupStyle()
-        }
-    }
-
     var body: some View {
+        GeometryReader { geometry in
         VStack {
             ZStack {
                 if self.blyp.hasImage {
-                    self.backgroundImage
+                    BlypImage(blyp: self.blyp).frame(width: geometry.size.width, height: geometry.size.height)
                 } else if self.blyp.hasLocation {
-                    self.backgroundMap
+                    StaticMap(title: self.blyp.name, subtitle: self.blyp.description, latitude: self.blyp.latitude!, longitude: self.blyp.longitude!)
                 } else {
-                    self.backgroundColor
+                    Rectangle().fill(Color.blypGreen).frame(width: geometry.size.width, height: 256)
                 }
 
                 VStack(alignment: .leading) {
@@ -65,10 +42,10 @@ struct BlypCard: View {
                                     Spacer()
                                 }
                             }
-                            if blyp.createdBy != nil {
+                            if self.blyp.createdBy != nil {
                                 ZStack {
                                     Circle().fill(Color.blypGreen)
-                                    Text(user.friends.first(where: { f in f.uid == blyp.createdBy })?.displayName?[0] ?? "")
+                                    Text(self.user.friends.first(where: { f in f.uid == self.blyp.createdBy })?.displayName?[0] ?? "")
                                         .foregroundColor(Color.black)
                                 }.frame(width: 40, height: 40).padding([.trailing, .top, .bottom])
                             }
@@ -77,14 +54,11 @@ struct BlypCard: View {
                 }
             }
         }
-        .frame(height: 256)
+        .frame(width: geometry.size.width, height: geometry.size.height)
         .scaleEffect(self.isPressed ? 0.5 : 1.0)
         .animation(.easeInOut)
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-    }
-
-    mutating func setBackupStyle() {
-        backgroundColor = .blypGreen
+        }
     }
 }
 
