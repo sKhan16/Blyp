@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    //Place to add images if desired.
     var subviews = [
         UIHostingController(rootView: Subview(imageString: "meditating")),
         UIHostingController(rootView: Subview(imageString: "skydiving")),
@@ -23,7 +24,7 @@ struct OnboardingView: View {
     @State var currentPageIndex = 0
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             PageViewController(currentPageIndex: $currentPageIndex, viewControllers: subviews)
                 .frame(height: 600)
             Group {
@@ -32,14 +33,14 @@ struct OnboardingView: View {
                 Text(captions[currentPageIndex])
                 .font(.subheadline)
                 .foregroundColor(.gray)
-                .frame(width: 300, height: 50, alignment: .leading)
+                .frame(width: 350, height: 100, alignment: .leading)
                 .lineLimit(nil)
             }
-                .padding()
-            HStack {
-                PageControl(numberOfPages: subviews.count, currentPageIndex: $currentPageIndex)
+                //.padding()
+            VStack(alignment: .center) {
+                PageControl(numberOfPages: titles.count, currentPageIndex: $currentPageIndex)
                 Spacer()
-                Button(action: {
+                /*Button(action: {
                     if self.currentPageIndex+1 == self.subviews.count {
                         self.currentPageIndex = 0
                     } else {
@@ -47,7 +48,7 @@ struct OnboardingView: View {
                     }
                 }) {
                     ButtonContent()
-                }
+                }*/
             }
                 .padding()
         }

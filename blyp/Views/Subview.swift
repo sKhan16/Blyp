@@ -6,6 +6,8 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
+//Location to add images to onboarding.
+
 import SwiftUI
 
 struct Subview: View {
