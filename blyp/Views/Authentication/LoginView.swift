@@ -21,7 +21,7 @@ struct LoginView: View {
                 Image("logo-2").padding(.top, -8)
                 Image("logo-1").padding(.top, -10)
             }
-            Text("Blyp").font(.title).multilineTextAlignment(.center).padding(.vertical)
+            Text("Blyp").font(.largeTitle).foregroundColor(Color.white).multilineTextAlignment(.center).padding(.vertical)
             #if DEBUG
                 Button("DEVELOPER LOGIN", action: {
                     self.user.developerLogin()

@@ -18,13 +18,11 @@ struct TableViewLine: ViewModifier {
             .onAppear(perform: {
                 switch self.status {
                 case .hidden: UITableView.appearance().separatorColor = .clear
-
                 case .shown: UITableView.appearance().separatorColor = nil
-
                 }
             })
             .onDisappear(perform: {
-                UITableView.appearance().separatorColor = nil
+                UITableView.appearance().separatorColor = .clear
             })
     }
 }

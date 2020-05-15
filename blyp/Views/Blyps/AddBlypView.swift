@@ -13,24 +13,27 @@ import SwiftUI
 struct AddBlypView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-
+    
     // MARK: State items for the required Blyp descriptors
-
+    
     @State private var name: String = ""
     @State private var desc: String = ""
-
+    
     // MARK: State items for the image picker button
-
+    
     @State private var isShowingImagePicker: Bool = false
     @State private var imageData: UIImage?
     @State var imageView: Image?
-
+    
     // MARK: State items for map view
-
+    
     @State private var isShowingMapView: Bool = false
     @State private var centerCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 122.3493, longitude: 47.6205) // space needle ❤️
     @State private var location: MKPointAnnotation?
-
+    
+    @State private var trigger: Trigger = .immediate
+    private var supportedTriggers: [Trigger] = [.immediate, /*.delayed,*/ .uponDeceased]
+    
     var body: some View {
         VStack {
             NavigationView {
@@ -42,13 +45,21 @@ struct AddBlypView: View {
                     }) {
                         MainSection(name: $name, description: $desc)
                     }
-
+                    
                     Section(header: Text("Media")) {
                         MediaSection(isShowingImagePicker: $isShowingImagePicker, imageView: $imageView, imageData: $imageData, loadImage: loadImage)
                     }
-
+                    
                     Section(header: Text("Location")) {
                         LocationSection(name: $name, description: $desc, location: $location, centerCoordinate: $centerCoordinate, isShowingMapView: $isShowingMapView)
+                    }
+                    
+                    Section(header: Text("Blyp Trigger"))  {
+                        Picker(selection: $trigger, label: Text("Triggers")) {
+                            ForEach(0 ..< supportedTriggers.count) {
+                                Text(self.supportedTriggers[$0].rawValue)
+                                }.navigationBarTitle("When should your friends see this Blyp?")
+                        }
                     }
                 }
                 .navigationBarTitle("New Blyp")
@@ -56,17 +67,17 @@ struct AddBlypView: View {
             }
         }.modifier(TableViewLine(is: .shown))
     }
-
+    
     /// Loads image data from the selected image (or not)
     func loadImage() {
         guard let imageData = imageData else { return }
         imageView = Image(uiImage: imageData.fixedOrientation()!)
     }
-
+    
     func isSubmittable() -> Bool {
         name != "" && desc != ""
     }
-
+    
     /// Saves blyp and dismiss view
     func saveBlyp() {
         let latitude: Double? = location?.coordinate.latitude
@@ -82,8 +93,8 @@ struct AddBlypView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AddBlypView().environmentObject(UserObservable()).previewDisplayName("Standard")
-            AddBlypView(imageView: Image("PreviewSelectedImageLandscape")).environmentObject(UserObservable()).previewDisplayName("With landscape image")
-            AddBlypView(imageView: Image("PreviewSelectedImagePortrait")).environmentObject(UserObservable()).previewDisplayName("With portrait image")
+//            AddBlypView(imageView: Image(named: "PreviewSelectedImageLandscape")).environmentObject(UserObservable()).previewDisplayName("With landscape image")
+//            AddBlypView(imageView: Image(named: "PreviewSelectedImagePortrait")).environmentObject(UserObservable()).previewDisplayName("With portrait image")
             AddBlypView().environmentObject(UserObservable()).colorScheme(.dark).previewDisplayName("Dark Mode")
         }
     }
@@ -167,7 +178,7 @@ struct LocationSection: View {
             }).sheet(isPresented: $isShowingMapView) {
                 AddMapLocationView(title: self.$name, subtitle: self.$description, centerCoordinate: self.$centerCoordinate, location: self.$location)
             }
-
+            
             if location != nil {
                 UpdatingMap(location: $location, title: $name, subtitle: $description)
                     .frame(height: 300)

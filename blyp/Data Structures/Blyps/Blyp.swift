@@ -29,6 +29,8 @@ struct Blyp: Identifiable, Codable, Comparable {
         return longitude != nil && latitude != nil
     }
 
+    var trigger: Trigger?
+    
     // MARK: CodingKeys for JUST properties listed above
 
     enum CodingKeys: String, CodingKey {
@@ -43,6 +45,7 @@ struct Blyp: Identifiable, Codable, Comparable {
         case imageBlurHashHeight
         case longitude
         case latitude
+        case trigger
     }
 
     // MARK: Properties used for saving and using Blyps
@@ -57,4 +60,10 @@ struct Blyp: Identifiable, Codable, Comparable {
     static func < (lhs: Blyp, rhs: Blyp) -> Bool {
         lhs.createdOn > rhs.createdOn
     }
+}
+
+enum Trigger: String, Codable {
+    case immediate = "Immediately"
+    case delayed = "On a future date"
+    case uponDeceased = "When I have passed away"
 }

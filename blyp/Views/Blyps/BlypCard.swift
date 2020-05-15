@@ -47,6 +47,9 @@ struct BlypCard: View {
                                     Circle().fill(Color.blypGreen)
                                     Text(self.user.friends.first(where: { f in f.uid == self.blyp.createdBy })?.displayName?[0] ?? "")
                                         .foregroundColor(Color.black)
+                                    if self.blyp.createdBy == self.user.uid {
+                                        Text("Me").foregroundColor(Color.black)
+                                    }
                                 }.frame(width: 40, height: 40).padding([.trailing, .top, .bottom])
                             }
                         }

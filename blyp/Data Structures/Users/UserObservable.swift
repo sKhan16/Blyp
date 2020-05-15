@@ -137,7 +137,7 @@ public class UserObservable: ObservableObject {
                         return
                     }
                     self.legacyContact = profile.legacyContact
-                    blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? true)
+                    blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? false) // we have to do this for the demo, sorry
                 }
             case let .failure(err): print(err)
                 // FIXME: ADD ERROR HANDLING

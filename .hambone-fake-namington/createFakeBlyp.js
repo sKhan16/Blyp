@@ -26,13 +26,13 @@ firestore
         let testBlyps = fakeBlypsSnap.data().blyps;
         let fakeUsers = snap.data().fakeUsers;
         fakeUsers.forEach((uid) => {
-          admin.firestore().collection("userProfiles").doc(uid).update("blyps", generateFakeBlyps(testBlyps));
+          admin.firestore().collection("userProfiles").doc(uid).update("blyps", generateFakeBlyps(testBlyps, uid));
         });
         // process.exit()
       });
   });
 
-function generateFakeBlyps(testBlyps) {
+function generateFakeBlyps(testBlyps, uid) {
   let fakeBlyps = {};
   // convert to array
   var testBlypsArr = [];
@@ -51,15 +51,25 @@ function generateFakeBlyps(testBlyps) {
     let id = faker.random.uuid();
     fakeBlyps[id] = {
       id: faker.random.uuid(),
-      name: faker.lorem.words(faker.random.number({ min: 1, max: 3 })),
+      name: faker.lorem.words(faker.random.number({ min: 1, max: 3 })).toProperCase(),
       createdOn: faker.date.recent(),
-      description: faker.lorem.words(faker.random.number({ min: 1, max: 10 })),
+      description: faker.lorem.words(faker.random.number({ min: 1, max: 10 })).toSentenceCase(),
       imageBlurHash: selectedImage.imageBlurHash,
       imageBlurHashHeight: selectedImage.imageBlurHashHeight,
       imageBlurHashWidth: selectedImage.imageBlurHashWidth,
       imageUrl: selectedImage.imageUrl,
+      createdBy: uid
     };
   }
 
   return fakeBlyps;
 }
+
+
+String.prototype.toProperCase = function () {
+  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
+
+String.prototype.toSentenceCase = function () {
+  return this.charAt(0).toUpperCase() + this.substr(1).toLowerCase();
+};

@@ -122,9 +122,9 @@ class BlypsObservable: ObservableObject {
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile, isFromCache: Bool) {
         let db = Firestore.firestore()
-        if !isFromCache {
+//        if !isFromCache {
             subscribeToFriendBlyps(db, userProfile)
-        }
+//        }
         personal = userProfile.blyps.values.sorted()
     }
 
