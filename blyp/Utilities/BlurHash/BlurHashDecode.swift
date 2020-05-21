@@ -2,6 +2,7 @@
 
 import UIKit
 
+// swiftlint:disable all
 extension UIImage {
     public convenience init?(blurHash: String, size: CGSize, punch: Float = 1) {
         guard blurHash.count >= 6 else { return nil }
@@ -62,7 +63,7 @@ extension UIImage {
 
         guard let provider = CGDataProvider(data: data) else { return nil }
         guard let cgImage = CGImage(width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 24, bytesPerRow: bytesPerRow,
-        space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo, provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent) else { return nil }
+                                    space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo, provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent) else { return nil }
 
         self.init(cgImage: cgImage)
     }
@@ -95,18 +96,16 @@ private func signPow(_ value: Float, _ exp: Float) -> Float {
 
 private func linearTosRGB(_ value: Float) -> Int {
     let v = max(0, min(1, value))
-    if v <= 0.0031308 { return Int(v * 12.92 * 255 + 0.5) }
-    else { return Int((1.055 * pow(v, 1 / 2.4) - 0.055) * 255 + 0.5) }
+    if v <= 0.0031308 { return Int(v * 12.92 * 255 + 0.5) } else { return Int((1.055 * pow(v, 1 / 2.4) - 0.055) * 255 + 0.5) }
 }
 
 private func sRGBToLinear<Type: BinaryInteger>(_ value: Type) -> Float {
     let v = Float(Int64(value)) / 255
-    if v <= 0.04045 { return v / 12.92 }
-    else { return pow((v + 0.055) / 1.055, 2.4) }
+    if v <= 0.04045 { return v / 12.92 } else { return pow((v + 0.055) / 1.055, 2.4) }
 }
 
 private let encodeCharacters: [String] = {
-    return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~".map { String($0) }
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~".map { String($0) }
 }()
 
 private let decodeCharacters: [String: Int] = {
@@ -130,20 +129,20 @@ extension String {
 }
 
 private extension String {
-    subscript (offset: Int) -> Character {
+    subscript(offset: Int) -> Character {
         return self[index(startIndex, offsetBy: offset)]
     }
 
-    subscript (bounds: CountableClosedRange<Int>) -> Substring {
+    subscript(bounds: CountableClosedRange<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[start...end]
+        return self[start ... end]
     }
 
-    subscript (bounds: CountableRange<Int>) -> Substring {
+    subscript(bounds: CountableRange<Int>) -> Substring {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
-        return self[start..<end]
+        return self[start ..< end]
     }
 }
-
+// swiftlint:enable all

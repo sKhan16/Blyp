@@ -18,11 +18,15 @@
 		C0208762246B2AB000FA497E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0208761246B2AB000FA497E /* MapView.swift */; };
 		C02334652452720100B88FCA /* CGSizeNormalizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */; };
 		C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0365C6224562BDE00C55F15 /* BlypCard.swift */; };
+		C0544F04246DD64E004B3690 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0544F03246DD64E004B3690 /* CloseButton.swift */; };
 		C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AFE98243A9C19005DE42C /* UserSearcher.swift */; };
+		C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05B3A58246B372300CE01BA /* AddMapLocationView.swift */; };
 		C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934824522BA700B846E0 /* BlurHashEncode.swift */; };
 		C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934A24522BB900B846E0 /* BlurHashDecode.swift */; };
 		C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C934C2452394900B846E0 /* ResizeImageExtension.swift */; };
 		C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063B5CA244E8D9B0095F291 /* ImagePicker.swift */; };
+		C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0711219246C8E8B0047FA2E /* FriendCell.swift */; };
+		C071121C246CAD9C0047FA2E /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C071121B246CAD9C0047FA2E /* NavigationConfigurator.swift */; };
 		C07A2E782400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E792400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
 		C07A2E7A2400AC85004BB749 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07A2E772400AC85004BB749 /* GoogleService-Info.plist */; };
@@ -42,13 +46,17 @@
 		C07A2ED72400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C07A2ED82400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */; };
 		C0836758240EF16700BE31DD /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0836757240EF16700BE31DD /* UserObservable.swift */; };
+		C0861345246CBCBF00E1DF7E /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */; };
 		C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08DE2672458DA760057770F /* PastelViewRepresentable.swift */; };
 		C090476C2432B57700E13BC9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476B2432B57700E13BC9 /* SearchBar.swift */; };
-		C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */; };
 		C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0904974244F9F5A0065000F /* BlypsObservable.swift */; };
 		C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C093083E243C4C730002BF0C /* FriendProfileView.swift */; };
 		C09825B0244A3A240086D4CB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09825AF244A3A240086D4CB /* Secrets.swift */; };
-		C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* AddFriend.swift */; };
+		C0A53C9B246CEAF100DF68AC /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9A246CEAF100DF68AC /* FriendsList.swift */; };
+		C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9C246CFAD200DF68AC /* AddFriends.swift */; };
+		C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9E246D128500DF68AC /* StringExtensions.swift */; };
+		C0A53CA1246D15FF00DF68AC /* TableViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */; };
+		C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* FriendManager.swift */; };
 		C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA06A124526058003DFEF4 /* BlypImage.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
 		C0EB8B65244CFA950068CC0B /* agenda-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0EB8B64244CFA950068CC0B /* agenda-medium.ttf */; };
@@ -99,11 +107,15 @@
 		C0208761246B2AB000FA497E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C02334642452720100B88FCA /* CGSizeNormalizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeNormalizeExtension.swift; sourceTree = "<group>"; };
 		C0365C6224562BDE00C55F15 /* BlypCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypCard.swift; sourceTree = "<group>"; };
+		C0544F03246DD64E004B3690 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		C05AFE98243A9C19005DE42C /* UserSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearcher.swift; sourceTree = "<group>"; };
+		C05B3A58246B372300CE01BA /* AddMapLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMapLocationView.swift; sourceTree = "<group>"; };
 		C05C934824522BA700B846E0 /* BlurHashEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashEncode.swift; sourceTree = "<group>"; };
 		C05C934A24522BB900B846E0 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
 		C05C934C2452394900B846E0 /* ResizeImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImageExtension.swift; sourceTree = "<group>"; };
 		C063B5CA244E8D9B0095F291 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C0711219246C8E8B0047FA2E /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		C071121B246CAD9C0047FA2E /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		C07A2E772400AC85004BB749 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C07A2EC52400B29D004BB749 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		C07A2EC62400B2A2004BB749 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -111,14 +123,18 @@
 		C07A2EC82400B2AC004BB749 /* UserDataKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataKeychain.swift; sourceTree = "<group>"; };
 		C07A2ED52400B2B5004BB749 /* SignInWithAppleToFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToFirebase.swift; sourceTree = "<group>"; };
 		C0836757240EF16700BE31DD /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		C08DE2672458DA760057770F /* PastelViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelViewRepresentable.swift; sourceTree = "<group>"; };
 		C090476B2432B57700E13BC9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsernameList.swift; sourceTree = "<group>"; };
 		C0904974244F9F5A0065000F /* BlypsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypsObservable.swift; sourceTree = "<group>"; };
 		C093083E243C4C730002BF0C /* FriendProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileView.swift; sourceTree = "<group>"; };
 		C09825AF244A3A240086D4CB /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		C0A53C9A246CEAF100DF68AC /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
+		C0A53C9C246CFAD200DF68AC /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
+		C0A53C9E246D128500DF68AC /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLine.swift; sourceTree = "<group>"; };
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
-		C0CE42E8241BF59D00A2E24F /* AddFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriend.swift; sourceTree = "<group>"; };
+		C0CE42E8241BF59D00A2E24F /* FriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManager.swift; sourceTree = "<group>"; };
 		C0D1B2AF2449063800782FB3 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
 		C0DA06A124526058003DFEF4 /* BlypImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypImage.swift; sourceTree = "<group>"; };
 		C0DFC6A8240F0C01009C98C5 /* BlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlypView.swift; sourceTree = "<group>"; };
@@ -209,6 +225,7 @@
 				C0363F41241AE9E4006EE664 /* Blyps */,
 				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
+				C0544F05246DD770004B3690 /* Utilities */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
 			);
@@ -247,10 +264,12 @@
 		C0363F40241AE9CE006EE664 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C0CE42E8241BF59D00A2E24F /* AddFriend.swift */,
+				C0CE42E8241BF59D00A2E24F /* FriendManager.swift */,
 				C090476B2432B57700E13BC9 /* SearchBar.swift */,
-				C090476D2432CCC600E13BC9 /* MatchedUsernameList.swift */,
 				C093083E243C4C730002BF0C /* FriendProfileView.swift */,
+				C0711219246C8E8B0047FA2E /* FriendCell.swift */,
+				C0A53C9A246CEAF100DF68AC /* FriendsList.swift */,
+				C0A53C9C246CFAD200DF68AC /* AddFriends.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -258,20 +277,49 @@
 		C0363F41241AE9E4006EE664 /* Blyps */ = {
 			isa = PBXGroup;
 			children = (
+				C05B3A5B246B814900CE01BA /* Maps */,
+				C05B3A5A246B813E00CE01BA /* Images */,
 				C0DFC6A8240F0C01009C98C5 /* BlypView.swift */,
 				1E5B8D8B2419DE9500809139 /* AddBlypView.swift */,
-				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
-				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
 				C0365C6224562BDE00C55F15 /* BlypCard.swift */,
-				C0208761246B2AB000FA497E /* MapView.swift */,
 			);
 			path = Blyps;
+			sourceTree = "<group>";
+		};
+		C0544F05246DD770004B3690 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C0544F03246DD64E004B3690 /* CloseButton.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C05B3A5A246B813E00CE01BA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C063B5CA244E8D9B0095F291 /* ImagePicker.swift */,
+				C0DA06A124526058003DFEF4 /* BlypImage.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C05B3A5B246B814900CE01BA /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				C0208761246B2AB000FA497E /* MapView.swift */,
+				C05B3A58246B372300CE01BA /* AddMapLocationView.swift */,
+			);
+			path = Maps;
 			sourceTree = "<group>";
 		};
 		C05C934624522B7E00B846E0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				C05C934724522B8D00B846E0 /* BlurHash */,
+				C071121B246CAD9C0047FA2E /* NavigationConfigurator.swift */,
+				C0861344246CBCBF00E1DF7E /* UIImageExtensions.swift */,
+				C0A53C9E246D128500DF68AC /* StringExtensions.swift */,
+				C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -397,6 +445,7 @@
 				C0FE9D7923E4F20E004C4621 /* Frameworks */,
 				C0FE9D7A23E4F20E004C4621 /* Resources */,
 				F49FF928EB2B793AFB089A46 /* [CP] Embed Pods Frameworks */,
+				C0544F06246DDB58004B3690 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -543,6 +592,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C0544F06246DDB58004B3690 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    # We only care about errors in our own project\n    cd blyp\n    swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		D3804108CA002EC57169C551 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -629,11 +695,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
-				C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */,
+				C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */,
+				C0A53C9B246CEAF100DF68AC /* FriendsList.swift in Sources */,
 				C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */,
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
 				C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */,
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
+				C0544F04246DD64E004B3690 /* CloseButton.swift in Sources */,
+				C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
 				C0904975244F9F5A0065000F /* BlypsObservable.swift in Sources */,
 				C05C934D2452394900B846E0 /* ResizeImageExtension.swift in Sources */,
@@ -646,6 +715,7 @@
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
 				C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */,
+				C0861345246CBCBF00E1DF7E /* UIImageExtensions.swift in Sources */,
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,
 				C063B5CB244E8D9B0095F291 /* ImagePicker.swift in Sources */,
 				C08DE2682458DA770057770F /* PastelViewRepresentable.swift in Sources */,
@@ -654,14 +724,18 @@
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,
+				C071121C246CAD9C0047FA2E /* NavigationConfigurator.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
+				C0A53CA1246D15FF00DF68AC /* TableViewLine.swift in Sources */,
 				C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */,
+				C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */,
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
+				C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
-				C0CE42E9241BF59D00A2E24F /* AddFriend.swift in Sources */,
+				C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */,
 				C0EB8B69244CFCEA0068CC0B /* BlypColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,7 +914,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blyp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;
@@ -867,7 +941,7 @@
 				CODE_SIGN_ENTITLEMENTS = blyp/blypRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_ASSET_PATHS = "\"blyp/Preview Content\"";
 				DEVELOPMENT_TEAM = K4M2TD6G2A;
 				ENABLE_PREVIEWS = YES;

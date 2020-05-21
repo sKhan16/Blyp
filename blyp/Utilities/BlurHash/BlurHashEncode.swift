@@ -1,7 +1,7 @@
 // https://github.com/woltapp/blurhash
 
 import UIKit
-
+// swiftlint:disable all
 extension UIImage {
     public func blurHash(numberOfComponents components: (Int, Int)) -> String? {
         let pixelWidth = Int(round(size.width * scale))
@@ -24,9 +24,9 @@ extension UIImage {
         UIGraphicsPopContext()
 
         guard let cgImage = context.makeImage(),
-        let dataProvider = cgImage.dataProvider,
-        let data = dataProvider.data,
-        let pixels = CFDataGetBytePtr(data) else {
+            let dataProvider = cgImage.dataProvider,
+            let data = dataProvider.data,
+            let pixels = CFDataGetBytePtr(data) else {
             assertionFailure("Unexpected error!")
             return nil
         }
@@ -56,7 +56,7 @@ extension UIImage {
 
         let maximumValue: Float
         if ac.count > 0 {
-            let actualMaximumValue = ac.map({ max(abs($0.0), abs($0.1), abs($0.2)) }).max()!
+            let actualMaximumValue = ac.map { max(abs($0.0), abs($0.1), abs($0.2)) }.max()!
             let quantisedMaximumValue = Int(max(0, min(82, floor(actualMaximumValue * 166 - 0.5))))
             maximumValue = Float(quantisedMaximumValue + 1) / 166
             hash += quantisedMaximumValue.encode83(length: 1)
@@ -117,18 +117,16 @@ private func signPow(_ value: Float, _ exp: Float) -> Float {
 
 private func linearTosRGB(_ value: Float) -> Int {
     let v = max(0, min(1, value))
-    if v <= 0.0031308 { return Int(v * 12.92 * 255 + 0.5) }
-    else { return Int((1.055 * pow(v, 1 / 2.4) - 0.055) * 255 + 0.5) }
+    if v <= 0.0031308 { return Int(v * 12.92 * 255 + 0.5) } else { return Int((1.055 * pow(v, 1 / 2.4) - 0.055) * 255 + 0.5) }
 }
 
 private func sRGBToLinear<Type: BinaryInteger>(_ value: Type) -> Float {
     let v = Float(Int64(value)) / 255
-    if v <= 0.04045 { return v / 12.92 }
-    else { return pow((v + 0.055) / 1.055, 2.4) }
+    if v <= 0.04045 { return v / 12.92 } else { return pow((v + 0.055) / 1.055, 2.4) }
 }
 
 private let encodeCharacters: [String] = {
-    return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~".map { String($0) }
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~".map { String($0) }
 }()
 
 extension BinaryInteger {
@@ -145,3 +143,4 @@ extension BinaryInteger {
 private func pow(_ base: Int, _ exponent: Int) -> Int {
     return (0 ..< exponent).reduce(1) { value, _ in value * base }
 }
+// swiftlint:enable all

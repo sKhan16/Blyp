@@ -9,7 +9,6 @@
 import FirebaseAuth
 import SwiftUI
 
-
 /// View structure that shows different views depending on a user's login state
 struct ContentView: View {
     @EnvironmentObject var user: UserObservable

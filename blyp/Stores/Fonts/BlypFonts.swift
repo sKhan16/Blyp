@@ -9,5 +9,5 @@
 import Foundation
 import SwiftUI
 extension Font {
-    static let Agenda = Font(UIFont.init(name: "agenda-medium", size: UIFont.labelFontSize)!)
+    static let Agenda = Font(UIFont(name: "agenda-medium", size: UIFont.labelFontSize)!)
 }

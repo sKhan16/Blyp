@@ -6,30 +6,30 @@
 //  Copyright © 2020 Team Sonar. All rights reserved.
 //
 
-import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import SwiftUI
 
 class BlypsObservable: ObservableObject {
     var user: UserObservable?
     @Published var personal: [Blyp] = []
     @Published var friends: [Blyp] = []
-    
+
     private let storage = Storage.storage()
     private var friendBlypSubscription: ListenerRegistration?
     private let databaseName: String = "userProfiles"
-    
+
     private let imageExtension = "jpeg"
-    
+
     init(user: UserObservable) {
         self.user = user
     }
-    
+
     deinit {
         friendBlypSubscription?.remove()
     }
-    
+
     /// Saves the Blyp to the user's account
     /// - Parameter blyp: Blyp to save
     func addBlyp(_ blyp: Blyp) {
@@ -37,46 +37,44 @@ class BlypsObservable: ObservableObject {
             print("user not assigned in BlypsObservable")
             return
         }
-        
+
         // Store the image in the Firebase Cloud Storage bucket
-        if (blyp.image != nil) {
+        if blyp.image != nil {
             let storageRef = storage.reference()
             let imageChild = "\(user.uid)/\(blyp.id).\(imageExtension)"
             let imageRef = storageRef.child(imageChild)
             let imageData = (blyp.image?.jpegData(compressionQuality: 0.5))!
-            
-            imageRef.putData(imageData, metadata: nil) { (metadata, error) in
+
+            imageRef.putData(imageData, metadata: nil) { _, error in
                 // Copying is required because blyp is immutable
                 var blypWithImageUrl = blyp
-                
+
                 // blypWithImageUrl.imageUrl = url.absoluteString
-                
+
                 // Make image tiny and then create a blur hash in a new thread
                 let queue = OperationQueue()
                 queue.addOperation {
-                    if (blyp.image!.size.height > 128 || blyp.image!.size.width > 128) {
-                        blypWithImageUrl.imageBlurHash = blyp.image!.resizeImage(128.0, opaque: false).blurHash(numberOfComponents: (4,4))
+                    if blyp.image!.size.height > 128 || blyp.image!.size.width > 128 {
+                        blypWithImageUrl.imageBlurHash = blyp.image!.resizeImage(128.0, opaque: false).blurHash(numberOfComponents: (4, 4))
                     } else {
-                        blypWithImageUrl.imageBlurHash = blyp.image!.blurHash(numberOfComponents: (4,4))
+                        blypWithImageUrl.imageBlurHash = blyp.image!.blurHash(numberOfComponents: (4, 4))
                     }
-                    
-                    
-                    imageRef.downloadURL {(url, error) in
-                        if (error != nil) {print(error)}
+
+                    imageRef.downloadURL { url, error in
+                        if error != nil { print(error) }
                         blypWithImageUrl.imageUrl = url?.absoluteString
                         let newScale = blyp.image?.size.scale(to: 32)
                         blypWithImageUrl.imageBlurHashHeight = newScale?.height
                         blypWithImageUrl.imageBlurHashWidth = newScale?.width
                         self.saveBlypToFirebase(blypWithImageUrl)
                     }
-                    
                 }
             }
         } else {
             saveBlypToFirebase(blyp)
         }
     }
-    
+
     /// Helper function that manages saving the Blyp to the Firestore database
     /// - Parameter blyp: Blyp to save in the firestore database
     private func saveBlypToFirebase(_ blyp: Blyp) {
@@ -89,11 +87,14 @@ class BlypsObservable: ObservableObject {
                 "name": blyp.name,
                 "description": blyp.description,
                 "createdOn": blyp.createdOn,
+                "createdBy": user?.uid,
                 "imageUrl": blyp.imageUrl, // Ignore these warnings, we do NOT want to store a default value
                 "imageBlurHash": blyp.imageBlurHash,
                 "imageBlurHashHeight": blyp.imageBlurHashHeight,
-                "imageBlurHashWidth": blyp.imageBlurHashWidth
-            ],
+                "imageBlurHashWidth": blyp.imageBlurHashWidth,
+                "latitude": blyp.latitude,
+                "longitude": blyp.longitude
+            ]
         ]) { err in
             if let err = err {
                 print("Error saving \(blyp.id): \(err)")
@@ -102,31 +103,31 @@ class BlypsObservable: ObservableObject {
             }
         }
     }
-    
+
     private func subscribeToFriendBlyps(_ db: Firestore, _ userProfile: UserProfile) {
-        self.friendBlypSubscription?.remove()
+        friendBlypSubscription?.remove()
         // User must have friends to subscribe, Firebase just fucking kills the app if it is empty
         print("Subscribing to these friends: \(userProfile.friends)")
         if userProfile.friends.count == 0 {
-            self.friends = []
+            friends = []
             return
         }
         let userProfilesRef = db.collection("userProfiles")
-        self.friendBlypSubscription = userProfilesRef.whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
+        friendBlypSubscription = userProfilesRef.whereField("uid", in: userProfile.friends).addSnapshotListener { documentsSnapshot, error in
             self.getBlypsFromFriendsSnapshot(snapshot: documentsSnapshot, error: error)
         }
     }
-    
+
     /// Parses blyps from incoming profile and sets to $list
     /// - Parameter userProfile: Profile to parse blyps from
     func parse(from userProfile: UserProfile, isFromCache: Bool) {
         let db = Firestore.firestore()
-        if !isFromCache {
+//        if !isFromCache {
             subscribeToFriendBlyps(db, userProfile)
-        }
-        self.personal = userProfile.blyps.values.sorted()
+//        }
+        personal = userProfile.blyps.values.sorted()
     }
-    
+
     func getBlypsFromFriendsSnapshot(snapshot: QuerySnapshot?, error: Error?) {
         if let error = error {
             print("Error retreiving collection: \(error)")
@@ -135,7 +136,7 @@ class BlypsObservable: ObservableObject {
             print("Error getting friends' blyps: \(String(describing: error))")
             return
         }
-        
+
         var tempFriends: [Blyp] = []
         // Go through each profile
         for documentSnapshot in documents {
@@ -154,8 +155,8 @@ class BlypsObservable: ObservableObject {
             }
         }
         tempFriends.sort()
-        self.friends.removeAll()
-        self.friends.append(contentsOf: tempFriends)
-        print("Friends' blyps are now \(self.friends.count) long")
+        friends.removeAll()
+        friends.append(contentsOf: tempFriends)
+        print("Friends' blyps are now \(friends.count) long")
     }
 }

@@ -10,32 +10,30 @@ import Combine
 import Introspect
 import SwiftUI
 
-struct ManageFriends: View {
+/// View that manages user's existing friends and lets them add new friends
+struct FriendManager: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var user: UserObservable
-    @ObservedObject private var userSearcher = UserSearcher()
+    @State private var isShowingAddFriends: Bool = false
+
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(userSearcher: userSearcher)
-                if userSearcher.searchQuery != "" {
-                    FriendsList(searchHits: userSearcher.displayNameAlgolia.hits)
-                } else {
-                    FriendsList(friends: user.friends)
-                }
-            }
-            .navigationBarTitle(Text(userSearcher.searchQuery == "" ? "My Friends" : "Add Friend").bold().italic(), displayMode: .inline)
-            .navigationBarItems(leading: CloseButton())
-        }
+            FriendsList(friends: user.friends)
+                .navigationBarTitle("Friends")
+                .navigationBarItems(leading: CloseButton(presentationMode: presentationMode), trailing: AddFriendsButton(isShowingAddFriends: $isShowingAddFriends))
+        }.sheet(isPresented: $isShowingAddFriends) {
+            AddFriends(userSearcher: UserSearcher()).environmentObject(self.user)
+        }.modifier(TableViewLine(is: .shown))
     }
 }
 
-private struct CloseButton: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+private struct AddFriendsButton: View {
+    @Binding var isShowingAddFriends: Bool
     var body: some View {
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
+            self.isShowingAddFriends.toggle()
         }) {
-            Text("Close")
+            Text("Add Friends")
         }
     }
 }
@@ -67,6 +65,6 @@ extension View {
 
 struct AddFriend_Previews: PreviewProvider {
     static var previews: some View {
-        ManageFriends().environmentObject(UserObservable())
+        FriendManager().environmentObject(UserObservable())
     }
 }
