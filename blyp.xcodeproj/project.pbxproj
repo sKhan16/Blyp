@@ -13,7 +13,6 @@
 		1EC97285245C1D35004011F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC97284245C1D35004011F3 /* OnboardingView.swift */; };
 		1EC97287245C1D83004011F3 /* Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC97286245C1D83004011F3 /* Subview.swift */; };
 		1EC97289245C1E03004011F3 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC97288245C1E03004011F3 /* PageControl.swift */; };
-		34AB4E8F3D896A16161354F7 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BB31B503C937C9B62D99CF /* Pods_blyp.framework */; };
 		91F6B65A9D471D1793A1E6AD /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221D306127E9EC46175FE4D5 /* Pods_blyp_blypUITests.framework */; };
 		BC6E20586F65B2502DD52AC1 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939C0CC9FAF0E20721191C90 /* Pods_blyp.framework */; };
 		C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00BC324240F1F690051CBA1 /* Blyp.swift */; };
@@ -62,6 +61,7 @@
 		C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9C246CFAD200DF68AC /* AddFriends.swift */; };
 		C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53C9E246D128500DF68AC /* StringExtensions.swift */; };
 		C0A53CA1246D15FF00DF68AC /* TableViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */; };
+		C0B1C73F2478550200E13F08 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1C73E2478550200E13F08 /* ViewRouter.swift */; };
 		C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE42E8241BF59D00A2E24F /* FriendManager.swift */; };
 		C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA06A124526058003DFEF4 /* BlypImage.swift */; };
 		C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DFC6A8240F0C01009C98C5 /* BlypView.swift */; };
@@ -99,17 +99,11 @@
 /* Begin PBXFileReference section */
 		1B9FB1549F5356CD14374AEE /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1E5B8D8B2419DE9500809139 /* AddBlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlypView.swift; sourceTree = "<group>"; };
-		1E62946B2472092A0062B8EF /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRouter.swift; path = /Users/shakeelkhan/Desktop/Blyp/blyp/Views/ViewRouter.swift; sourceTree = "<absolute>"; };
 		1EB3A0D0245304C60063956E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		1EC89F8E0B871033E2A4DA5F /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
 		1EC97284245C1D35004011F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1EC97286245C1D83004011F3 /* Subview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subview.swift; sourceTree = "<group>"; };
 		1EC97288245C1E03004011F3 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
-		37BB31B503C937C9B62D99CF /* Pods_blyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80189C1E59A6EA5569528A23 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80191F9DACEFC2D649170F9E /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
-		8C7218698BE7CF91C753F5A7 /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8D9129F047C6E2DC761BF27A /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
-		1EC89F8E0B871033E2A4DA5F /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
 		221D306127E9EC46175FE4D5 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33F828836FBF853AA1E9A463 /* Pods_blypTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blypTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		814F65A13F3136FE3DB53477 /* Pods-blyp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.debug.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +143,7 @@
 		C0A53C9C246CFAD200DF68AC /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
 		C0A53C9E246D128500DF68AC /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C0A53CA0246D15FF00DF68AC /* TableViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLine.swift; sourceTree = "<group>"; };
+		C0B1C73E2478550200E13F08 /* ViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		C0CE42E7241B6C7100A2E24F /* blypRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blypRelease.entitlements; sourceTree = "<group>"; };
 		C0CE42E8241BF59D00A2E24F /* FriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendManager.swift; sourceTree = "<group>"; };
 		C0D1B2AF2449063800782FB3 /* blyp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blyp.entitlements; sourceTree = "<group>"; };
@@ -257,6 +252,7 @@
 				C0544F05246DD770004B3690 /* Utilities */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
+				C0B1C73E2478550200E13F08 /* ViewRouter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -724,7 +720,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
-				C090476E2432CCC600E13BC9 /* MatchedUsernameList.swift in Sources */,
 				1EC97289245C1E03004011F3 /* PageControl.swift in Sources */,
 				C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */,
 				C0A53C9B246CEAF100DF68AC /* FriendsList.swift in Sources */,
@@ -746,6 +741,7 @@
 				C07A2ECF2400B2AC004BB749 /* SharedWebCredential.swift in Sources */,
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
+				C0B1C73F2478550200E13F08 /* ViewRouter.swift in Sources */,
 				C0365C6324562BDE00C55F15 /* BlypCard.swift in Sources */,
 				C0861345246CBCBF00E1DF7E /* UIImageExtensions.swift in Sources */,
 				C05C934924522BA700B846E0 /* BlurHashEncode.swift in Sources */,

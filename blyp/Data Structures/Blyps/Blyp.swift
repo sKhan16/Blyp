@@ -30,7 +30,7 @@ struct Blyp: Identifiable, Codable, Comparable {
     }
 
     var trigger: Trigger?
-    
+
     // MARK: CodingKeys for JUST properties listed above
 
     enum CodingKeys: String, CodingKey {

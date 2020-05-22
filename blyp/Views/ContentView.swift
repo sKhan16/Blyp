@@ -20,9 +20,9 @@ struct ContentView: View {
             if user.loginState == .loggedIn {
                 MainView()
             } else if user.loginState == .signingUp {
-                if (viewRouter.currentPage == "OnboardingView") {
+                if viewRouter.currentPage == "OnboardingView" {
                     OnboardingView()
-                } else if (viewRouter.currentPage == "SignUpView") {
+                } else if viewRouter.currentPage == "SignUpView" {
                     SignUpView()
                 }
             } else if user.loginState == .loggedOut {
@@ -33,6 +33,3 @@ struct ContentView: View {
         }
     }
 }
-
-
-

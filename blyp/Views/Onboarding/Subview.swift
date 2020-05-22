@@ -11,9 +11,9 @@
 import SwiftUI
 
 struct Subview: View {
-    
+
     var imageString: String
-    
+
     var body: some View {
         Image(imageString)
         .resizable()

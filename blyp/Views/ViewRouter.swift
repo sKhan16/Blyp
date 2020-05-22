@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 class ViewRouter: ObservableObject {
-    
+    @Published var currentPage: String
+
     init() {
-        
+
         // Shows onboarding screen ONLY on first launch of app.
         if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")
@@ -20,7 +21,4 @@ class ViewRouter: ObservableObject {
             currentPage = "SignUpView"
         }
     }
-    
-    @Published var currentPage: String
-    
 }

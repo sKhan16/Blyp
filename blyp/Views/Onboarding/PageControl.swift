@@ -11,11 +11,11 @@ import UIKit
 import SwiftUI
 
 struct PageControl: UIViewRepresentable {
-    
+
     var numberOfPages: Int
-    
+
     @Binding var currentPageIndex: Int
-    
+
     func makeUIView(context: Context) -> UIPageControl {
         let control = UIPageControl()
         control.numberOfPages = numberOfPages
@@ -24,9 +24,9 @@ struct PageControl: UIViewRepresentable {
 
         return control
     }
-    
+
     func updateUIView(_ uiView: UIPageControl, context: Context) {
         uiView.currentPage = currentPageIndex
     }
-    
+
 }

@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
+
     //Place to add images if desired.
     var subviews = [
         UIHostingController(rootView: Subview(imageString: "imageName1")),
         UIHostingController(rootView: Subview(imageString: "imageName2")),
         UIHostingController(rootView: Subview(imageString: "imageName3"))
     ]
-    
+
     var titles = ["Create and share Blyps!", "Appoint a legacy contact", "Automatic posting"]
-    
+
     var captions =  ["Blyps are digital memories of any media: photos, videos, or just text that you can share with your loved ones!", "Legacy contacts are specially appointed by you to look after your account after your passing", "Select a future date or after your passing and your Blyp will be posted for you at that time!"]
-    
+
     @State private var currentPageIndex = 0
-    
+
     var body: some View {
         VStack(alignment: .center) {
             PageViewController(currentPageIndex: $currentPageIndex, viewControllers: subviews)
@@ -53,7 +53,7 @@ struct OnboardingView: View {
             }
                 .padding()
         }
-        
+
     }
 }
 
