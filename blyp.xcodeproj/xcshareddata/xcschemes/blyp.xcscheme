@@ -81,6 +81,16 @@
             value = "password"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ALGOLIA_APP_ID"
+            value = "B9RHB89CNZ"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ALGOLIA_API_KEY"
+            value = "88cfbdff63c18e567d605c1634aa17f0"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

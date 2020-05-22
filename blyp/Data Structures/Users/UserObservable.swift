@@ -11,7 +11,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import FirebaseFunctions
 import Foundation
 import SwiftUI
 
@@ -19,13 +18,30 @@ public class UserObservable: ObservableObject {
     @Published var displayName: String = "DisplayName"
     @Published var uid: String = ""
     @Published var loginState: LoginState = .loggedOut
-    @Published var blyps: [Blyp] = []
+    @Published var blyps: BlypsObservable?
     @Published var friends: [FriendProfile] = []
+    @Published var legacyContact: String = ""
 
-    private lazy var functions = Functions.functions()
+    private var userProfilesCollectionRef: CollectionReference = Firestore.firestore().collection("userProfiles")
+    private var userDisplayNameCollectionRef: CollectionReference = Firestore.firestore().collection("userDisplayNames")
+    private var userProfileRef: DocumentReference {
+        return userProfilesCollectionRef.document(uid)
+    }
 
-    private let databaseName: String = "userProfiles"
+    private var userDisplayNameRef: DocumentReference {
+        return userDisplayNameCollectionRef.document(uid)
+    }
+
     private var blypFirestoreListenerSubscription: ListenerRegistration?
+
+    init() {
+        blyps = BlypsObservable(user: self)
+    }
+
+    deinit {
+        blypFirestoreListenerSubscription?.remove()
+        blyps = nil
+    }
 
     // MARK: Authentication and Login/Logout functions
 
@@ -88,7 +104,7 @@ public class UserObservable: ObservableObject {
             if error == nil {
                 self.displayName = trimmedName
                 self.loginState = .loggedIn
-                Firestore.firestore().collection("userDisplayNames").document(self.uid).setData(["displayName": trimmedName])
+                self.userDisplayNameRef.updateData(["displayName": trimmedName])
             } else {
                 // FIXME: Add error state
             }
@@ -97,67 +113,105 @@ public class UserObservable: ObservableObject {
 
     // MARK: Utility functions
 
+    /// Reset all user data
     private func resetUserInfo() {
         displayName = ""
         loginState = .loggedOut
+        friends = []
     }
 
     /// Start the subscription to Blyps on Firestore
     private func subscribeToFirestore() {
-        let db = Firestore.firestore()
-        blypFirestoreListenerSubscription = db.collection(databaseName).document(uid)
-            .addSnapshotListener { documentSnapshot, _ in
-                let result = Result {
-                    try documentSnapshot.flatMap {
-                        try $0.data(as: UserProfile.self)
-                    }
-                }
-                switch result {
-                case let .success(profile):
-                    if let profile = profile {
-                        var tempBlyps: [Blyp] = []
-                        for (_, blyp) in profile.blyps {
-                            tempBlyps.append(blyp)
-                        }
-                        tempBlyps.sort { (a, b) -> Bool in
-                            a.name < b.name
-                        }
-                        self.blyps = tempBlyps
-                        self.friends = profile.friends.map { FriendProfile(uid: $0) }
-                        print("Blyps have been updated LIVE!")
-                    }
-
-                case let .failure(err): print(err)
-                    // FIXME: ADD ERROR HANDLING
+        blypFirestoreListenerSubscription = userProfileRef.addSnapshotListener { documentSnapshot, _ in
+            let result = Result {
+                try documentSnapshot.flatMap {
+                    try $0.data(as: UserProfile.self)
                 }
             }
-    }
-
-    /// Add to the database using the "addBlyp" function
-    func addBlyp(_ blyp: Blyp) {
-        let db = Firestore.firestore()
-        // FIXME: This is bad, we should be doing different collections entirely
-        db.collection(databaseName).document(uid).updateData([
-            "blyps.\(blyp.id)": [
-                "id": blyp.id.uuidString,
-                "name": blyp.name,
-                "description": blyp.description,
-                "image": blyp.image,
-            ],
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
+            switch result {
+            case let .success(profile):
+                if let profile = profile {
+                    self.getFriendsUsernames(uids: profile.friends)
+                    guard let blyps = self.blyps else {
+                        print("blyps were not configured in UserObservable")
+                        return
+                    }
+                    self.legacyContact = profile.legacyContact
+                    blyps.parse(from: profile, isFromCache: documentSnapshot?.metadata.isFromCache ?? false) // we have to do this for the demo, sorry
+                }
+            case let .failure(err): print(err)
+                // FIXME: ADD ERROR HANDLING
             }
         }
     }
 
+    private func getFriendsUsernames(uids: [String]) {
+        if uids.count == 0 {
+            print("No friends to get usernames from right now")
+            friends.removeAll()
+            return // can't run whereField on empty array
+        }
+        print("Getting usernames for \(uids)")
+        userProfilesCollectionRef.whereField("uid", in: uids).getDocuments { documentsSnapshot, error in
+            if let error = error {
+                print("Error retreiving collection: \(error)")
+            }
+            guard let documents = documentsSnapshot?.documents else {
+                print("Error getting friends' usernames: \(String(describing: error))")
+                return
+            }
+            var tempFriends: [FriendProfile] = []
+            for document in documents {
+                let result = Result {
+                    try document.data(as: FriendProfile.self)
+                }
+                switch result {
+                case let .success(friendProfile):
+                    if let profile = friendProfile {
+                        print("Got username for \(profile.uid): \(profile.displayName ?? "")")
+                        tempFriends.append(profile)
+                    }
+                case let .failure(err): print(err)
+                    // FIXME: ADD ERROR HANDLING
+                }
+            }
+            tempFriends.sort()
+            self.friends.removeAll()
+            self.friends.append(contentsOf: tempFriends)
+        }
+    }
+
     func addFriend(_ friendProfile: FriendProfile) {
-        let db = Firestore.firestore()
-        db.collection(databaseName).document(uid).updateData([
-            "friends": FieldValue.arrayUnion([friendProfile.uid]),
+        userProfileRef.updateData([
+            "friends": FieldValue.arrayUnion([friendProfile.uid])
         ])
+    }
+
+    func removeFriend(_ friendProfile: FriendProfile) {
+        userProfileRef.updateData([
+            "friends": FieldValue.arrayRemove([friendProfile.uid])
+        ])
+    }
+
+    func setLegacyContact(to friendProfile: FriendProfile) {
+        userProfileRef.updateData([
+            "legacyContact": friendProfile.uid
+        ])
+    }
+
+    func removeLegacyContact() {
+        userProfileRef.updateData([
+            "legacyContact": ""
+        ])
+    }
+
+    func isLegacyContact(of friendProfile: FriendProfile) -> Bool {
+        return friendProfile.legacyContact == self.uid
+    }
+
+    func set(friend: FriendProfile, as status: DeceasedStatus) {
+        let friendProfileDocumentRef = userProfilesCollectionRef.document(friend.uid)
+        friendProfileDocumentRef.updateData(["deceased": status == .deceased])
     }
 }
 
@@ -167,8 +221,7 @@ enum LoginState {
     case loggedOut
 }
 
-/// Names of Firebase Functions
-enum Funcs: String {
-    case addBlyp
-    case removeBlyp
+enum DeceasedStatus {
+    case deceased
+    case alive
 }

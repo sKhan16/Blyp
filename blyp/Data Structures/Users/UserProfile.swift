@@ -9,9 +9,8 @@
 import Foundation
 
 struct UserProfile: Codable {
-    var blyps: [String: Blyp]
-    var friends: [String]
-    var legacyContact: Friend
+    var blyps: [String: Blyp] // UUIDs to Blyp object
+    var friends: [String] // UIDs
+    var legacyContact: String
+    var uid: String
 }
-
-struct Friend: Codable {}

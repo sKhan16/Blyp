@@ -9,11 +9,13 @@ target 'blyp' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Functions'
+  pod 'Firebase/Storage'
   pod 'InstantSearchClient', '~> 6.0'
   pod 'ObjectMapper', '~> 3.5.2'
+  pod 'SDWebImageSwiftUI'
   pod 'Introspect'
   pod 'Pastel'
-  # Pods for blyp
+  pod 'SwiftLocation', '~> 4.0'
 
   target 'blypTests' do
     inherit! :search_paths

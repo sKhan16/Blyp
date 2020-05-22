@@ -12,7 +12,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    var user: UserObservable = UserObservable()
+    let user: UserObservable = UserObservable()
     var viewRouter = ViewRouter()
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {

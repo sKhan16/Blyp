@@ -8,35 +8,113 @@
 
 import SwiftUI
 
+/// View for looking at friends' profiles and adding them as a friend, legacy contact, or marking as deceased
 struct FriendProfileView: View {
     @EnvironmentObject var user: UserObservable
     var friendProfile: FriendProfile
+
     var body: some View {
-        NavigationView {
+        VStack {
+
+            FriendHeader(for: friendProfile)
+
             VStack {
-                Text("Here's some information about \(friendProfile.displayName ?? "")")
-                Spacer()
-                if !user.friends.contains(friendProfile) {
-                    Button(action: {
-                        self.user.addFriend(self.friendProfile)
-                    }) {
-                        Text("Add friend")
-                            .foregroundColor(Color.white)
-                    }
-                    .frame(width: 100.0, height: 50.0)
-                    .background(Color.blue)
-                    .cornerRadius(50.0)
-                    .shadow(radius: 1)
+                // Add/Remove Friend (always appears)
+                ToggleFriendshipButton(friendProfile: friendProfile)
+
+                // Add/Remove Legacy Contact (only appears if user has friend in friends list)
+                if friendProfile.isAlreadyFriend(of: user) {
+                    ToggleLegacyContactButton(friendProfile: friendProfile)
+                }
+
+                // Mark as deceased (only appears if user is the legacy contact of friend)
+                if user.isLegacyContact(of: friendProfile) {
+                    ToggleDeceasedButton(friendProfile: friendProfile)
                 }
             }
-            .navigationBarTitle(Text(friendProfile.displayName ?? ""))
+            Spacer()
         }
+        .navigationBarTitle(Text(friendProfile.displayName ?? "NAME"))
     }
 }
 
-struct FriendProfileView_Previews: PreviewProvider {
-    private static var friendProfile: FriendProfile = FriendProfile(displayName: "Bill", uid: "")
+ struct FriendProfileView_Previews: PreviewProvider {
+    private static var friendProfile: FriendProfile = FriendProfile(uid: "", displayName: "Bill")
     static var previews: some View {
         FriendProfileView(friendProfile: friendProfile).environmentObject(UserObservable())
+    }
+ }
+
+private struct FriendHeader: View {
+    var friendProfile: FriendProfile
+    init (for friendProfile: FriendProfile) {
+        self.friendProfile = friendProfile
+    }
+    var body: some View {
+        Text("Here's some information about \(friendProfile.displayName ?? "")")
+    }
+}
+
+private struct FriendProfileButtonModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(50.0)
+            .shadow(radius: 1)
+            .padding()
+            .animation(.easeInOut)
+    }
+}
+
+struct ToggleFriendshipButton: View {
+    @EnvironmentObject var user: UserObservable
+    var friendProfile: FriendProfile
+    var body: some View {
+        Button(action: {
+            if self.friendProfile.isAlreadyFriend(of: self.user) {
+                self.user.removeFriend(self.friendProfile)
+            } else {
+                self.user.addFriend(self.friendProfile)
+            }
+        }) {
+            Text(self.friendProfile.isAlreadyFriend(of: self.user) ? "Remove Friend 🥺" : "Add friend")
+                .foregroundColor(Color.white)
+        }
+        .padding()
+        .frame(minWidth: 100, minHeight: 50.0)
+        .background(self.friendProfile.isAlreadyFriend(of: self.user) ? Color.red : Color.blue)
+        .modifier(FriendProfileButtonModifier())
+    }
+}
+
+struct ToggleLegacyContactButton: View {
+    @EnvironmentObject var user: UserObservable
+    var friendProfile: FriendProfile
+    var body: some View {
+        Button(action: {
+            if self.friendProfile.isLegacyContact(of: self.user) {
+                self.user.removeLegacyContact()
+            } else {
+                self.user.setLegacyContact(to: self.friendProfile)
+            }
+        }) {
+            Text(self.friendProfile.isLegacyContact(of: self.user) ? "Remove Legacy Contact" : "Set as Legacy Contact")
+                .foregroundColor(Color.white)
+        }
+        .padding()
+        .background(self.friendProfile.isLegacyContact(of: self.user) ? Color.red : Color.blue).modifier(FriendProfileButtonModifier())
+        .modifier(FriendProfileButtonModifier())
+    }
+}
+
+struct ToggleDeceasedButton: View {
+    @EnvironmentObject var user: UserObservable
+    var friendProfile: FriendProfile
+    var body: some View {
+        Button(action: {}) {
+            Text("Mark as Deceased").foregroundColor(Color.white)
+        }
+        .padding()
+        .background(Color.red)
+        .modifier(FriendProfileButtonModifier())
     }
 }
