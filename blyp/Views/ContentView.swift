@@ -12,6 +12,7 @@ import SwiftUI
 /// View structure that shows different views depending on a user's login state
 struct ContentView: View {
     @EnvironmentObject var user: UserObservable
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var displayName: String?
 
     var body: some View {
@@ -19,7 +20,13 @@ struct ContentView: View {
             if user.loginState == .loggedIn {
                 MainView()
             } else if user.loginState == .signingUp {
-                SignUpView()
+                
+                if viewRouter.currentPage == "OnboardingView" {
+                    OnboardingView()
+                } else if viewRouter.currentPage == "SignUpView" {
+                    SignUpView()
+                }
+                
             } else if user.loginState == .loggedOut {
                 LoginView()
             } else {

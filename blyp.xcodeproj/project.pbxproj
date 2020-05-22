@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8D8B2419DE9500809139 /* AddBlypView.swift */; };
+		1E7A7B2F2477D87300CA762F /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7B2E2477D87300CA762F /* ViewRouter.swift */; };
+		1E7A7B312477D8FD00CA762F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7B302477D8FD00CA762F /* OnboardingView.swift */; };
+		1E7A7B332477D94C00CA762F /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7B322477D94C00CA762F /* PageControl.swift */; };
+		1E7A7B352477D98800CA762F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7B342477D98800CA762F /* PageViewController.swift */; };
+		1E7A7B372477D9DB00CA762F /* Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7B362477D9DB00CA762F /* Subview.swift */; };
 		91F6B65A9D471D1793A1E6AD /* Pods_blyp_blypUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221D306127E9EC46175FE4D5 /* Pods_blyp_blypUITests.framework */; };
 		BC6E20586F65B2502DD52AC1 /* Pods_blyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939C0CC9FAF0E20721191C90 /* Pods_blyp.framework */; };
 		C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00BC324240F1F690051CBA1 /* Blyp.swift */; };
@@ -93,6 +98,11 @@
 /* Begin PBXFileReference section */
 		1B9FB1549F5356CD14374AEE /* Pods-blyp-blypUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp-blypUITests.release.xcconfig"; path = "Target Support Files/Pods-blyp-blypUITests/Pods-blyp-blypUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1E5B8D8B2419DE9500809139 /* AddBlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlypView.swift; sourceTree = "<group>"; };
+		1E7A7B2E2477D87300CA762F /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		1E7A7B302477D8FD00CA762F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1E7A7B322477D94C00CA762F /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		1E7A7B342477D98800CA762F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		1E7A7B362477D9DB00CA762F /* Subview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subview.swift; sourceTree = "<group>"; };
 		1EC89F8E0B871033E2A4DA5F /* Pods-blyp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blyp.release.xcconfig"; path = "Target Support Files/Pods-blyp/Pods-blyp.release.xcconfig"; sourceTree = "<group>"; };
 		221D306127E9EC46175FE4D5 /* Pods_blyp_blypUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blyp_blypUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33F828836FBF853AA1E9A463 /* Pods_blypTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_blypTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +209,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1E7A7B2D2477D7D700CA762F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1E7A7B2E2477D87300CA762F /* ViewRouter.swift */,
+				1E7A7B302477D8FD00CA762F /* OnboardingView.swift */,
+				1E7A7B322477D94C00CA762F /* PageControl.swift */,
+				1E7A7B342477D98800CA762F /* PageViewController.swift */,
+				1E7A7B362477D9DB00CA762F /* Subview.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		238741CEDFB4D7E5D4518974 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +244,7 @@
 		C01AA3B02409DD8C00BB1C84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A7B2D2477D7D700CA762F /* Onboarding */,
 				C0363F41241AE9E4006EE664 /* Blyps */,
 				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
@@ -697,10 +720,12 @@
 				C07A2ED62400B2B5004BB749 /* SignInWithAppleToFirebase.swift in Sources */,
 				C071121A246C8E8B0047FA2E /* FriendCell.swift in Sources */,
 				C0A53C9B246CEAF100DF68AC /* FriendsList.swift in Sources */,
+				1E7A7B312477D8FD00CA762F /* OnboardingView.swift in Sources */,
 				C093083F243C4C730002BF0C /* FriendProfileView.swift in Sources */,
 				C0EB8B67244CFAF40068CC0B /* BlypFonts.swift in Sources */,
 				C0DA06A224526058003DFEF4 /* BlypImage.swift in Sources */,
 				C01AA3B52409EAD300BB1C84 /* ContentView.swift in Sources */,
+				1E7A7B2F2477D87300CA762F /* ViewRouter.swift in Sources */,
 				C0544F04246DD64E004B3690 /* CloseButton.swift in Sources */,
 				C0A53C9F246D128500DF68AC /* StringExtensions.swift in Sources */,
 				C07A2ECC2400B2AC004BB749 /* UserData.swift in Sources */,
@@ -724,17 +749,20 @@
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				C05AFE99243A9C19005DE42C /* UserSearcher.swift in Sources */,
+				1E7A7B332477D94C00CA762F /* PageControl.swift in Sources */,
 				C071121C246CAD9C0047FA2E /* NavigationConfigurator.swift in Sources */,
 				C07A2EC92400B2AC004BB749 /* Keychain.swift in Sources */,
 				C0A53CA1246D15FF00DF68AC /* TableViewLine.swift in Sources */,
 				C05C934B24522BB900B846E0 /* BlurHashDecode.swift in Sources */,
 				C0A53C9D246CFAD200DF68AC /* AddFriends.swift in Sources */,
 				C011C22D241B4C7900114AE9 /* UserProfile.swift in Sources */,
+				1E7A7B352477D98800CA762F /* PageViewController.swift in Sources */,
 				1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */,
 				C05B3A59246B372300CE01BA /* AddMapLocationView.swift in Sources */,
 				C0DFC6A9240F0C01009C98C5 /* BlypView.swift in Sources */,
 				C09825B0244A3A240086D4CB /* Secrets.swift in Sources */,
 				C0836758240EF16700BE31DD /* UserObservable.swift in Sources */,
+				1E7A7B372477D9DB00CA762F /* Subview.swift in Sources */,
 				C0CE42E9241BF59D00A2E24F /* FriendManager.swift in Sources */,
 				C0EB8B69244CFCEA0068CC0B /* BlypColors.swift in Sources */,
 			);
