@@ -3,6 +3,14 @@
 
 Informatics capstone project from Team Sonar
 
+## Handoff Documentation 
+
+[See here](./Documentation/Handoff.md)
+
+## Project Engineering Info
+
+[See here](./Documentation/README.md)
+
 ## Getting Started
 
 Blyp is separated into two projects both at the top level: an iOS project defined in `blyp.xcodeproj` and the folder `blyp-landing-page`.
@@ -27,6 +35,12 @@ Deployment for this application for a single device can be done through Xcode by
 ## Built With
 * [Cocoapods](https://cocoapods.org/) for package management
 * [Firebase](https://firebase.google.com/) for backend management
+* [Algolia](https://www.algolia.com/) for search management
+* [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI) for image management
+* [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper) for JSON parsing
+* [Introspect](https://github.com/siteline/SwiftUI-Introspect) for access to legacy UIKit features
+* [SwiftLocation](https://github.com/malcommac/SwiftLocation) for easy user location management
+* [Pastel](https://github.com/cruisediary/Pastel) for a pretty login screen
 
 ## Contributing
 
