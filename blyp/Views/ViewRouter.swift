@@ -17,7 +17,7 @@ class ViewRouter: ObservableObject {
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")
             currentPage = "OnboardingView"
         } else {
-            currentPage = "MainView"
+            currentPage = "SignUpView"
         }
     }
     

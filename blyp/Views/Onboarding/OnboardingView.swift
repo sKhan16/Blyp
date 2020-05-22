@@ -40,8 +40,8 @@ struct OnboardingView: View {
             VStack(alignment: .center) {
                 PageControl(numberOfPages: titles.count, currentPageIndex: $currentPageIndex)
                 Spacer()
-                /* uncomment for next button
-                 Button(action: {
+                 //uncomment for next button
+                 /*Button(action: {
                     if self.currentPageIndex+1 == self.subviews.count {
                         self.currentPageIndex = 0
                     } else {
@@ -53,11 +53,12 @@ struct OnboardingView: View {
             }
                 .padding()
         }
+        
     }
 }
 
-/* Uncomment for next button
- struct ButtonContent: View {
+ //Uncomment for next button
+ /* struct ButtonContent: View {
     var body: some View {
         Image(systemName: "arrow.right")
         .resizable()

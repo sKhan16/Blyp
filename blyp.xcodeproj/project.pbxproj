@@ -167,6 +167,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1E7A7B2A2477AA8000CA762F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1E62946B2472092A0062B8EF /* ViewRouter.swift */,
+				1EB3A0D0245304C60063956E /* PageViewController.swift */,
+				1EC97284245C1D35004011F3 /* OnboardingView.swift */,
+				1EC97286245C1D83004011F3 /* Subview.swift */,
+				1EC97288245C1E03004011F3 /* PageControl.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		B7C17C84FE9F0E665421CF40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,16 +202,12 @@
 		C01AA3B02409DD8C00BB1C84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A7B2A2477AA8000CA762F /* Onboarding */,
 				C0363F41241AE9E4006EE664 /* Blyps */,
 				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
-				1E62946B2472092A0062B8EF /* ViewRouter.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
-				1EB3A0D0245304C60063956E /* PageViewController.swift */,
-				1EC97284245C1D35004011F3 /* OnboardingView.swift */,
-				1EC97286245C1D83004011F3 /* Subview.swift */,
-				1EC97288245C1E03004011F3 /* PageControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
