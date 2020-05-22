@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var user: UserObservable
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var displayName: String?
 
     var body: some View {
@@ -18,8 +19,11 @@ struct ContentView: View {
             if user.loginState == .loggedIn {
                 MainView()
             } else if user.loginState == .signingUp {
-                OnboardingView()
-                SignUpView()
+                if viewRouter.currentPage == "OnboardingView" {
+                    OnboardingView()
+                } else if (viewRouter.currentPage == "SignUpView") {
+                    SignUpView()
+                }
             } else if user.loginState == .loggedOut {
                 LoginView()
             } else {

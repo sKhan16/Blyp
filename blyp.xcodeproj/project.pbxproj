@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E5B8D8C2419DE9500809139 /* AddBlypView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8D8B2419DE9500809139 /* AddBlypView.swift */; };
+		1E62946C2472092A0062B8EF /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62946B2472092A0062B8EF /* ViewRouter.swift */; };
 		1EB3A0D1245304C60063956E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB3A0D0245304C60063956E /* PageViewController.swift */; };
 		1EC97285245C1D35004011F3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC97284245C1D35004011F3 /* OnboardingView.swift */; };
 		1EC97287245C1D83004011F3 /* Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC97286245C1D83004011F3 /* Subview.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		1C20639421C07A113210BB1D /* Pods-blypTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blypTests.debug.xcconfig"; path = "Target Support Files/Pods-blypTests/Pods-blypTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E5B8D8B2419DE9500809139 /* AddBlypView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlypView.swift; sourceTree = "<group>"; };
+		1E62946B2472092A0062B8EF /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRouter.swift; path = /Users/shakeelkhan/Desktop/Blyp/blyp/Views/ViewRouter.swift; sourceTree = "<absolute>"; };
 		1EB3A0D0245304C60063956E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		1EC97284245C1D35004011F3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1EC97286245C1D83004011F3 /* Subview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subview.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				C0363F40241AE9CE006EE664 /* Profile */,
 				C01AA3B12409DDB400BB1C84 /* Authentication */,
 				C01AA3AE2409DD6300BB1C84 /* MainView.swift */,
+				1E62946B2472092A0062B8EF /* ViewRouter.swift */,
 				C01AA3B42409EAD300BB1C84 /* ContentView.swift */,
 				1EB3A0D0245304C60063956E /* PageViewController.swift */,
 				1EC97284245C1D35004011F3 /* OnboardingView.swift */,
@@ -591,6 +594,7 @@
 				C00BC325240F1F690051CBA1 /* Blyp.swift in Sources */,
 				C0FE9D8223E4F20F004C4621 /* SceneDelegate.swift in Sources */,
 				C0FE9D8423E4F20F004C4621 /* LoginView.swift in Sources */,
+				1E62946C2472092A0062B8EF /* ViewRouter.swift in Sources */,
 				C07A2ED22400B2AC004BB749 /* UserDataKeychain.swift in Sources */,
 				C01AA3AD2409D90500BB1C84 /* SignUpView.swift in Sources */,
 				1EB3A0D1245304C60063956E /* PageViewController.swift in Sources */,
