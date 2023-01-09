@@ -5,7 +5,7 @@
   "main": "createUser.js",
   "dependencies": {
     "faker": "^4.1.0",
-    "firebase-admin": "^8.11.0",
+    "firebase-admin": "^11.4.1",
     "sleep": "^6.1.0"
   },
   "devDependencies": {},
